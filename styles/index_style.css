@@ -1,0 +1,41 @@
+body{
+    margin: 0;
+}
+@font-face {
+    font-family: 'Coldiac';
+    src: url('Coldiac.otf');
+    font-weight: normal;
+    font-style: normal;
+
+}
+.title{
+    font-family: Coldiac, serif;
+    position: absolute;
+    color: lightgray;
+    font-size: 472%;
+    margin-top: 10%;
+    margin-left: 2%;
+}
+
+.subtitle{
+    position: absolute;
+    margin-top: 16%;
+    color: lightgray;
+    margin-left: 2%;
+    font-size: 142%;
+}
+.container{
+    width:90%;
+    margin: 0 auto;
+    background: #f9f9f9;
+    font-size: 24px;
+
+}
+
+.parallax{
+    background: url('main_cover.jpg') no-repeat center;
+    background-size: cover;
+    background-attachment: fixed;
+    height: 700px;
+    width:100%;
+}

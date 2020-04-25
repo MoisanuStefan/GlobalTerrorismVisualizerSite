@@ -45,11 +45,11 @@
             <div class="content">
                 <h2>Statistics</h2>
                 <p>
-                    <label>Chart type</label>
+                    <label id="chart-type-label">Chart type</label>
                     <select id = "chartType" >
-                        <option value = "1">Bar chart</option>
-                        <option value = "2">Pie chart</option>
-                        <option value = "3">Line chart</option>
+                        <option value = "bar" selected="selected">Bar chart</option>
+                        <option value = "pie" >Pie chart</option>
+                        <option value = "line">Line chart</option>
                     </select>
 
                     <label>Year</label>
@@ -352,6 +352,14 @@
 
                 </p>
             </div>
+
+
+
+
+
+
+            <!-- HTML -->
+            <div id="chartdiv"></div>
         </div>
         <div id="section4" class="sections">
             <div class="content">
@@ -367,6 +375,13 @@
 
 
     </div>
+
+    <!-- Resources -->
+    <script src="https://www.amcharts.com/lib/4/core.js"></script>
+    <script src="https://www.amcharts.com/lib/4/charts.js"></script>
+    <script src="https://www.amcharts.com/lib/4/themes/dataviz.js"></script>
+    <script src="https://www.amcharts.com/lib/4/themes/animated.js"></script>
+    <script src="chart.js"></script>
 
 </body>
 

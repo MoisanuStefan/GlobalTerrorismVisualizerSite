@@ -25,13 +25,20 @@ html{
     z-index: 11;
 }
 
-a{
+li a{
+    
     margin: 35px;
     color: white;
     text-decoration: none;
     text-transform: uppercase;
 
+
 }
+a:hover{
+    color: gray;
+}
+img:hover{ opacity:0.5;}
+
 .navigation_ul{
     display: flex;
     justify-content: right;
@@ -74,7 +81,10 @@ a{
     background: lightgray;
     z-index: 7;
 }
-
+#section4{
+    background: darkgray;
+    z-index: 6;
+}
 
 #head:after,
 #section1:after,

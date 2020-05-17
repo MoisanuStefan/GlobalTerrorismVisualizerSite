@@ -17,6 +17,8 @@
             <li><a href="#section1">About</a> </li>
             <li><a href="#section2">Portfolio</a> </li>
             <li><a href="#section3">Statistics</a> </li>
+	    <li><a href="#section4">Contact</a> </li>
+	    <?php if(isset($_POST['user'])) echo '<li><a href=\"#section2\">              Welcome, '.$_POST['user']. ' </a> </li>'; ?>
         </ul>
     </div>
     <div class="wrapper">
@@ -29,10 +31,74 @@
         <div id="section1" class="sections">
             <div class="content">
                 <h2>About</h2>
-                <p> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi eu pulvinar arcu. Morbi
-                    bibendum urna vitae ultrices lobortis. Vivamus condimentum ultrices leo, eget luctus ante sagittis et. Maecenas
-                    posuere placerat vestibulum. Phasellus interdum fermentum tellus vitae iaculis. Suspendisse ornare, dolor ac ultrices pretium, arcu sapien pharetra velit, at laoreet ipsum odio a lacus. Curabitur id
-                    </p>
+                <p> 
+
+			<?php
+
+			$text= '';
+
+			if(isset($_POST['user']))
+			{
+				$text=$_POST['user'];
+				
+			}
+
+			if(isset($_POST['password']))
+			{
+				$text=$_POST['password'];
+				
+			}
+
+			
+			if(!isset($_POST['user']))
+			{echo '<form action="index.php" method="POST" class="logIn">';
+			echo '<input type="hidden" name="actiune" value="LogIn">';
+			echo 'User:'; 
+			echo '<input type="text" name="user">'; 
+			echo 'Password:';
+			echo '<input type="text" name="password">';
+			echo '<button type="submit">Log in</button>';
+			echo '</form>';
+			}
+
+			$text= '';
+			if(isset($_POST['name']))
+			{
+				$text=$_POST['name'];
+				
+			}
+
+
+			if(isset($_POST['user']))
+			{
+				$text=$_POST['user'];
+				if($text!=NULL)
+				echo "WELCOME, $text,";
+			}
+
+			if(isset($_POST['password']))
+			{
+				$text=$_POST['password'];
+				
+			}
+
+			
+			if(!isset($_POST['user']))
+			{
+			echo '<form action="index.php" method="POST" class=signIn>';
+			echo '<input type="hidden" name="actiune" value="SignIn">';
+			echo 'Name:';
+			echo '<input type="text" name="name">';
+			echo 'User:';
+			echo '<input type="text" name="user">';
+			echo 'Password:';
+			echo '<input type="text" name="password">';
+			echo '<button type="submit">Sign in</button>';
+			echo '</form>';
+			}
+			?>
+
+		 </p>
             </div>
         </div>
         <div id="section2" class="sections">
@@ -51,59 +117,60 @@
 		<?php
 			
 			$text= '';
-			if(isset($_GET['year']))
+			if(isset($_POST['year']))
 			{
-				$text=$_GET['year'];
+				$text=$_POST['year'];
 				if($text!=NULL)
 				echo "year: $text,";
 			}
 
-			if(isset($_GET['month']))
+			if(isset($_POST['month']))
 			{
-				$text=$_GET['month'];
+				$text=$_POST['month'];
 				if($text!=NULL)
 				echo " month: $text ";
 			}
 
-			if(isset($_GET['day']))
+			if(isset($_POST['day']))
 			{
-				$text=$_GET['day'];
+				$text=$_POST['day'];
 				if($text!=NULL)
 				echo " day: $text ";
 			}
 
-			if(isset($_GET['country']))
+			if(isset($_POST['country']))
 			{
-				$text=$_GET['country'];
+				$text=$_POST['country'];
 				if($text!=NULL)
 				echo " country: $text ";
 			}
 			
-			if(isset($_GET['city']))
+			if(isset($_POST['city']))
 			{
-				$text=$_GET['city'];
+				$text=$_POST['city'];
 				if($text!=NULL)
 				echo " city: $text ";
 			}
 
-			if(isset($_GET['regionCode']))
+			if(isset($_POST['regionCode']))
 			{
-				$text=$_GET['regionCode'];
+				$text=$_POST['regionCode'];
 				if($text!=NULL)
 				echo " regionCode: $text ";
 			}
 
-			if(isset($_GET['countryCode']))
+			if(isset($_POST['countryCode']))
 			{
-				$text=$_GET['countryCode'];
+				$text=$_POST['countryCode'];
 				if($text!=NULL)
 				echo " countryCode: $text ";
 			}
 
-			
-		?>
+			?>
+		
 
-		<form action="index.php" method="GET">
+		<form action="index.php" method="POST">
+			<input type="hidden" name="actiune" value="changeChart">
 			Year:
 			<input type="text" name="year">
 			Month:
@@ -178,7 +245,7 @@
     <script src="https://www.amcharts.com/lib/4/themes/animated.js"></script>
 
     <script>
-    <?php include 'E:\ProgramData\xampp\htdocs\TeVi\public\js\chart.js'; ?>
+    <?php include 'util/js/chart.js'; ?>
     </script>
 
 </body>

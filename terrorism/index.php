@@ -9,9 +9,13 @@
 	
 	include "controller/chome.php";
 	include "model/mhome.php";
+	include "model/mlogin.php";
 	include "view/vhome.php";
-	$control = new CHome($actiune, $parametri);
 
+	if(isset($_POST["actiune"])) $actiune=$_POST["actiune"];
+	
+	
+	$control = new CHome($actiune, $parametri);
 	
 
 

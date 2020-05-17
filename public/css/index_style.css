@@ -62,7 +62,7 @@ img:hover{ opacity:0.5;}
 
 #head{
     padding-bottom: 150px;
-    background: url('main_cover2.jpg');
+    background: url('../resources/main_cover2.jpg');
     -webkit-background-size: cover;
     background-size: cover;
     background-position: center top;

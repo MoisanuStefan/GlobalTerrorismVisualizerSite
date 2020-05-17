@@ -356,12 +356,10 @@
             </div>
 
 
-
-
-
-
             <!-- HTML -->
+           
             <div id="chartdiv"></div>
+            <div id="demo">qweqw</div>
         </div>
         <div id="section4" class="sections">
         <div class="content" id="teamsParent">
@@ -395,16 +393,16 @@
 
 
     </div>
-
+   
     <!-- Resources -->
+    
     <script src="https://www.amcharts.com/lib/4/core.js"></script>
     <script src="https://www.amcharts.com/lib/4/charts.js"></script>
     <script src="https://www.amcharts.com/lib/4/themes/dataviz.js"></script>
     <script src="https://www.amcharts.com/lib/4/themes/animated.js"></script>
+    <?php include '../../TeVi/public/js/pieChart.php'; ?>
 
-    <script>
-    <?php include 'E:\ProgramData\xampp\htdocs\TeVi\public\js\chart.js'; ?>
-    </script>
+
 
 </body>
 

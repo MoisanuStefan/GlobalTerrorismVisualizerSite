@@ -14,4 +14,5 @@ class Home extends Controller{
     public function load_view($view){
         $this->get_view($view);
     }
+
 }

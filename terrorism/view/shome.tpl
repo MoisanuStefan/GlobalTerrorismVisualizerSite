@@ -18,7 +18,7 @@
             <li><a href="#section2">Portfolio</a> </li>
             <li><a href="#section3">Statistics</a> </li>
 	    <li><a href="#section4">Contact</a> </li>
-	    <?php if(isset($_POST['user'])) echo '<li><a href=\"#section2\">              Welcome, '.$_POST['user']. ' </a> </li>'; ?>
+	    <?php if(isset($_POST['user'])) echo '<li><a>   Welcome, '.$_POST['user']. ' </a> </li>'; ?>
         </ul>
     </div>
     <div class="wrapper">
@@ -204,6 +204,7 @@
 
             <!-- HTML -->
             <div id="chartdiv"></div>
+	    <div id="demo">qweqw</div>
         </div>
         <div id="section4" class="sections">
         <div class="content" id="teamsParent">
@@ -243,10 +244,7 @@
     <script src="https://www.amcharts.com/lib/4/charts.js"></script>
     <script src="https://www.amcharts.com/lib/4/themes/dataviz.js"></script>
     <script src="https://www.amcharts.com/lib/4/themes/animated.js"></script>
-
-    <script>
-    <?php include 'util/js/chart.js'; ?>
-    </script>
+    <?php include '../terrorism/util/js/pieChart.php'; ?>
 
 </body>
 

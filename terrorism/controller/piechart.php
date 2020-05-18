@@ -1,27 +1,39 @@
 <?php
 
 class PieChart {
-    public $data;
-    public $json;
+   
+    private $model;
 
     function __construct() {
         $this->data = array();
-	echo "da ma";
+
     }
 
+    public function getWhatToGraph(){
+        
+        if(isset($_POST['graph-me-this'])){
+            $toGraph = $_POST['graph-me-this'];
+            $this->model = new MChart();
+            $raw_data = $this->model->getDistinctAndCount($toGraph);
+            if($raw_data==NULL){
+                echo 'no data in database';
+            }
+            $data = array();
+            $index = 0;
+            foreach($raw_data as $line){
+                $data[$index] = array();
+                $data[$index]['to_graph'] = $line['to_graph'];
+                $data[$index]['value'] = $line['value'];  
+                $index++;
+            }
+            return $data;
+        }
+        
+    }
     public function getJson(){
-        $this->data[0] = array();
-        $this->data[0]['country'] = "Rom";
-        $this->data[0]['value'] = 400;
-        $this->data[1] = array();
-        $this->data[1]['country'] = "alta";
-        $this->data[1]['value'] = 30;
-        $this->data[2] = array();
-        $this->data[2]['country'] = "sua"; 
-        $this->data[2]['value'] = 500;
-        $this->json = json_encode($this->data);
-        return $this->json;
-
+        $data = $this->getWhatToGraph();
+        return json_encode($data);
+    
     }
 
 

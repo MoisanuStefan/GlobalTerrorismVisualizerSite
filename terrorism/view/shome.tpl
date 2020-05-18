@@ -168,8 +168,16 @@
 
 			?>
 		
+ 		
 
 		<form action="index.php" method="POST">
+		<label>Graph me this: </label>
+        <select name = "graph-me-this" >
+            <option value = "weapon" selected="selected">Number of weapons by category</option>
+            <option value = "2" >other statistac </option>
+            <option value = "3">another statistac</option>
+        </select>
+		
 			<input type="hidden" name="actiune" value="changeChart">
 			Year:
 			<input type="text" name="year">
@@ -197,14 +205,11 @@
                         <option value = "line">Line chart</option>
                     </select>
 
-                    
-
                 </p>
             </div>
 
             <!-- HTML -->
             <div id="chartdiv"></div>
-	    <div id="demo">qweqw</div>
         </div>
         <div id="section4" class="sections">
         <div class="content" id="teamsParent">

@@ -11,11 +11,21 @@
 	include "model/mhome.php";
 	include "model/mlogin.php";
 	include "view/vhome.php";
+	include "controller/piechart.php";
+	include "model/mchart.php";
 
-	if(isset($_POST["actiune"])) $actiune=$_POST["actiune"];
+	if(isset($_POST["actiune"])){
+		 $actiune=$_POST["actiune"];
+		 unset($_POST['actiune']);
+	}
 	
+	if ($actiune == "changeChart"){
+		$control = new PieChart();
+		$control->getWhatToGraph();
+	}
 	
 	$control = new CHome($actiune, $parametri);
+
 	
 
 

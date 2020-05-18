@@ -8,11 +8,9 @@
     include_once '../terrorism/controller/pieChart.php';
     $controller = new PieChart();
     $json = $controller->getJson();
-    echo $json
-?>
+?>  
 
 <script>
-        document.getElementById("demo").innerHTML = 5 + 6;
         am4core.ready(function() {
 
         am4core.useTheme(am4themes_animated);
@@ -27,7 +25,7 @@
 
         var series = chart.series.push(new am4charts.PieSeries3D());
         series.dataFields.value = "value";
-        series.dataFields.category = "category";
+        series.dataFields.category = "to_graph";
 
         }); // end am4core.ready()
 </script>

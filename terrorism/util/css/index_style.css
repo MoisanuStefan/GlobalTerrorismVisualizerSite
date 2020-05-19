@@ -178,3 +178,6 @@ img:hover{ opacity:0.5;}
     color:black;
     border: 10px solid gray;
 }
+ #failedLogin{
+color: red;
+}

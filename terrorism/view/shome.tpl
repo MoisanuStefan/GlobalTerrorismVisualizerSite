@@ -49,10 +49,17 @@
 				
 			}
 
+			if(!isset($_POST['user'])  && isset($_POST['loginTried']))
+			{
+				echo '<p id="failedLogin"> Wrong username or password!</p>';
+				
+			}
+
 			
 			if(!isset($_POST['user']))
 			{echo '<form action="index.php" method="POST" class="logIn">';
 			echo '<input type="hidden" name="actiune" value="LogIn">';
+			echo '<input type="hidden" name="loginTried" value="tried">';
 			echo 'User:'; 
 			echo '<input type="text" name="user">'; 
 			echo 'Password:';
@@ -193,19 +200,19 @@
 			<input type="text" name="regionCode">
 			Country code:
 			<input type="text" name="countryCode">
+			
+
+			<label id="chart-type-label">Chart type</label>
+                   	<select id = "chartType" name="chartType">
+                        <option value = "bar" selected="selected">Bar chart</option>
+                        <option value = "pie" >Pie chart</option>
+                        <option value = "line">Line chart</option>
+                    	</select>
 			<button type="submit">SET</button>
 		</form>
 
 
-                <p>
-                    <label id="chart-type-label">Chart type</label>
-                    <select id = "chartType" >
-                        <option value = "bar" selected="selected">Bar chart</option>
-                        <option value = "pie" >Pie chart</option>
-                        <option value = "line">Line chart</option>
-                    </select>
-
-                </p>
+                
             </div>
 
             <!-- HTML -->

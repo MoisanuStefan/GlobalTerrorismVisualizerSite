@@ -5,7 +5,7 @@ class BD{
 	{
 		if(is_null(self::$conexiune_bd))
 		{
-		self::$conexiune_bd =new PDO('mysql:host=localhost;dbname=tevi','stef','stef');
+		self::$conexiune_bd =new PDO('mysql:host=localhost;dbname=chat','costina','costina');
 		}
 		return self::$conexiune_bd;
 	}
@@ -26,6 +26,8 @@ class BD{
 			$msg= $cerere->fetchAll();
 			if($msg==NULL)
 			{ echo "wrong password or user";
+				unset($_POST['user']);
+				unset($_POST['actiune']);
 			}
 			foreach($msg as $m)
 				{

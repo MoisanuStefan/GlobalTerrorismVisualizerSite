@@ -72,6 +72,7 @@ img:hover{ opacity:0.5;}
 #section1{
     background: lightgray;
     z-index: 9;
+
 }
 #section2{
     background: darkgray;
@@ -169,15 +170,51 @@ img:hover{ opacity:0.5;}
 }
 
 .logIn{
-    background-color:light-gray;
+    background-color: #b6b1b1;
     color:black;
-    border: 10px solid gray;
+    border: 5px solid gray;
+    width:200px;
+}
+.logIn:hover{
+    background-color:#b6b1b1;
+    color:black;
+    border: 20px solid #b6b1b1;
+    width:200px;
 }
 .signIn{
-    background-color:light-gray;
+	
+    background: #b6b1b1;
     color:black;
-    border: 10px solid gray;
+    border: 5px solid gray;
+    width:200px;
+}
+.signIn:hover{
+	
+    background-color:#b6b1b1;
+    color:black;
+    border: 20px solid #b6b1b1;
+    width:200px;
 }
  #failedLogin{
 color: red;
 }
+
+.logInput {
+	background-color: #b6b1b1;
+	border:0px;
+}
+
+.logButton {
+background:light-gray;
+border: 3px solid #817d7d;
+position: relative;
+top:-4px;
+}
+
+
+hr{
+width: 70%;
+position: relative;
+top:-4px;
+}
+ 

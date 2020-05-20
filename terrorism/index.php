@@ -10,6 +10,7 @@
 	include "controller/chome.php";
 	include "model/mhome.php";
 	include "model/mlogin.php";
+	include "model/mBD.php";
 	include "view/vhome.php";
 	include "controller/piechart.php";
 	include "model/mchart.php";

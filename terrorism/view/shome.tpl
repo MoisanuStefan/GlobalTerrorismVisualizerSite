@@ -49,11 +49,7 @@
 				
 			}
 
-			if(!isset($_POST['user'])  && isset($_POST['loginTried']))
-			{
-				echo '<p id="failedLogin"> Wrong username or password!</p>';
-				
-			}
+			
 
 			
 			if(!isset($_POST['user']))
@@ -61,10 +57,17 @@
 			echo '<input type="hidden" name="actiune" value="LogIn">';
 			echo '<input type="hidden" name="loginTried" value="tried">';
 			echo 'User:'; 
-			echo '<input type="text" name="user">'; 
+			echo '<input class="logInput" type="text" name="user">'; 
+			echo '<hr>';
 			echo 'Password:';
-			echo '<input type="text" name="password">';
-			echo '<button type="submit">Log in</button>';
+			echo '<input class="logInput" type="text" name="password">';
+			echo '<hr>';
+			echo '<button class="logButton" type="submit">Log in</button>';
+				if(!isset($_POST['user'])  && isset($_POST['loginTried']))
+			{
+				echo '<p id="failedLogin"> Wrong username or password!</p>';
+				
+			}
 			echo '</form>';
 			}
 
@@ -95,13 +98,17 @@
 			echo '<form action="index.php" method="POST" class=signIn>';
 			echo '<input type="hidden" name="actiune" value="SignIn">';
 			echo 'Name:';
-			echo '<input type="text" name="name">';
+			echo '<input class="logInput" type="text" name="name">';
+			echo '<hr>';
 			echo 'User:';
-			echo '<input type="text" name="user">';
+			echo '<input class="logInput" type="text" name="user">';
+			echo '<hr>';
 			echo 'Password:';
-			echo '<input type="text" name="password">';
-			echo '<button type="submit">Sign in</button>';
+			echo '<input class="logInput" type="text" name="password">';
+			echo '<hr>';
+			echo '<button class="logButton" type="submit">Sign in</button>';
 			echo '</form>';
+
 			}
 			?>
 
@@ -180,9 +187,9 @@
 		<form action="index.php" method="POST">
 		<label>Graph me this: </label>
         <select name = "graph-me-this" >
-            <option value = "weapon" selected="selected">Number of weapons by category</option>
-            <option value = "2" >other statistac </option>
-            <option value = "3">another statistac</option>
+            <option value = "weapon" >Number of weapons by category</option>
+            <option value = "country" > Sort by country </option>
+            <option value = "year"> Sort by year </option>
         </select>
 		
 			<input type="hidden" name="actiune" value="changeChart">

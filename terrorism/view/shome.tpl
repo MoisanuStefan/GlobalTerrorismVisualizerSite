@@ -187,14 +187,16 @@
 		<form action="index.php" method="POST">
 		<label>Graph me this: </label>
         <select name = "graph-me-this" >
-            <option value = "weapon" >Number of weapons by category</option>
-            <option value = "country" > Sort by country </option>
-            <option value = "year"> Sort by year </option>
+            <option value = "weaptype1_txt" >Number of weapons by category</option>
+            <option value = "country_txt" > Number of events by country </option>
+            <option value = "iyear"> Number of events by year </option>
         </select>
 		
 			<input type="hidden" name="actiune" value="changeChart">
-			Year:
-			<input type="text" name="year">
+			Years between: 
+			<input type="text" name="year_l">
+			and 
+			<input type="text" name="year_h">
 			Month:
 			<input type="text" name="month">
 			Day:
@@ -209,21 +211,23 @@
 			<input type="text" name="countryCode">
 			
 
-			<label id="chart-type-label">Chart type</label>
+			
+			<button type="submit">SET</button>
+		</form>
+		<label id="chart-type-label">Chart type</label>
                    	<select id = "chartType" name="chartType">
-                        <option value = "bar" selected="selected">Bar chart</option>
+					    <option disabled selected value> -- chart type -- </option>
+                        <option value = "bar" >Bar chart</option>
                         <option value = "pie" >Pie chart</option>
                         <option value = "line">Line chart</option>
                     	</select>
-			<button type="submit">SET</button>
-		</form>
 
 
-                
+                <!-- HTML -->
+            <div id="chartdiv"></div>
             </div>
 
-            <!-- HTML -->
-            <div id="chartdiv"></div>
+            
         </div>
         <div id="section4" class="sections">
         <div class="content" id="teamsParent">

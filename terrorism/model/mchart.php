@@ -23,17 +23,34 @@ class MChart{
  
 	private function createQuery($column,$array){
 
-		$sqll='SELECT ' . $column . ' as to_graph, COUNT(' . $column . ') AS value FROM data1 '; 
+		$sqll='SELECT ' . $column . ' as to_graph, COUNT(' . $column . ') AS value FROM attacks '; 
 		$conditions="";
 		$firstCondition=1;
 		foreach ($array as $i => $value) {
-		if($firstCondition==1)
-		{
-			$conditions=$conditions." WHERE $i = '$array[$i]' ";
-			$firstCondition=0;
-		}
-		else
-		$conditions=$conditions." AND $i = '$array[$i]' ";
+
+			if($firstCondition==1)
+			{
+				if($i == 'iyear_l'){
+					$conditions=$conditions." where iyear between '$array[$i]' ";
+				}
+				else{
+					$conditions=$conditions." WHERE $i = '$array[$i]' ";
+				}
+			
+				$firstCondition=0;
+			}
+			else{
+				
+			if($i == 'iyear_l'){
+				$conditions=$conditions." and iyear between '$array[$i]' ";
+			}
+			else if ($i == 'iyear_h'){
+				$conditions=$conditions." and '$array[$i]' ";
+			}
+			else{
+				$conditions=$conditions." AND $i = '$array[$i]' ";
+			}
+			}
 
 		}
 		return $sqll.$conditions.'GROUP BY ' . $column;

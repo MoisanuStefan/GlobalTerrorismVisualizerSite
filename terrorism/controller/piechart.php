@@ -47,10 +47,11 @@ class PieChart {
 	$arr=array();
 
 	//adding a new element into the array if the user specified a special value in the form ( array[column]=columnValue; )
-	if(isset($_POST['year']) && $_POST['year']!=NULL) { $year=$_POST['year']; $arr['year']=$year;}
-	if(isset($_POST['country']) &&  $_POST['country']!=NULL) { $country=$_POST['country'];  $arr['country']=$country; }
+    if(isset($_POST['year_l']) && $_POST['year_l']!=NULL) { $year=$_POST['year_l']; $arr['iyear_l']=$year;}
+    if(isset($_POST['year_h']) && $_POST['year_h']!=NULL) { $year=$_POST['year_h']; $arr['iyear_h']=$year;}
+	if(isset($_POST['country']) &&  $_POST['country']!=NULL) { $country=$_POST['country'];  $arr['country_txt']=$country; }
 	if(isset($_POST['city']) &&  $_POST['city']!=NULL) { $city=$_POST['city']; $arr['city']=$city;}
-	if(isset($_POST['month']) &&  $_POST['month']!=NULL) { $month=$_POST['month'];  $arr['month']=$month;}
+	if(isset($_POST['month']) &&  $_POST['month']!=NULL) { $month=$_POST['month'];  $arr['imonth']=$month;}
 	if(isset($_POST['regionCode']) &&  $_POST['regionCode']!=NULL) { $regionCode=$_POST['regionCode'];  $arr['regionCode']=$regionCode;}
 	if(isset($_POST['countryCode']) &&  $_POST['countryCode']!=NULL) { $countryCode=$_POST['countryCode'];  $arr['countryCode']=$countryCode;}
 

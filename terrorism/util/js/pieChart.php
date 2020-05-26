@@ -30,6 +30,17 @@ chartType.onchange = function () {
         series.dataFields.value = "value";
         series.dataFields.category = "to_graph";
 
+        chart.exporting.menu = new am4core.ExportMenu();
+        chart.exporting.menu.align = "left";
+        chart.exporting.menu.verticalAlign = "top";
+        chart.exporting.formatOptions.getKey("jpg").disabled = true;
+        chart.exporting.formatOptions.getKey("pdf").disabled = true;
+        chart.exporting.formatOptions.getKey("json").disabled = true;
+        chart.exporting.formatOptions.getKey("html").disabled = true;
+        chart.exporting.formatOptions.getKey("xlsx").disabled = true;
+        chart.exporting.formatOptions.getKey("print").disabled = true;
+        am4core.color("#f00", 0)
+
         }); // end am4core.ready()
     }
     else if (this.value.localeCompare("bar") === 0){
@@ -86,6 +97,17 @@ chartType.onchange = function () {
             chart.cursor = new am4charts.XYCursor();
             chart.cursor.lineX.strokeOpacity = 0;
             chart.cursor.lineY.strokeOpacity = 0;
+
+            chart.exporting.menu = new am4core.ExportMenu();
+            chart.exporting.menu.align = "left";
+            chart.exporting.menu.verticalAlign = "top";
+            chart.exporting.formatOptions.getKey("jpg").disabled = true;
+            chart.exporting.formatOptions.getKey("pdf").disabled = true;
+            chart.exporting.formatOptions.getKey("json").disabled = true;
+            chart.exporting.formatOptions.getKey("html").disabled = true;
+            chart.exporting.formatOptions.getKey("xlsx").disabled = true;
+            chart.exporting.formatOptions.getKey("print").disabled = true;
+            am4core.color("#f00", 0)
 
         }); // end am4core.ready()
     }

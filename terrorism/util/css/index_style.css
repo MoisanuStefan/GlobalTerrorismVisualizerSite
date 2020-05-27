@@ -1,10 +1,10 @@
-
 html{
     scroll-behavior: smooth;
 }
 body{
     margin: 0;
 }
+
 @font-face {
     font-family: 'Coldiac';
     src: url('E:\ProgramData\xampp\htdocs\terrorism\util\css\Coldiac.otf');
@@ -46,10 +46,12 @@ img:hover{ opacity:0.5;}
     list-style: none;
     margin-right: 2%;
 }
+
 .sections{
     width: 100%;
     position: relative;
 }
+
 .sections:after{
     position: absolute;
     width: 100%;
@@ -62,13 +64,13 @@ img:hover{ opacity:0.5;}
 
 #head{
     padding-bottom: 150px;
-    background: url('E:/ProgramData/xampp/htdocs/terrorism/util/css/main_cover2.jpg');
+    background-image: url('main_cover2.jpg');
     -webkit-background-size: cover;
     background-size: cover;
     background-position: center top;
     z-index: 10;
-
 }
+
 #section1{
     background: lightgray;
     z-index: 9;

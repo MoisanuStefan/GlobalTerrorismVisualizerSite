@@ -10,7 +10,7 @@ class MChart{
 
     public function getDistinctAndCount($column,$array){
         
-        //$sql = 'SELECT ' . $column . ' as to_graph, COUNT(' . $column . ') AS value FROM data1 GROUP BY ' . $column;
+        //$sql = 'SELECT ' . $column . ' as to_graph, COUNT(' . $column . ') AS value FROM attacks GROUP BY ' . $column;
 
 	//creating the query
 	$sql2=$this->createQuery($column,$array);

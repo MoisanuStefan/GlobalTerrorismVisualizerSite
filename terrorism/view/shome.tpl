@@ -184,7 +184,7 @@
 
 		<form action="index.php" method="POST">
 		<label>Graph me this: </label>
-        <select name = "graph-me-this" >
+        <select id="graph-me-this" name = "graph-me-this" >
             <option value = "weaptype1_txt" >Number of weapons by category</option>
             <option value = "country_txt" > Number of events by country </option>
             <option value = "iyear"> Number of events by year </option>
@@ -192,25 +192,25 @@
 		
 			<input type="hidden" name="actiune" value="changeChart">
 			Years between: 
-			<input type="text" name="year_l">
+			<input id="year_l" type="text" name="year_l">
 			and 
-			<input type="text" name="year_h">
+			<input id="year_h" type="text" name="year_h">
 			Month:
-			<input type="text" name="month">
+			<input  id="month" type="text" name="month">
 			Day:
-			<input type="text" name="day">
+			<input id="day" type="text" name="day">
 			Country:
-			<input type="text" name="country">
+			<input id="country" type="text" name="country">
 			City:
-			<input type="text" name="city">
+			<input id="city" type="text" name="city">
 			Region code:
-			<input type="text" name="regionCode">
+			<input id="regionCode" type="text" name="regionCode">
 			Country code:
-			<input type="text" name="countryCode">
+			<input  id="countryCode" type="text" name="countryCode">
 			
 
 			
-			<button type="submit">SET</button>
+			<button id="fetchBtn" type="button">SET</button>
 		</form>
 		<label id="chart-type-label">Chart type</label>
                    	<select id = "chartType" name="chartType">
@@ -318,7 +318,8 @@
     <script src="https://www.amcharts.com/lib/4/charts.js"></script>
     <script src="https://www.amcharts.com/lib/4/themes/dataviz.js"></script>
     <script src="https://www.amcharts.com/lib/4/themes/animated.js"></script>
-    <?php include '../terrorism/util/js/pieChart.php'; ?>
+  	<script src="util/js/form-ajax.js"></script>
+	
 
 </body>
 

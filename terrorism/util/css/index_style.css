@@ -7,7 +7,7 @@ body{
 }
 @font-face {
     font-family: 'Coldiac';
-    src: url('E:\ProgramData\xampp\htdocs\terrorism\util\css\Coldiac.otf');
+    src: url('Coldiac.otf');
     font-weight: normal;
     font-style: normal;
 
@@ -67,7 +67,7 @@ li a:hover{
     background-size: cover;
     background-position: center top;
     z-index: 10;
-s
+
 }
 #section1{
     background: lightgray;

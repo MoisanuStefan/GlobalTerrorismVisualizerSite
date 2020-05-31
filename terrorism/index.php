@@ -22,10 +22,6 @@
 		 unset($_POST['actiune']);
 	}
 	
-	if ($actiune == "changeChart"){
-		$control = new PieChart();
-		$control->getWhatToGraph();
-	}
 	
 	$control = new CHome($actiune, $parametri);
 

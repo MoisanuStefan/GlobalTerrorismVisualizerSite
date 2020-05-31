@@ -8,52 +8,51 @@ class MChart{
         $this->connection = BD::obtine_conexiune();
     }
 
-    public function getDistinctAndCount($column,$array){
+    public function getDistinctAndCount($queryData){
         
         //$sql = 'SELECT ' . $column . ' as to_graph, COUNT(' . $column . ') AS value FROM attacks GROUP BY ' . $column;
 
-	//creating the query
-	$sql2=$this->createQuery($column,$array);
-	echo "THIS QUERY: $sql2 <br>";
+		//creating the query
+		$sql2=$this->createQuery($queryData);
         $request = $this->connection->prepare($sql2);
         $request->execute();
         return $request->fetchAll();
     }
 
- 
-	private function createQuery($column,$array){
 
-		$sqll='SELECT ' . $column . ' as to_graph, COUNT(' . $column . ') AS value FROM attacks '; 
+	private function createQuery($array){
+		
+		$sqll='SELECT ' . $array->column . ' as to_graph, COUNT(' . $array->column . ') AS value FROM attacks '; 
 		$conditions="";
 		$firstCondition=1;
 		foreach ($array as $i => $value) {
-
-			if($firstCondition==1)
-			{
-				if($i == 'iyear_l'){
-					$conditions=$conditions." where iyear between '$array[$i]' ";
+			if ($i != 'column' && $value != ''){
+				if($firstCondition==1)
+				{																
+					if($i == 'iyear_l'){
+						$conditions=$conditions." where iyear between '$value' ";
+					}
+					else{
+						$conditions=$conditions." WHERE $i = '$value' ";
+					}
+				
+					$firstCondition=0;
 				}
 				else{
-					$conditions=$conditions." WHERE $i = '$array[$i]' ";
+					
+					if($i == 'iyear_l'){
+						$conditions=$conditions." and iyear between '$value' ";
+					}
+					else if ($i == 'iyear_h'){
+						$conditions=$conditions." and '$value' ";
+					}
+					else{
+						$conditions=$conditions." AND $i = '$value' ";
+					}
 				}
-			
-				$firstCondition=0;
 			}
-			else{
-				
-			if($i == 'iyear_l'){
-				$conditions=$conditions." and iyear between '$array[$i]' ";
-			}
-			else if ($i == 'iyear_h'){
-				$conditions=$conditions." and '$array[$i]' ";
-			}
-			else{
-				$conditions=$conditions." AND $i = '$array[$i]' ";
-			}
-			}
-
 		}
-		return $sqll.$conditions.'GROUP BY ' . $column;
+		return $sqll.$conditions.'GROUP BY ' . $array->column;
 	}
 }
 	

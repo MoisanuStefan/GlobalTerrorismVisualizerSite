@@ -10,13 +10,13 @@
 <body>
     <div class="navigation_bar">
         <ul class="navigation_ul">
-            <li><a href="#head">Home</a> </li>
-            <li><a href="#section1">About</a> </li>
-            <li><a href="#section2">Portfolio</a> </li>
-            <li><a href="#section3">Statistics</a> </li>
-            <li><a href="#section5">Maps</a> </li>
-	    <li><a href="#section4">Contact</a> </li>
-	    <?php if(isset($_POST['user'])) echo '<li><a>   Welcome, '.$_POST['user']. ' </a> </li>'; ?>
+            <li><a class="navitem" href="#head">Home</a> </li>
+            <li><a class="navitem"  href="#section1">Register</a> </li>
+            <li><a class="navitem"  href="#section2">Portfolio</a> </li>
+            <li><a class="navitem"  href="#section3">Statistics</a> </li>
+            <li><a class="navitem"  href="#section5">Maps</a> </li>
+	        <li><a href="#section4">Team</a> </li>
+	      <?php if(isset($_POST['user'])) echo '<li><a>   Welcome, '.$_POST['user']. ' </a> </li>'; ?>
         </ul>
     </div>
     <div class="wrapper">
@@ -28,9 +28,8 @@
         </div>
         <div id="section1" class="sections">
             <div class="content">
-                <h2>About</h2>
-                <p> 
-
+                <h2 id="titles">Register</h2>
+			<div class="flexbox">
 			<?php
 
 			$text= '';
@@ -46,20 +45,14 @@
 				$text=$_POST['password'];
 				
 			}
-
-			
-
 			
 			if(!isset($_POST['user']))
 			{echo '<form action="index.php" method="POST" class="logIn">';
 			echo '<input type="hidden" name="actiune" value="LogIn">';
 			echo '<input type="hidden" name="loginTried" value="tried">';
-			echo 'User:'; 
-			echo '<input class="logInput" type="text" name="user">'; 
-			echo '<hr>';
-			echo 'Password:';
-			echo '<input class="logInput" type="text" name="password">';
-			echo '<hr>';
+			echo '<p class="topText">Login to acces our database !</p>';
+			echo '<input class="logInput" id="topfield" type="text" name="user" placeholder="Username" autocomplete="off">'; 
+			echo '<input class="logInput" type="text" name="password" placeholder="Password" autocomplete="off">';
 			echo '<button class="logButton" type="submit">Log in</button>';
 				if(!isset($_POST['user'])  && isset($_POST['loginTried']))
 			{
@@ -95,36 +88,32 @@
 			{
 			echo '<form action="index.php" method="POST" class=signIn>';
 			echo '<input type="hidden" name="actiune" value="SignIn">';
-			echo 'Name:';
-			echo '<input class="logInput" type="text" name="name">';
-			echo '<hr>';
-			echo 'User:';
-			echo '<input class="logInput" type="text" name="user">';
-			echo '<hr>';
-			echo 'Password:';
-			echo '<input class="logInput" type="text" name="password">';
-			echo '<hr>';
+			echo '<p class="topText">Create a new account !</p>';
+			echo '<input class="logInput" id="topfield" type="text" name="name" placeholder="Name" autocomplete="off">';
+			echo '<input class="logInput" type="text" name="user" placeholder="Username" autocomplete="off">';
+			echo '<input class="logInput" type="text" name="password" placeholder="Password" autocomplete="off">';
 			echo '<button class="logButton" type="submit">Sign in</button>';
 			echo '</form>';
-
 			}
 			?>
 
-		 </p>
+		</div>
+		</div>
             </div>
         </div>
         <div id="section2" class="sections">
             <div class="content">
-                <h2>Portfolio</h2>
+                <h2 id="titles">Portfolio</h2>
                 <p> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi eu pulvinar arcu. Morbi
                     bibendum urna vitae ultrices lobortis. Vivamus condimentum ultrices leo, eget luctus ante sagittis et. Maecenas
                     posuere placerat vestibulum. Phasellus interdum fermentum tellus vitae iaculis. Suspendisse ornare, dolor ac ultrices pretium, arcu sapien pharetra velit, at laoreet ipsum odio a lacus. Curabitur id
-                </p>
+				</p>
+				
             </div>
         </div>
         <div id="section3" class="sections">
             <div class="content">
-                <h2>Statistics</h2>
+                <h2 id="titles">Statistics</h2>
 
 		<?php
 			
@@ -179,12 +168,10 @@
 			}
 
 			?>
-		
- 		
 
 		<form action="index.php" method="POST">
 		<label>Graph me this: </label>
-        <select id="graph-me-this" name = "graph-me-this" >
+        <select name = "graph-me-this" >
             <option value = "weaptype1_txt" >Number of weapons by category</option>
             <option value = "country_txt" > Number of events by country </option>
             <option value = "iyear"> Number of events by year </option>
@@ -192,25 +179,25 @@
 		
 			<input type="hidden" name="actiune" value="changeChart">
 			Years between: 
-			<input id="year_l" type="text" name="year_l">
+			<input type="text" name="year_l">
 			and 
-			<input id="year_h" type="text" name="year_h">
+			<input type="text" name="year_h">
 			Month:
-			<input  id="month" type="text" name="month">
+			<input type="text" name="month">
 			Day:
-			<input id="day" type="text" name="day">
+			<input type="text" name="day">
 			Country:
-			<input id="country" type="text" name="country">
+			<input type="text" name="country">
 			City:
-			<input id="city" type="text" name="city">
+			<input type="text" name="city">
 			Region code:
-			<input id="regionCode" type="text" name="regionCode">
+			<input type="text" name="regionCode">
 			Country code:
-			<input  id="countryCode" type="text" name="countryCode">
+			<input type="text" name="countryCode">
 			
 
 			
-			<button id="fetchBtn" type="button">SET</button>
+			<button type="submit">SET</button>
 		</form>
 		<label id="chart-type-label">Chart type</label>
                    	<select id = "chartType" name="chartType">
@@ -231,9 +218,8 @@
 
 	<div id="section5" class="sections">
             <div class="content">
-                <h2>Maps</h2>
+                <h2 id="titles">Maps</h2>
                 
-
 		<form action="index.php" method="GET">
 			<input type="hidden" name="actiune" value="changeMap">
 			Years between: 
@@ -253,14 +239,8 @@
 			Country code:
 			<input type="text" name="countryCode">
 			
-			<button type="submit">SET</button>
+			<button id="fetchBtn" type="button">SET</button>
 		</form>
-
-
-
-
-
-
 
 		<div id="map">
 	  <div class="img-container">
@@ -277,58 +257,68 @@
 	</div>
 
             </div>
-        </div>
+        
 
 
         <div id="section4" class="sections">
         <div class="content" id="teamsParent">
-            <h2>Our team</h2>
-
-            <div class="team">
-                <a href="https://www.facebook.com/stef.moisanu">
-                    <div class="box" id="stef">Moisanu Stefan
-                        <p class="email">smoisanu@gmail.com</p>
-                        <p class="instructions">Click for facebook</p>
-                    </div>
-                </a>
-                <a href="https://www.facebook.com/costinaa.ioana">
-                    <div class="box" id="costina">Andrici Costina
-                        <p class="email">costinaa.ioana18@gmail.com</p>
-                        <p class="instructions">Click for facebook</p>
-                    </div>
-                </a>
-                <a href="https://www.facebook.com/ramederc">
-                    <div class="box" id="carol">Rameder Carol
-                        <p class="email">carolrameder@gmail.com</p>
-                        <p class="instructions">Click for facebook</p>
-                    </div>
-                </a>
-            </div>
-
+            <h2 id="titles">Our team</h2>
+			<div class="row">
+				<div class="column">
+				  <div class="card">
+					<img src="images/caarol.jpg" alt="Carol"  id="profileImg">
+					<div class="container">
+					  <h2>Carol Rameder</h2>
+					  <p>Some text that describes me lorem ipsum ipsum lorem.</p>
+					  <a  href="https://www.facebook.com/ramederc">   <img id="socButton" src="images/facebook.png" alt="" /></a>
+					  <a href="mailto:ramederc30@gmail.com">   <img id="socButton" src="images/google-plus.png" alt="" /></a>
+					</div>
+				  </div>
+				</div>
+			  
+				<div class="column">
+				  <div class="card">
+					<img src="images/costina.jpg" alt="Costina"  id="profileImg">
+					<div class="container">
+					  <h2>Andrici Costina</h2>
+					  <p>Some text that describes me lorem ipsum ipsum lorem.</p>
+					  <a  href="https://www.facebook.com/costinaa.ioana">   <img id="socButton" src="images/facebook.png" alt="" /></a>
+					  <a href="mailto:Costinaa.ioana18@gmail.com">   <img id="socButton"  src="images/google-plus.png" alt="" /></a>
+					</div>
+				  </div>
+				</div>
+			  
+				<div class="column">
+				  <div class="card">
+					<img src="images/stefan.jpg" alt="John" id="profileImg">
+					<div class="container">
+					  <h2>Moisanu Stefan</h2>
+					  <p>Some text that describes me lorem ipsum ipsum lorem.</p>
+					  <a  href="https://www.facebook.com/stef.moisanu">   <img id="socButton" src="images/facebook.png" alt="" /></a>
+					  <a href="mailto:smoisanu@gmail.com">   <img id="socButton"  src="images/google-plus.png" alt="" /></a>
+					</div>
+				  </div>
+				</div>
+			  </div>
+			
+			</div> 
         </div>
         </div>
 
-	
-
-
-    </div>
-
+	</div>
+</div>
+	<footer class="footer">
+		<a  href="https://www.kaggle.com/START-UMD/gtd">   <img  class="mylogo" src="images/kaggle-logo.png" alt="" /></a>
+		<a  href="https://www.info.uaic.ro/">   <img  class="mylogo" src="images/logo-fii.png" alt="" /></a>
+		<p id="copyr" >2020 TeVi . Realizat de Rameder Carol, Moisanu Stefan & Andrici Costina . 	</p>
+	</footer >
     <!-- Resources -->
     <script src="https://www.amcharts.com/lib/4/core.js"></script>
     <script src="https://www.amcharts.com/lib/4/charts.js"></script>
     <script src="https://www.amcharts.com/lib/4/themes/dataviz.js"></script>
     <script src="https://www.amcharts.com/lib/4/themes/animated.js"></script>
-  	<script src="util/js/form-ajax.js"></script>
-	
+	<script src="util/js/form-ajax.js"></script>
 
 </body>
-
-
-
-
-
-
-
-
 
 </html>

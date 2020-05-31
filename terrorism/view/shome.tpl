@@ -28,7 +28,7 @@
         </div>
         <div id="section1" class="sections">
             <div class="content">
-                <h2 id="titles">Register</h2>
+                <h2 class="titles" id="nav1">Register</h2>
 			<div class="flexbox">
 			<?php
 
@@ -103,7 +103,7 @@
         </div>
         <div id="section2" class="sections">
             <div class="content">
-                <h2 id="titles">Portfolio</h2>
+                <h2 class="titles">Portfolio</h2>
                 <p> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi eu pulvinar arcu. Morbi
                     bibendum urna vitae ultrices lobortis. Vivamus condimentum ultrices leo, eget luctus ante sagittis et. Maecenas
                     posuere placerat vestibulum. Phasellus interdum fermentum tellus vitae iaculis. Suspendisse ornare, dolor ac ultrices pretium, arcu sapien pharetra velit, at laoreet ipsum odio a lacus. Curabitur id
@@ -113,7 +113,7 @@
         </div>
         <div id="section3" class="sections">
             <div class="content">
-                <h2 id="titles">Statistics</h2>
+                <h2 class="titles">Statistics</h2>
 
 		<?php
 			
@@ -179,21 +179,21 @@
 		
 			<input type="hidden" name="actiune" value="changeChart">
 			Years between: 
-			<input type="text" name="year_l">
+			<input type="text" name="year_l" autocomplete="off">
 			and 
-			<input type="text" name="year_h">
+			<input type="text" name="year_h" autocomplete="off">
 			Month:
-			<input type="text" name="month">
+			<input type="text" name="month" autocomplete="off">
 			Day:
-			<input type="text" name="day">
+			<input type="text" name="day" autocomplete="off">
 			Country:
-			<input type="text" name="country">
+			<input type="text" name="country" autocomplete="off">
 			City:
-			<input type="text" name="city">
+			<input type="text" name="city" autocomplete="off">
 			Region code:
-			<input type="text" name="regionCode">
+			<input type="text" name="regionCode" autocomplete="off">
 			Country code:
-			<input type="text" name="countryCode">
+			<input type="text" name="countryCode" autocomplete="off">
 			
 
 			
@@ -218,7 +218,7 @@
 
 	<div id="section5" class="sections">
             <div class="content">
-                <h2 id="titles">Maps</h2>
+                <h2 class="titles">Maps</h2>
                 
 		<form action="index.php" method="GET">
 			<input type="hidden" name="actiune" value="changeMap">
@@ -262,7 +262,7 @@
 
         <div id="section4" class="sections">
         <div class="content" id="teamsParent">
-            <h2 id="titles">Our team</h2>
+            <h2 class="titles" id="nav1">Our team</h2>
 			<div class="row">
 				<div class="column">
 				  <div class="card">

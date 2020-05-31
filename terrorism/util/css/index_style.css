@@ -3,6 +3,7 @@ html{
 }
 body{
     margin: 0;
+    padding: 0;
 }
 @font-face {
     font-family: 'Coldiac';
@@ -93,6 +94,7 @@ li a:hover{
 #section4{
     background:  #4d4d4d;
     z-index: 6;
+    margin-bottom: 250px;
 }
 
 #section5{
@@ -150,7 +152,7 @@ li a:hover{
 .logIn{
     background-color: #d9d9d9;
     color:black;
-    width:450px;
+    width:28%;
     height:400px;
     float:left;
     text-transform: uppercase;
@@ -165,7 +167,7 @@ li a:hover{
 .signIn{
 	
     background: #d9d9d9;
-    width:450px;
+    width:28%;
     height:400px;
     float:left;
     margin-left: 50px;
@@ -292,9 +294,15 @@ img {
 }
 
 .footer{
-        width: 100%;
     background-color: #a6a6a6;
     text-align: center;
+    position: fixed;
+    z-index: 1;
+    bottom: 0px;
+    width: 100%;
+    height:250px;
+    justify-content: center;
+    align-items: center;
 }
 
 
@@ -309,15 +317,25 @@ img {
     margin-bottom: 16px;
     padding: 0 8px;
     margin-left: 30px;
-    
   }
   
+  /*nu merge pt sign in*/
   /* Display the columns below each other instead of side by side on small screens */
   @media screen and (max-width: 650px) {
     .column {
       width: 100%;
       display: block;
     }
+    .signIn {
+        float: none;
+        width: 100%;
+        display: block;
+      }
+      .logIn{
+          float: none;
+        width: 100%;
+        display: block;
+      }
   }
   
   /* Add some shadows to create a card effect */
@@ -356,7 +374,7 @@ img {
  #socButton:hover{
     transform: scale(1.3);
  }
- #titles{
+ .titles{
     text-decoration: wavy;
     text-shadow: 2px 2px 3px black;
     font-family: 'Coldiac';
@@ -367,24 +385,38 @@ img {
  }
 
  .mylogo{
+    margin: auto;
     margin-top: 50px;
-    margin-left: 20px;
-    margin-right: 20px;
-    margin-bottom:40 px;
+    margin-bottom:20px;
     width: 100px;
     height: 80px;
     border-radius: 50%;
     border:2px solid black ;
+    margin-left: 10px;
+    margin-right: 10px;
  }
 
-#copyr{
-    width:100%;
-    font-size:20px;
-    background-color: #a6a6a6;
-    margin-bottom: -20px;
-    margin-top:30px;
-}
 
 .mylogo:hover{
     opacity: 0.5;
+}
+
+#copyr{
+    font-size:20px;
+    background-color: #a6a6a6;
+    margin-top:40px;
+    text-align: center;
+}
+
+#nav1{
+    color: #d9d9d9; ;
+}
+
+/*nu merge corect*/
+@media only screen and (max-width: 600px) {
+    #copyr{
+        font-size: 17px;
+        width: 70%;
+        text-align: center;
+    }
 }

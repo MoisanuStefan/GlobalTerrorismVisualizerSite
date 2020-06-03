@@ -1,0 +1,2 @@
+RewriteEngine On
+RewriteRule ^api/.+$    api/rest-service.php    [NC,L]

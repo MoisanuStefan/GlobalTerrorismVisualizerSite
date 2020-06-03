@@ -1,0 +1,146 @@
+swagger: "2.0"
+info:
+  description: "Browse a large database of information regarding terrorist attacks throughout time, including statistics, all in json format."
+  version: "1.0.0"
+  title: "Global Terrorism Visualiser"
+ 
+ 
+host: "localhost"
+basePath: "/terrorism/api"
+tags:
+- name: "statistics"
+  description: "Multiple statistics based on different criteria"
+- name: "attacks"
+  description: "Access to Petstore orders"
+
+ 
+schemes:
+- "http"
+paths:
+  /statistics:
+    post:
+      tags:
+      - "statistics"
+      summary: "Get statistics in format category : count"
+      description: "Given a certain table column and filtering parameters api returns the count of every distinct entry of that field"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - in: "body"
+        name: "body"
+        description: "Parameters needed to compose the query"
+        required: true
+        schema:
+          type: object
+          properties:
+            column:
+              type: string
+            iyear_l:
+              type: integer
+            iyear_h:
+              type: integer
+            imonth:
+              type: string
+            i1day:
+              type: string
+            country_txt:
+              type: string
+            city:
+              type: string
+          example:
+            column : weaptype1_txt,
+            iyear_l : 1970,
+            iyear_h : 1983,
+            imonth : 3,
+            i1day : 27,
+            country_txt : France
+            city : Paris
+      responses:
+        "204":
+          description: "No content"
+        "200":
+          description: "Ok"
+      
+  /attacks/{country}:
+    get:
+      tags:
+      - "attacks"
+      summary: "All entries in the database relatad to given country"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "country"
+        in: "path"
+        description: "Name of the country you are interested in"
+        required: true
+        type: "string"
+      
+      responses:
+        "200":
+          description: "successful operation"
+          schema:
+            type: object
+            properties:
+              iyear:
+                type: integer
+              imonth:
+                type: integer
+              i1day:
+                type: integer
+              country_txt:
+                type: string
+            example:
+              iyear: 1970
+              imonth: 5
+              i1day: 27
+              country_txt: France
+
+        "204":
+          description: "No content"
+          
+  /attacks/{country}/{count}:
+    get:
+      tags:
+      - "attacks"
+      summary: "Firts {count} entries in the database relatad to given country"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "country"
+        in: "path"
+        description: "Name of the country you are interested in"
+        required: true
+        type: "string"
+      
+      - name: "count"
+        in: "path"
+        description: "Number of entries you want returned"
+        required: true
+        type: "integer"
+      
+      responses:
+        "200":
+          description: "successful operation"
+          schema:
+            type: object
+            properties:
+              iyear:
+                type: integer
+              imonth:
+                type: integer
+              i1day:
+                type: integer
+              country_txt:
+                type: string
+            example:
+              iyear: 1970
+              imonth: 5
+              i1day: 27
+              country_txt: France
+
+        "204":
+          description: "No content"
+    
+  

@@ -7,10 +7,10 @@
 		public function searchUser($user, $password)
 		{
 		 echo "searching for $user and $password";
-		 $sql='SELECT id FROM tusers where user like \''.$user.'\' and password like \''.$password.'\'';
+		 $sql='SELECT id FROM tusers where user like :user AND password like :password ';
 		echo $sql;
 			$cerere=BD::obtine_conexiune()->prepare($sql);
-			$cerere->execute();
+			$cerere->execute(["user"=> $user, "password"=> $password ]);
 			//echo $cerere->fetchAll();
 			$msg= $cerere->fetchAll();
 			if($msg==NULL)

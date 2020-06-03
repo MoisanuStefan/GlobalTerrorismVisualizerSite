@@ -92,7 +92,7 @@
 			echo '<input class="logInput" id="topfield" type="text" name="name" placeholder="Name" autocomplete="off">';
 			echo '<input class="logInput" type="text" name="user" placeholder="Username" autocomplete="off">';
 			echo '<input class="logInput" type="text" name="password" placeholder="Password" autocomplete="off">';
-			echo '<button class="logButton" type="submit">Sign in</button>';
+			echo '<button class="logButton" type="submit">Sign up</button>';
 			echo '</form>';
 			}
 			?>
@@ -241,22 +241,10 @@
 			
 			<button id="fetchBtn" type="button">SET</button>
 		</form>
+			<p>mapa</p>
+			<div id="mapdiv"></div>
 
-		<div id="map">
-	  <div class="img-container">
-		  <img src="http://res.cloudinary.com/reddelicious/image/upload/v1496891721/map_no-dots_mptb8a.png" alt="Map">
-	  </div>
-	  <div id="dots">
-
-		<?php
-		  $map=new MMap();
-	          $map->get();
-		  
-		?>
-	  </div>
-	</div>
-
-            </div>
+        </div>
         
 
 
@@ -318,6 +306,11 @@
     <script src="https://www.amcharts.com/lib/4/themes/dataviz.js"></script>
     <script src="https://www.amcharts.com/lib/4/themes/animated.js"></script>
 	<script src="util/js/form-ajax.js"></script>
+	<script src="https://www.amcharts.com/lib/4/core.js"></script>
+	<script src="https://www.amcharts.com/lib/4/maps.js"></script>
+	<script src="https://www.amcharts.com/lib/4/geodata/worldLow.js"></script>
+	<script src="https://www.amcharts.com/lib/4/themes/animated.js"></script>
+	<script src="util/js/mapScript.js"></script>
 
 </body>
 

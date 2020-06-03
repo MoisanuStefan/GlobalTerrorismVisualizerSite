@@ -4,15 +4,21 @@
 <?php
 
 require_once "./chart-route.php";
+require_once "./login-route.php";
 
 header("Access-Control-Allow-Origin: *");
 header("Access-Control-Allow-Headers: *");
 
 $allHeaders = getallheaders();
 
+//foreach ($loginRoutes as $i => $value) {
+//    $allRoutes[$i]=$value;
+//}
+
+
 $allRoutes = [
-    ...$chartRoutes,
-    // ...$userRoutes
+   ...$chartRoutes,
+  ...$loginRoutes
 ];
 
 foreach ($allRoutes as $routeConfig) {

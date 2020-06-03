@@ -103,3 +103,4 @@ function getChartDataByCountry($req){
     Response::json($data);
    
 }
+

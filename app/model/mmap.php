@@ -15,7 +15,7 @@ class MMap{
 				echo "$lg $lt";
    				echo '<div class="dot dot-'.$i.'" style="top: '.$i.'%; left: '.$i.'%;"></div>'; 
 			}
-		echo '<div class="dot dot-'.$i.'" style="top: 65%; left: 47%;"></div>'; 
+		echo '<div class="dot dot-'.$i.'" style="top: 0px; left: 1250px;"></div>'; 
 		echo '<div class="dot dot-'.$i.'" style="top: 45.9%; left: 24.9%;"></div>'; 
 		echo '<div class="dot dot-'.$i.'" style="top: 35.9%; left: 53.9%;"></div>';
 		echo '<div class="dot dot-'.$i.'" style="top: 32%; left: 41.5%;"></div>';

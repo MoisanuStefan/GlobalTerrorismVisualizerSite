@@ -18,7 +18,7 @@ $allHeaders = getallheaders();
 
 $allRoutes = [
    ...$chartRoutes,
-  ...$loginRoutes
+    //...$loginRoutes
 ];
 
 foreach ($allRoutes as $routeConfig) {

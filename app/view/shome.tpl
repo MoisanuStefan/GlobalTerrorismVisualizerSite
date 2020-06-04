@@ -306,11 +306,7 @@
     <script src="https://www.amcharts.com/lib/4/themes/dataviz.js"></script>
     <script src="https://www.amcharts.com/lib/4/themes/animated.js"></script>
 	<script src="util/js/form-ajax.js"></script>
-	<script src="https://www.amcharts.com/lib/4/core.js"></script>
-	<script src="https://www.amcharts.com/lib/4/maps.js"></script>
-	<script src="https://www.amcharts.com/lib/4/geodata/worldLow.js"></script>
-	<script src="https://www.amcharts.com/lib/4/themes/animated.js"></script>
-	<script src="util/js/mapScript.js"></script>
+	
 
 </body>
 

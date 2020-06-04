@@ -10,8 +10,8 @@ $connection->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 try{
     if (($file = fopen("data.csv", "r")) !== FALSE) {
         echo "File opened.\n Inserting lines...\n";
-        $line = 1;
-        while (($csv = fgetcsv($file, 5000, ",")) !== FALSE) { // for each row or the file
+        $line = 0;
+        while (($csv = fgetcsv($file, 5000, ",")) !== FALSE) { // for each row of the file
            
 
             // skip first line that contains column names
@@ -30,18 +30,19 @@ try{
                     $csv[$count] = str_replace("\"", '', $csv[$count]);
                 }
             }
-
-            
-            $sql = "insert into attacks values(" . $csv[0] . "," . $csv[1] . ","  . $csv[2] . "," . $csv[3] . ",\""  . $csv[8] . "\",\"" . $csv[10] . "\",\""  . $csv[11] . "\",\"" . $csv[12] . "\",\"" . $csv[17] . "\",\"" . $csv[26] . "\",\"" . $csv[27] . "\",\"" . $csv[29] . "\",\"" . $csv[35] . "\",\"". $csv[37] . "\",\"". $csv[38] . "\",\"". $csv[39] . "\",\"". $csv[41] . "\",\"". $csv[58] . "\",\"". $csv[64] . "\",\"". $csv[73] . "\",\"" . $csv[82] . "\",\"". $csv[84] . "\",\"". $csv[97] . "\",\"". $csv[106] . "\",\"". $csv[129] . "\"" . ")";
-            $request = $connection->prepare($sql);
-            $request->execute();
+            // keep only first 12 columns
+            $csv = array_slice($csv, 0, 12);
+            $sql = 'INSERT INTO attacks VALUES(? , ? , ? , ? , ? , ? , ? , ? , ? , ? , ? , ?)';
+            $stmt = $connection->prepare($sql);
+            $stmt->execute($csv);
             $line++;
-            
+           
+            }
         }
         echo "Successfully inserted $line lines.";
-        fclose($handle);
+        fclose($file);
    
-}
+
 }catch( PDOException $e ) {
    echo $e->getMessage();
 }

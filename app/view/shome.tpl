@@ -175,6 +175,10 @@
             <option value = "weaptype1_txt" >Number of weapons by category</option>
             <option value = "country_txt" > Number of events by country </option>
             <option value = "iyear"> Number of events by year </option>
+			<option value = "targtype1_txt"> Number of events by target type </option>
+			<option value = "attacktype1_txt"> Number of events by attack type </option>
+
+
         </select>
 		
 			<input type="hidden" name="actiune" value="changeChart">
@@ -190,10 +194,69 @@
 			<input id="country" type="text" name="country">
 			City:
 			<input id="city" type="text" name="city">
-			Region code:
-			<input id="regionCode" type="text" name="regionCode">
-			Country code:
-			<input  id="countryCode" type="text" name="countryCode">
+
+			<label for="attacktype1_txt">Attack type</label><br>
+			<select id="attacktype1_txt" name = "attacktype1_txt" >
+			<option value = "No value" selected="selected">No Value</option>
+            <option value = "Bombing/Explosion" >Bombing/Explosion</option>
+            <option value = "Armed Assault" >Armed Assault</option>
+            <option value = "Assassination">Assassination</option>
+			<option value = "Facility/Infrastructure Attack">Facility/Infrastructure Attack</option>
+			<option value = "Hostage Taking (Kidnapping)">Hostage Taking (Kidnapping)</option>
+			<option value = "Insurgency/Guerilla Action">Insurgency/Guerilla Action</option>
+			<option value = "Hostage Taking (Barricade Incident)">Hostage Taking (Barricade Incident)</option>
+       		<option value = "Unarmed Assault">Unarmed Assault</option>
+			<option value = "Hijacking">Hijacking</option>
+			</select>
+			
+
+			<label for="targtype1_txt">Target type</label><br>
+			<select id="targtype1_txt" name = "targtype1_txt" >
+            <option value = "No value" selected="selected">No Value</option>
+			<option value = "Private Citizens & Property" >Private Citizens & Property</option>
+            <option value = "Business" >Business</option>
+            <option value = "Military">Military</option>
+			<option value = "Government (General)">Government (General)</option>
+			<option value = "Police">Police</option>
+			<option value = "Utilities">Utilities</option>
+			<option value = "Transportation">Transportation</option>
+			<option value = "Government (Diplomatic)">Government (Diplomatic)</option>
+			<option value = "Journalists & Media">Journalists & Media</option>
+			<option value = "Educational Institution">Educational Institution</option>
+			<option value = "Religious Figures/Institutions">Religious Figures/Institutions</option>
+			<option value = "Airports & Aircraft">Airports & Aircraft</option>
+			<option value = "Telecommunication">Telecommunication</option>
+			<option value = "NGO">NGO</option>
+			<option value = "Tourists">Tourists</option>
+			<option value = "Maritime">Maritime</option>
+
+
+       		</select>
+			
+			<label for="weaptype1_txt">Weapon</label><br>
+			<select id="weaptype1_txt" name = "weaptype1_txt" >
+			<option value = "No value" selected="selected">No Value</option>
+            <option value = "Explosives" >Explosives</option>
+            <option value = "Firearms" >Firearms</option>
+            <option value = "Incendiary">Incendiary</option>
+			<option value = "Melee">Melee</option>
+			<option value = "Unknown">Unknown</option>
+       		</select>
+			
+			<label for="success">Success</label><br>
+			<select id="success" name = "success" >
+			<option value = "No value" selected="selected">No Value</option>
+            <option value = "1" >True</option>
+            <option value = "0" >False</option>
+       		</select>
+
+			<label for="suicide">Suicide</label><br>
+			<select id="suicide" name = "suicide" >
+			<option value = "No value" selected="selected">No Value</option>
+            <option value = "1" >True</option>
+            <option value = "0" >False</option>
+       		</select>
+			
 			
 
 			

@@ -30,14 +30,15 @@ function onClick(){
         iyear_l : year_l.value,
         iyear_h : year_h.value,
         imonth : month.value,
-        i1day : day.value,
+        iday : day.value,
         country_txt : country.value,
         city : city.value,
+        success : success.value,
+        suicide : suicide.value,
         attacktype1_txt : attacktype1_txt.value,
         targtype1_txt : targtype1_txt.value,
-        weaptype1_txt : weaptype1_txt.value,
-        success : success.value,
-        suicide : suicide.value
+        weaptype1_txt : weaptype1_txt.value
+        
     
     };
     

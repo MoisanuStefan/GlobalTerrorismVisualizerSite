@@ -36,7 +36,7 @@ class MChart{
 		$conditions="";
 		$firstCondition=1;
 		foreach ($array as $i => $value) {
-			if ($i != 'column' && $value != '' && $value != 'No value'){
+			if ($i != 'column' && $value != ''){
 				
 				if($i == 'iyear_l'){
 					$conditions=$conditions." and iyear between '$value' ";

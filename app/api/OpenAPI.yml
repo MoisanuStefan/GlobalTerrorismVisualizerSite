@@ -6,7 +6,7 @@ info:
  
  
 host: "localhost"
-basePath: "/terrorism/api"
+basePath: "/Tevi/app/api"
 tags:
 - name: "statistics"
   description: "Multiple statistics based on different criteria"
@@ -21,7 +21,7 @@ paths:
     post:
       tags:
       - "statistics"
-      summary: "Get statistics in format category : count"
+      summary: "Statistics in format category : count"
       description: "Given a certain table column and filtering parameters api returns the count of every distinct entry of that field"
       consumes:
       - "application/json"
@@ -43,20 +43,31 @@ paths:
               type: integer
             imonth:
               type: string
-            i1day:
+            iday:
               type: string
             country_txt:
               type: string
             city:
               type: string
+            success:
+              type: string
+            suicide:
+              type: string
+            attackType1_txt:
+              type: string
+            targtype1_txt:
+              type: string
+            weaptype1_txt:
+              type: string
           example:
-            column : weaptype1_txt,
-            iyear_l : 1970,
-            iyear_h : 1983,
-            imonth : 3,
-            i1day : 27,
+            column : weaptype1_txt
+            iyear_l : 1970
+            iyear_h : 2012
             country_txt : France
-            city : Paris
+            success: 1
+            attackType1_txt: Bombing/Explosion 
+            
+
       responses:
         "204":
           description: "No content"
@@ -84,18 +95,42 @@ paths:
             type: object
             properties:
               iyear:
-                type: integer
+                type: string
               imonth:
-                type: integer
+                type: string
               i1day:
-                type: integer
+                type: string
               country_txt:
+                type: string
+              city:
+                type: string
+              latitude:
+                type: number
+              longitude:
+                type: number
+              success:
+                type: string
+              suicide:
+                type: string
+              attackType1_txt:
+                type: string
+              targtype1_txt:
+                type: string
+              weaptype1_txt:
                 type: string
             example:
               iyear: 1970
               imonth: 5
               i1day: 27
               country_txt: France
+              city: Paris,
+              latitude: 48.856644,
+              longitude: 2.34233,
+              success: 0,
+              suicide: 0,
+              attacktype1_txt: Bombing/Explosion
+              targtype1_txt: Airports & Aircraft,
+              weaptype1_txt: Explosives
 
         "204":
           description: "No content"
@@ -104,7 +139,7 @@ paths:
     get:
       tags:
       - "attacks"
-      summary: "Firts {count} entries in the database relatad to given country"
+      summary: "First {count} entries in the database relatad to given country"
       produces:
       - "application/json"
       parameters:
@@ -127,18 +162,42 @@ paths:
             type: object
             properties:
               iyear:
-                type: integer
+                type: string
               imonth:
-                type: integer
+                type: string
               i1day:
-                type: integer
+                type: string
               country_txt:
+                type: string
+              city:
+                type: string
+              latitude:
+                type: number
+              longitude:
+                type: number
+              success:
+                type: string
+              suicide:
+                type: string
+              attackType1_txt:
+                type: string
+              targtype1_txt:
+                type: string
+              weaptype1_txt:
                 type: string
             example:
               iyear: 1970
               imonth: 5
               i1day: 27
               country_txt: France
+              city: Paris,
+              latitude: 48.856644
+              longitude: 2.34233
+              success: 0
+              suicide: 0
+              attacktype1_txt: Bombing/Explosion
+              targtype1_txt: Airports & Aircraft
+              weaptype1_txt: Explosives
 
         "204":
           description: "No content"

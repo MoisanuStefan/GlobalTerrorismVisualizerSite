@@ -197,7 +197,7 @@
 
 			<label for="attacktype1_txt">Attack type</label><br>
 			<select id="attacktype1_txt" name = "attacktype1_txt" >
-			<option value = "No value" selected="selected">No Value</option>
+			<option value = "" selected="selected">No Value</option>
             <option value = "Bombing/Explosion" >Bombing/Explosion</option>
             <option value = "Armed Assault" >Armed Assault</option>
             <option value = "Assassination">Assassination</option>
@@ -212,7 +212,7 @@
 
 			<label for="targtype1_txt">Target type</label><br>
 			<select id="targtype1_txt" name = "targtype1_txt" >
-            <option value = "No value" selected="selected">No Value</option>
+            <option value = "" selected="selected">No Value</option>
 			<option value = "Private Citizens & Property" >Private Citizens & Property</option>
             <option value = "Business" >Business</option>
             <option value = "Military">Military</option>
@@ -235,7 +235,7 @@
 			
 			<label for="weaptype1_txt">Weapon</label><br>
 			<select id="weaptype1_txt" name = "weaptype1_txt" >
-			<option value = "No value" selected="selected">No Value</option>
+			<option value = "" selected="selected">No Value</option>
             <option value = "Explosives" >Explosives</option>
             <option value = "Firearms" >Firearms</option>
             <option value = "Incendiary">Incendiary</option>
@@ -245,14 +245,14 @@
 			
 			<label for="success">Success</label><br>
 			<select id="success" name = "success" >
-			<option value = "No value" selected="selected">No Value</option>
+			<option value = "" selected="selected">No Value</option>
             <option value = "1" >True</option>
             <option value = "0" >False</option>
        		</select>
 
 			<label for="suicide">Suicide</label><br>
 			<select id="suicide" name = "suicide" >
-			<option value = "No value" selected="selected">No Value</option>
+			<option value = "" selected="selected">No Value</option>
             <option value = "1" >True</option>
             <option value = "0" >False</option>
        		</select>

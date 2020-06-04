@@ -16,6 +16,8 @@
 	include "view/vhome.php";
 	include "model/mchart.php";
 
+/* comenturi */
+ 
 	if(isset($_POST["actiune"])){
 		 $actiune=$_POST["actiune"];
 		 unset($_POST['actiune']);

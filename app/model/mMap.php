@@ -15,10 +15,10 @@ class MMap{
     public function searchData($array){
 		 $sql='SELECT DISTINCT country_txt, latitude, longitude FROM attacks';
         //echo $sql;
-        
+        //echo "BAAA";
         $sqll= $this->createQuery($array);
-       // echo "<br>MY QUERY IS: ".$sql;
-			$cerere=BD::obtine_conexiune()->prepare($sql);
+        //echo "<br>MY QUERY IS: ".$sqll;
+			$cerere=BD::obtine_conexiune()->prepare($sqll);
 			$cerere->execute();
 			
 			$msg= $cerere->fetchAll();
@@ -39,7 +39,7 @@ class MMap{
 
     public function createQuery($array){
 		
-		$sqll='SELECT country_txt, latitude, longitude  FROM mapp '; 
+		$sqll='SELECT country_txt, latitude, longitude  FROM attacks '; 
 		$conditions="";
 		$firstCondition=1;
 		foreach ($array as $i => $value) {

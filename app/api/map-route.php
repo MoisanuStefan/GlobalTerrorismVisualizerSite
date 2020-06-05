@@ -26,7 +26,6 @@ function getMapData($req) {
                 $data[$index]['latitude'] = floatval($line['latitude']);
                 $data[$index]['longitude'] = floatval($line['longitude']);
                 $index++;
-                if($index==50) break;
             }
     Response::status(200);
     Response::json($data);

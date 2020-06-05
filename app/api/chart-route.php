@@ -52,7 +52,7 @@ function IsLoggedIn()
 }
  
 function getChartData($req) {
-    $modifiedPayload = $req['payload']; 
+    $modifiedPayload = $req['payload'];
     $model = new MChart();
     $raw_data = $model->getDistinctAndCount($modifiedPayload);
 

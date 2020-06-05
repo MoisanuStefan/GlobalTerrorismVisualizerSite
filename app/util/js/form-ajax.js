@@ -1,4 +1,3 @@
-
 let submitBtn = document.getElementById("fetchBtn");
 let graphMeThis = document.getElementById("graph-me-this");
 let year_l = document.getElementById("year_l");
@@ -7,6 +6,11 @@ let month = document.getElementById("month");
 let day = document.getElementById("day");
 let country = document.getElementById("country");
 let city = document.getElementById("city");
+let success = document.getElementById("success");
+let suicide = document.getElementById("suicide");
+let attacktype1_txt = document.getElementById("attacktype1_txt");
+let targtype1_txt = document.getElementById("targtype1_txt"); 
+let weaptype1_txt = document.getElementById("weaptype1_txt");
 let chartdata;
 let fetched=false;
 let chartType = document.getElementById("chartType");
@@ -20,15 +24,21 @@ function onClick(){
     submitBtn.textContent = "...";
     // CALL
 
-
+   
     var payload = {
         column : graphMeThis.value,
         iyear_l : year_l.value,
         iyear_h : year_h.value,
         imonth : month.value,
-        i1day : day.value,
+        iday : day.value,
         country_txt : country.value,
-        city : city.value
+        city : city.value,
+        success : success.value,
+        suicide : suicide.value,
+        attacktype1_txt : attacktype1_txt.value,
+        targtype1_txt : targtype1_txt.value,
+        weaptype1_txt : weaptype1_txt.value
+        
     
     };
     

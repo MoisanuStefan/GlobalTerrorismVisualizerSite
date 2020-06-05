@@ -5,6 +5,7 @@
 
 require_once "./chart-route.php";
 require_once "./login-route.php";
+require_once "./map-route.php";
 
 header("Access-Control-Allow-Origin: *");
 header("Access-Control-Allow-Headers: *");
@@ -17,8 +18,28 @@ $allHeaders = getallheaders();
 
 
 $allRoutes = [
-   ...$chartRoutes,
-    //...$loginRoutes
+    [
+        "method" => "POST",
+        "route" => "statistics",
+        "handler" => "getChartData"
+    ],
+
+    [
+        "method" => "GET",
+        "route" => "attacks/:country",
+        "handler" => "getChartDataByCountry"
+    ],
+
+    [
+        "method" => "GET",
+        "route" => "attacks/:country/:count",
+        "handler" => "getChartDataByCountry"
+    ],
+    [
+        "method" => "POST",
+        "route" => "map",
+        "handler" => "getMapData"
+    ]
 ];
 
 foreach ($allRoutes as $routeConfig) {

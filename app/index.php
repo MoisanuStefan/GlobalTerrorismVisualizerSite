@@ -8,13 +8,12 @@
 	$parametri= "";
 	
 	include "controller/chome.php";
-	include "controller/cmap.php";
 	include "model/mhome.php";
 	include "model/mlogin.php";
 	include "model/mBD.php";
-	include "model/mmap.php";
 	include "view/vhome.php";
 	include "model/mchart.php";
+	include_once "model/mMap.php";
 
 /* comenturi */
  

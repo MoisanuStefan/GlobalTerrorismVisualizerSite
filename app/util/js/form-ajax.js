@@ -120,7 +120,9 @@ function loadPieChart(chartData){
         chart.exporting.formatOptions.getKey("html").disabled = true;
         chart.exporting.formatOptions.getKey("xlsx").disabled = true;
         chart.exporting.formatOptions.getKey("print").disabled = true;
-        am4core.color("#f00", 0)
+       
+
+        setChartSize(80);
         
         }); // end am4core.ready()
 }
@@ -192,6 +194,7 @@ function loadBarChart(chartData){
                     chart.exporting.formatOptions.getKey("print").disabled = true;
                     am4core.color("#f00", 0)
     
+                    setChartSize(80);
                 }); // end am4core.ready()
 }
 
@@ -236,7 +239,26 @@ function loadLineChart(chartData){
                     var hoverState = bullet.states.create("hover");
                     hoverState.properties.scale = 1.7;
     
-                    
-    
+                    setChartSize(80);
                 }); // end am4core.ready()
+}
+
+function setChartSize(cellSize){
+     // Set cell size in pixels
+     chart.events.on("datavalidated", function(ev) {
+
+         // Get objects of interest
+         var chart = ev.target;
+         var categoryAxis = chart.yAxes.getIndex(0);
+
+         // Calculate how we need to adjust chart height
+         var adjustHeight = chart.data.length * cellSize - categoryAxis.pixelHeight;
+
+         // get current chart height
+         var targetHeight = chart.pixelHeight + adjustHeight;
+
+         // Set it on chart's container
+         chart.svgContainer.htmlElement.style.height = targetHeight + "px";
+     });
+
 }

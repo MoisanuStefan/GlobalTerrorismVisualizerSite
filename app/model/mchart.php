@@ -54,7 +54,7 @@ class MChart{
 	}
 
 	private function setFilterArray(){
-		$this->filterArray['country_txt'] = " where country_txt in ('Peru', 'El Salvador', 'Colombia', 'United Kingdom', 'India', 'Turkey', 'Spain', 'Chile', 'Nicaragua', 'South Africa', 'Sri Lanka', 'Philippines', 'France', 'Guatemala', 'Lebanon', 'Italy', 'Israel', 'United States','Algeria', 'France', 'Egypt', 'Lebanon', 'Chile', 'Libya', 'Syria', 'Russia', 'Israel', 'Guatemala') ";
+		$this->filterArray['country_txt'] = " where country_txt in						 ";
 		$this->filterArray['weaptype1_txt'] = " where weaptype1_txt in ('Explosives', 'Firearms', 'Chemical', 'Incendiary', 'Melee', 'Unknown') ";
 		$this->filterArray['iyear'] = " where iyear not in (-1)";
 		$this->filterArray['attacktype1_txt'] = " where attacktype1_txt in ('Bombing/Explosion', 'Armed Assault', 'Assassination', 'Facility/Infrastructure Attack', 'Hostage Taking (Kidnapping)', 'Insurgency/Guerilla Action', 'Hostage Taking (Barricade Incident)', 'Unarmed Assault' , 'Hijacking' )";

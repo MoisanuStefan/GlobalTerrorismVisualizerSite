@@ -2,6 +2,7 @@ html{
     scroll-behavior: smooth;
 }
 body{
+    font-family: Coldiac, serif;
     margin: 0;
     padding: 0;
 }
@@ -88,7 +89,7 @@ li a:hover{
     z-index: 8;
 }
 #section3{
-    background: lightgray;
+    background: #4d4d4d;
     z-index: 7;
 }
 #section4{

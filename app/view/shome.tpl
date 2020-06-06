@@ -10,7 +10,7 @@
       <link rel="stylesheet" type="text/css" href="util/css/login_style.css">
       <link rel="stylesheet" type="text/css" href="util/css/chart_style.css">
       <link rel="stylesheet" type="text/css" href="util/css/footer_style.css">
-
+      <link rel="stylesheet" type="text/css" href="util/css/map_style.css">
 
    </head>
    <body>
@@ -30,7 +30,7 @@
 				<li><a href="#section3">Statistics</a> </li>
 				<li><a href="#section5">Maps</a> </li>
 				<li><a href="#section4">Team</a> </li>
-				<?php if(isset($_POST['user'])) echo '<li><a>   Welcome, '.$_POST['user']. ' </a> </li>'; ?>
+				
 				</ul>
 			</div>
 		</div>
@@ -48,72 +48,30 @@
 			   <span typeof="schema:Register" >
                   <h2 class="titles" id="nav1">Register</h2>
                </span>
-                  <div class="flexbox">
-                     <?php
-                        $text= '';
-                        
-                        if(isset($_POST['user']))
-                        {
-                        	$text=$_POST['user'];
-                        	
-                        }
-                        
-                        if(isset($_POST['password']))
-                        {
-                        	$text=$_POST['password'];
-                        	
-                        }
-                        
-                        if(!isset($_POST['user']))
-                        {echo '<form action="index.php" method="POST" class="logIn">';
-                        echo '<input type="hidden" name="actiune" value="LogIn">';
-                        echo '<input type="hidden" name="loginTried" value="tried">';
-                        echo '<p class="topText">Login to acces our database !</p>';
-                        echo '<input class="logInput" id="topfield" type="text" name="user" placeholder="Username" autocomplete="off">'; 
-                        echo '<input class="logInput" type="text" name="password" placeholder="Password" autocomplete="off">';
-                        echo '<button class="logButton" type="submit">Log in</button>';
-                        	if(!isset($_POST['user'])  && isset($_POST['loginTried']))
-                        {
-                        	echo '<p id="failedLogin"> Wrong username or password!</p>';
-                        	
-                        }
-                        echo '</form>';
-                        }
-                        
-                        $text= '';
-                        if(isset($_POST['name']))
-                        {
-                        	$text=$_POST['name'];
-                        	
-                        }
+                  <div class="flexbox" id="idSign">
+                     
+                       <form action="index.php" method="POST" class="logIn">
+                       <input type="hidden" name="actiune" value="LogIn">
+                       <input type="hidden" name="loginTried" value="tried">
+                        <p class="topText">Login to acces our database !</p>
+                        <input class="logInput" id="topfield"  type="text" name="user" placeholder="Username" autocomplete="off">
+                        <input class="logInput" type="text" id="password1" name="password" placeholder="Password" autocomplete="off">
+                        <button class="logButton" id="fetchBtnLogIn" type="button">Log in</button>
+                        </form>
                         
                         
-                        if(isset($_POST['user']))
-                        {
-                        	$text=$_POST['user'];
-                        	if($text!=NULL)
-                        	echo "WELCOME, $text,";
-                        }
+                        <form action="index.php" method="POST" class=signIn>
+                        <input type="hidden" name="actiune" value="SignIn">
+                        <p class="topText">Create a new account !</p>
+                        <input class="logInput" id="topfield" type="text" name="name" placeholder="Name" autocomplete="off">
+                        <input class="logInput" type="text" id="user" name="user" placeholder="Username" autocomplete="off">
+                        <input class="logInput" type="text" id="password" name="password" placeholder="Password" autocomplete="off">
+			               <button id="fetchBtnLog" class="logButton" type="button">Sing up</button>
+                        </form>
                         
-                        if(isset($_POST['password']))
-                        {
-                        	$text=$_POST['password'];
-                        	
-                        }
+
                         
                         
-                        if(!isset($_POST['user']))
-                        {
-                        echo '<form action="index.php" method="POST" class=signIn>';
-                        echo '<input type="hidden" name="actiune" value="SignIn">';
-                        echo '<p class="topText">Create a new account !</p>';
-                        echo '<input class="logInput" id="topfield" type="text" name="name" placeholder="Name" autocomplete="off">';
-                        echo '<input class="logInput" type="text" name="user" placeholder="Username" autocomplete="off">';
-                        echo '<input class="logInput" type="text" name="password" placeholder="Password" autocomplete="off">';
-                        echo '<button class="logButton" type="submit">Sign up</button>';
-                        echo '</form>';
-                        }
-                        ?>
                   </div>
                </div>
             </div>
@@ -136,58 +94,7 @@ Our Web app gives you the possibility to create and save your own statistics and
                <h2 class="titles" id="nav3">Statistics</h2>
 			   <h3 id="nav3">Generate your own chart! Choose the type of chart and the specific statistic you want to use.<br>
 			    Besides that, you can customize it by inserting different specific data regarding the attacks.  </h3>
-               <?php
-                  $text= '';
-                  if(isset($_POST['year']))
-                  {
-                  	$text=$_POST['year'];
-                  	if($text!=NULL)
-                  	echo "year: $text,";
-                  }
-                  
-                  if(isset($_POST['month']))
-                  {
-                  	$text=$_POST['month'];
-                  	if($text!=NULL)
-                  	echo " month: $text ";
-                  }
-                  
-                  if(isset($_POST['day']))
-                  {
-                  	$text=$_POST['day'];
-                  	if($text!=NULL)
-                  	echo " day: $text ";
-                  }
-                  
-                  if(isset($_POST['country']))
-                  {
-                  	$text=$_POST['country'];
-                  	if($text!=NULL)
-                  	echo " country: $text ";
-                  }
-                  
-                  if(isset($_POST['city']))
-                  {
-                  	$text=$_POST['city'];
-                  	if($text!=NULL)
-                  	echo " city: $text ";
-                  }
-                  
-                  if(isset($_POST['regionCode']))
-                  {
-                  	$text=$_POST['regionCode'];
-                  	if($text!=NULL)
-                  	echo " regionCode: $text ";
-                  }
-                  
-                  if(isset($_POST['countryCode']))
-                  {
-                  	$text=$_POST['countryCode'];
-                  	if($text!=NULL)
-                  	echo " countryCode: $text ";
-                  }
-                  
-                  ?>
+              
                <div id="statistics-form">
                <div id="statisitcs-settings">
 			   		<div class="stt-div">
@@ -282,10 +189,10 @@ Our Web app gives you the possibility to create and save your own statistics and
                      </select>
                   </div>
                </div>
-               <button id="fetchBtn" class="setButton" type="button">SET</button>
+               <button id="fetchBtn" class="setButton" type="button">Chart Me!</button>
             </div>
                <!-- HTML -->
-               <div id="chartdiv"></div>
+               <div id="chartdiv"><h2 id="chart-text">configure chart options and hit chart me! button to load your statistic here</h2></div>
             </div>
          </div>
          <div id="section5" class="sections">
@@ -309,10 +216,13 @@ Our Web app gives you the possibility to create and save your own statistics and
 			<input id="country1" type="text" name="country1">
 			City:
 			<input id="city1" type="text" name="city1">
-			<button id="fetchBtnMap" type="button">SET</button>
+			<button id="fetchBtnMap" type="button">Map Me!</button>
 			</form>
                <p>mapa</p>
-               <div id="mapdiv"></div>
+               <div id="mapdiv"><h2>configure map options and hit map me! button to load your map here.<h2></div>
+
+         
+
             </div>
             <div id="section4" class="sections">
                <div class="content" id="teamsParent">
@@ -389,12 +299,13 @@ Our Web app gives you the possibility to create and save your own statistics and
       <script src="https://www.amcharts.com/lib/4/core.js"></script>
       <script src="https://www.amcharts.com/lib/4/charts.js"></script>
       <script src="https://www.amcharts.com/lib/4/themes/dark.js"></script>
+      <script src="https://www.amcharts.com/lib/4/themes/animated.js"></script>
       <script src="https://www.amcharts.com/lib/4/maps.js"></script>
 	   <script src="https://www.amcharts.com/lib/4/geodata/worldLow.js"></script>
 	   <script src="https://www.amcharts.com/lib/4/themes/frozen.js"></script>
       <script src="util/js/form-ajax.js"></script>
       <script src="util/js/form-ajax-map.js"></script>
-	
-
+	   <script src="util/js/form-ajax-log.js"></script>
+      <script src="util/js/form-ajax-signIn.js"></script>
    </body>
 </html>

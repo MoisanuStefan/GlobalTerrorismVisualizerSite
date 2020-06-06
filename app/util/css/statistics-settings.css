@@ -64,12 +64,10 @@ label {
     border: none;
     border-bottom: 2px solid gray;
     color: black;
-    appearance: none;
     padding: 10px;
     padding-right: 38px;
     -webkit-appearance: none;
     -moz-appearance: none;
-    transition: color 0.3s ease, background-color 0.3s ease, border-bottom-color 0.3s ease;
 }
 
 

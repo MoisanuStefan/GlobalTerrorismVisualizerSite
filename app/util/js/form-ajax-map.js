@@ -1,12 +1,19 @@
 let submitBtn1 = document.getElementById("fetchBtnMap");
+//let graphMeThis = document.getElementById("graph-me-this");
 let year_l1 = document.getElementById("year_l1");
 let year_h1 = document.getElementById("year_h1");
 let month1 = document.getElementById("month1");
 let day1 = document.getElementById("day1");
 let country1 = document.getElementById("country1");
 let city1 = document.getElementById("city1");
+//let success = document.getElementById("success");
+//let suicide = document.getElementById("suicide");
+//let attacktype1_txt = document.getElementById("attacktype1_txt");
+//let targtype1_txt = document.getElementById("targtype1_txt"); 
+//let weaptype1_txt = document.getElementById("weaptype1_txt");
 let mapdata;
 let fetched1=false;
+//let chartType = document.getElementById("chartType");
 let map;
 
 submitBtn1.addEventListener("click", onClick);
@@ -19,12 +26,18 @@ function onClick(){
 
    
     var payload = {
+       // column : graphMeThis.value,
         iyear_l : year_l1.value,
         iyear_h : year_h1.value,
         imonth : month1.value,
         iday : day1.value,
         country_txt : country1.value,
-        city : city1.value
+        city : city1.value,
+        //success : success.value,
+        //suicide : suicide.value,
+        //attacktype1_txt : attacktype1_txt.value,
+        //targtype1_txt : targtype1_txt.value,
+        //weaptype1_txt : weaptype1_txt.value
         
     
     };
@@ -36,7 +49,7 @@ function onClick(){
     fetch("api/map",{ method:"POST", body: JSON.stringify(payload)})
         .then(function (resp) {
             
-            return resp.json();
+            return resp.text();
         })
         .then(function (jsonResp) {
            console.log(jsonResp);

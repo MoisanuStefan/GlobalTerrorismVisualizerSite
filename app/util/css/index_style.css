@@ -12,41 +12,68 @@ body{
     font-style: normal;
 }
 
-.navigation_bar{
+.navbar{
     position: fixed;
-    display: flex; /* for organising direct children */
-    justify-content: right; /* how the browser manages space around flex elements */
-    align-items: center;
-    flex-direction: row;
-    flex-wrap: wrap; /* elements are not forced to be in one line */
     background-color: black;
     width: 100%;
     height: 70px;
     z-index: 11;
+    overflow: hidden; 
+    display: flex;
+    align-items: center; 
 }
 
-li a{
+.containerNav{
+    width: 95%;
+    margin: 0 auto;
+    
+}
+.llogo{
+    color: white;
+    font-size: 20px;
+    font-weight: bold;
+    transform: scale(1.75);
+    width: 60px;
+    float: left;
+}
 
-    margin: 35px;
+.logo_div{
+    margin-left: 80px;
+    line-height: 4em;
+}
+
+.meniu li a{
+
+    margin-left: 35px;
+    margin-right: 35px;
+    margin-top: 25px;
+    margin-bottom: 25px;
     color: white;
     text-decoration: none;
     text-transform: uppercase;
-
-
+    
 }
 
-li a:hover{
+.meniu li a:hover{
     color: #997300;
+    transition: 0.4s;
 }
 
-
-.navigation_ul{
-    display: flex;
-    justify-content: right;
-    align-items: end;
-    list-style: none;
-    margin-right: 2%;
+.meniu{
+    float:right;
+    
 }
+
+.meniu li{
+float: left;
+line-height: 70px;
+text-align: center;
+list-style: none;
+align-items: center;
+margin-left: -10px;
+margin-right: -10px;
+}
+
 
 .sections{
     width: 100%;
@@ -88,7 +115,7 @@ li a:hover{
     z-index: 8;
 }
 #section3{
-    background: lightgray;
+    background: #4d4d4d;
     z-index: 7;
 }
 #section4{
@@ -163,6 +190,7 @@ li a:hover{
 .logIn:hover{
     box-shadow: 0px 2px 20px 5px rgba(0, 0, 0, 0.5);
     transform: scale(1.05);
+    transition: 0.4s;
 }
 .signIn{
 	
@@ -180,6 +208,7 @@ li a:hover{
 .signIn:hover{
     box-shadow: 0px 2px 20px 5px rgba(0, 0, 0, 0.5);
     transform: scale(1.05);
+    transition: 0.4s;
 }
  #failedLogin{
 color: red;
@@ -217,6 +246,7 @@ border-radius: 10px;
 .logButton:hover {
     background:black;
     width:30%;
+    transition: 0.4s;
 }
 .topText{
     color: navy;
@@ -373,6 +403,7 @@ img {
  
  #socButton:hover{
     transform: scale(1.3);
+    transition: 0.4s;
  }
  .titles{
     text-decoration: wavy;
@@ -399,6 +430,7 @@ img {
 
 .mylogo:hover{
     opacity: 0.5;
+    transition: 0.4s;
 }
 
 #copyr{
@@ -412,6 +444,12 @@ img {
     color: #d9d9d9; ;
 }
 
+#nav2{
+    color: #d9d9d9; ;
+}
+#nav3{
+    color: #d9d9d9; ;
+}
 #mapdiv {
     width: 100%;
     height: 100%;
@@ -426,3 +464,4 @@ img {
         text-align: center;
     }
 }
+

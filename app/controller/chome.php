@@ -8,7 +8,7 @@
 			if($actiune=="viewHome")
 					
 				{ $this->model= new MHome();
-				echo "home"; $this->viewHome();}
+				 $this->viewHome();}
 			if($actiune=="changeChart")
 				{
 				echo "practic s a schimat chartul";

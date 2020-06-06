@@ -17,7 +17,7 @@ $allHeaders = getallheaders();
 //}
 
 
-$allRoutes = [
+$allRoutes =  [
     [
         "method" => "POST",
         "route" => "statistics",

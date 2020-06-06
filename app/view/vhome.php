@@ -6,7 +6,7 @@
 
 		public function __construct()
 		{
-			$this->sablon= DIRECTOR_SITE.SLASH.'view'.SLASH.'shome.tpl';
+			$this->sablon= DIRECTOR_SITE.SLASH.'app'.SLASH.'view'.SLASH.'shome.tpl';
 		}
 
 		public function incarcaDatele($msg)

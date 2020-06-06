@@ -49,7 +49,6 @@ function onClick(){
     
     fetch("api/statistics",{ method:"POST", body: JSON.stringify(payload)})
         .then(function (resp) {
-            
             return resp.json();
         })
         .then(function (jsonResp) {

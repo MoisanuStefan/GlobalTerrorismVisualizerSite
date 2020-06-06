@@ -1,2 +1,3 @@
+Options -Indexes
 RewriteEngine On
-RewriteRule ^api/.+$    api/rest-service.php    [NC,L]
+RewriteRule localhost/tevi/api/.+$    api/rest-service.php    [NC,L]

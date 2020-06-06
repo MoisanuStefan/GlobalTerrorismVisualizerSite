@@ -5,12 +5,12 @@
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
       <meta http-equiv="X-UA-Compatible" content="ie=edge">
       <title>Global Terrorism</title>
-      <link rel="stylesheet" type="text/css" href="util/css/index_style.css">
-	   <link rel="stylesheet" type="text/css" href="util/css/statistics-settings.css">
-      <link rel="stylesheet" type="text/css" href="util/css/login_style.css">
-      <link rel="stylesheet" type="text/css" href="util/css/chart_style.css">
-      <link rel="stylesheet" type="text/css" href="util/css/footer_style.css">
-      <link rel="stylesheet" type="text/css" href="util/css/map_style.css">
+      <link rel="stylesheet" type="text/css" href="app/util/css/index_style.css">
+	   <link rel="stylesheet" type="text/css" href="app/util/css/statistics-settings.css">
+      <link rel="stylesheet" type="text/css" href="app/util/css/login_style.css">
+      <link rel="stylesheet" type="text/css" href="app/util/css/chart_style.css">
+      <link rel="stylesheet" type="text/css" href="app/util/css/footer_style.css">
+      <link rel="stylesheet" type="text/css" href="app/util/css/map_style.css">
 
    </head>
    <body>
@@ -230,7 +230,7 @@ Our Web app gives you the possibility to create and save your own statistics and
                   <div class="row">
                      <div class="column">
                         <div class="card">
-                           <img src="util/resources/images/caarol.jpg" alt="Carol"  id="profileImg">
+                           <img src="app/util/resources/images/caarol.jpg" alt="Carol"  id="profileImg">
                            <div class="container">
                               <span typeof="schema:Person" >
                                  <meta property="schema:givenName" content="Carol">
@@ -238,14 +238,14 @@ Our Web app gives you the possibility to create and save your own statistics and
                                  <h2 property="schema:name">Carol Rameder</h2>
                               </span>
                               <p>Some text that describes me lorem ipsum ipsum lorem.</p>
-                              <a  href="https://www.facebook.com/ramederc">   <img id="socButton" src="util/resources/images/facebook.png" alt="" /></a>
-                              <a href="mailto:ramederc30@gmail.com">   <img id="socButton" src="util/resources/images/google-plus.png" alt="" /></a>
+                              <a  href="https://www.facebook.com/ramederc">   <img id="socButton" src="app/util/resources/images/facebook.png" alt="" /></a>
+                              <a href="mailto:ramederc30@gmail.com">   <img id="socButton" src="app/util/resources/images/google-plus.png" alt="" /></a>
                            </div>
                         </div>
                      </div>
                      <div class="column">
                         <div class="card">
-                           <img src="util/resources/images/costina.jpg" alt="Costina"  id="profileImg">
+                           <img src="app/util/resources/images/costina.jpg" alt="Costina"  id="profileImg">
                            <div class="container">
                               <span typeof="schema:Person" >
                                  <meta property="schema:givenName" content="Costina">
@@ -253,14 +253,14 @@ Our Web app gives you the possibility to create and save your own statistics and
                                  <h2 property="schema:name">Costina Andrici</h2>
                               </span>
                               <p>Some text that describes me lorem ipsum ipsum lorem.</p>
-                              <a  href="https://www.facebook.com/costinaa.ioana">   <img id="socButton" src="util/resources/images/facebook.png" alt="" /></a>
-                              <a href="mailto:Costinaa.ioana18@gmail.com">   <img id="socButton"  src="util/resources/images/google-plus.png" alt="" /></a>
+                              <a  href="https://www.facebook.com/costinaa.ioana">   <img id="socButton" src="app/util/resources/images/facebook.png" alt="" /></a>
+                              <a href="mailto:Costinaa.ioana18@gmail.com">   <img id="socButton"  src="app/util/resources/images/google-plus.png" alt="" /></a>
                            </div>
                         </div>
                      </div>
                      <div class="column">
                         <div class="card">
-                           <img src="util/resources/images/stefan.jpg" alt="John" id="profileImg">
+                           <img src="app/util/resources/images/stefan.jpg" alt="John" id="profileImg">
                            <div class="container">
                               <span typeof="schema:Person" >
                                  <meta property="schema:givenName" content="Stefan">
@@ -269,8 +269,8 @@ Our Web app gives you the possibility to create and save your own statistics and
                                  <h2 property="schema:name">Stefan Moisanu</h2>
                               </span>
                               <p>Some text that describes me lorem ipsum ipsum lorem.</p>
-                              <a  href="https://www.facebook.com/stef.moisanu">   <img id="socButton" src="util/resources/images/facebook.png" alt="" /></a>
-                              <a href="mailto:smoisanu@gmail.com">   <img id="socButton"  src="util/resources/images/google-plus.png" alt="" /></a>
+                              <a  href="https://www.facebook.com/stef.moisanu">   <img id="socButton" src="app/util/resources/images/facebook.png" alt="" /></a>
+                              <a href="mailto:smoisanu@gmail.com">   <img id="socButton"  src="app/util/resources/images/google-plus.png" alt="" /></a>
                            </div>
                         </div>
                      </div>
@@ -283,15 +283,15 @@ Our Web app gives you the possibility to create and save your own statistics and
       <footer class="footer">
          <span typeof="schema:WebSite" >
             <meta property="schema:logo" >
-            <a  href="https://www.kaggle.com/START-UMD/gtd">   <img  class="mylogo" src="util/resources/images/kaggle-logo.png" alt="" /></a>
+            <a  href="https://www.kaggle.com/START-UMD/gtd">   <img  class="mylogo" src="app/util/resources/images/kaggle-logo.png" alt="" /></a>
          </span>
          <span typeof="schema:CollegeOrUniversity">
             <meta property="schema:logo" >
-            <a  href="https://www.info.uaic.ro/">   <img  class="mylogo" src="util/resources/images/logo-fii.png" alt="" /></a>
+            <a  href="https://www.info.uaic.ro/">   <img  class="mylogo" src="app/util/resources/images/logo-fii.png" alt="" /></a>
          </span>
          <span typeof="schema:license">
             <meta property="schema:logo" >
-            <a  href="https://creativecommons.org/licenses/by-nc-sa/4.0/">   <img  class="mylogo" src="util/resources/images/creative commons.png" alt="" /></a>
+            <a  href="https://creativecommons.org/licenses/by-nc-sa/4.0/">   <img  class="mylogo" src="app/util/resources/images/creative commons.png" alt="" /></a>
          </span>
          <p id="copyr" >2020 TeVi . Realizat de Rameder Carol, Moisanu Stefan & Andrici Costina . 	</p>
       </footer >
@@ -303,9 +303,9 @@ Our Web app gives you the possibility to create and save your own statistics and
       <script src="https://www.amcharts.com/lib/4/maps.js"></script>
 	   <script src="https://www.amcharts.com/lib/4/geodata/worldLow.js"></script>
 	   <script src="https://www.amcharts.com/lib/4/themes/frozen.js"></script>
-      <script src="util/js/form-ajax.js"></script>
-      <script src="util/js/form-ajax-map.js"></script>
-	   <script src="util/js/form-ajax-log.js"></script>
-      <script src="util/js/form-ajax-signIn.js"></script>
+      <script src="app/util/js/form-ajax.js"></script>
+      <script src="app/util/js/form-ajax-map.js"></script>
+	   <script src="app/util/js/form-ajax-log.js"></script>
+      <script src="app/util/js/form-ajax-signIn.js"></script>
    </body>
 </html>

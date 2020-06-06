@@ -8,6 +8,7 @@
 			if($actiune=="viewHome")
 					
 				{ $this->model= new MHome();
+					echo "hei";
 				 $this->viewHome();}
 			if($actiune=="changeChart")
 				{

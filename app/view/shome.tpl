@@ -6,12 +6,7 @@
       <meta http-equiv="X-UA-Compatible" content="ie=edge">
       <title>Global Terrorism</title>
       <link rel="stylesheet" type="text/css" href="util/css/index_style.css">
-	   <link rel="stylesheet" type="text/css" href="util/css/statistics-settings.css">
-      <link rel="stylesheet" type="text/css" href="util/css/login_style.css">
-      <link rel="stylesheet" type="text/css" href="util/css/chart_style.css">
-      <link rel="stylesheet" type="text/css" href="util/css/footer_style.css">
-
-
+	  <link rel="stylesheet" type="text/css" href="util/css/statistics-settings.css">
    </head>
    <body>
       <div class="navbar">
@@ -30,7 +25,7 @@
 				<li><a href="#section3">Statistics</a> </li>
 				<li><a href="#section5">Maps</a> </li>
 				<li><a href="#section4">Team</a> </li>
-				<?php if(isset($_POST['user'])) echo '<li><a>   Welcome, '.$_POST['user']. ' </a> </li>'; ?>
+				
 				</ul>
 			</div>
 		</div>
@@ -48,72 +43,30 @@
 			   <span typeof="schema:Register" >
                   <h2 class="titles" id="nav1">Register</h2>
                </span>
-                  <div class="flexbox">
-                     <?php
-                        $text= '';
-                        
-                        if(isset($_POST['user']))
-                        {
-                        	$text=$_POST['user'];
-                        	
-                        }
-                        
-                        if(isset($_POST['password']))
-                        {
-                        	$text=$_POST['password'];
-                        	
-                        }
-                        
-                        if(!isset($_POST['user']))
-                        {echo '<form action="index.php" method="POST" class="logIn">';
-                        echo '<input type="hidden" name="actiune" value="LogIn">';
-                        echo '<input type="hidden" name="loginTried" value="tried">';
-                        echo '<p class="topText">Login to acces our database !</p>';
-                        echo '<input class="logInput" id="topfield" type="text" name="user" placeholder="Username" autocomplete="off">'; 
-                        echo '<input class="logInput" type="text" name="password" placeholder="Password" autocomplete="off">';
-                        echo '<button class="logButton" type="submit">Log in</button>';
-                        	if(!isset($_POST['user'])  && isset($_POST['loginTried']))
-                        {
-                        	echo '<p id="failedLogin"> Wrong username or password!</p>';
-                        	
-                        }
-                        echo '</form>';
-                        }
-                        
-                        $text= '';
-                        if(isset($_POST['name']))
-                        {
-                        	$text=$_POST['name'];
-                        	
-                        }
+                  <div class="flexbox" id="idSign">
+                     
+                       <form action="index.php" method="POST" class="logIn">
+                       <input type="hidden" name="actiune" value="LogIn">
+                       <input type="hidden" name="loginTried" value="tried">
+                        <p class="topText">Login to acces our database !</p>
+                        <input class="logInput" id="topfield"  type="text" name="user" placeholder="Username" autocomplete="off">
+                        <input class="logInput" type="text" id="password1" name="password" placeholder="Password" autocomplete="off">
+                        <button class="logButton" id="fetchBtnLogIn" type="button">Log in</button>
+                        </form>
                         
                         
-                        if(isset($_POST['user']))
-                        {
-                        	$text=$_POST['user'];
-                        	if($text!=NULL)
-                        	echo "WELCOME, $text,";
-                        }
+                        <form action="index.php" method="POST" class=signIn>
+                        <input type="hidden" name="actiune" value="SignIn">
+                        <p class="topText">Create a new account !</p>
+                        <input class="logInput" id="topfield" type="text" name="name" placeholder="Name" autocomplete="off">
+                        <input class="logInput" type="text" id="user" name="user" placeholder="Username" autocomplete="off">
+                        <input class="logInput" type="text" id="password" name="password" placeholder="Password" autocomplete="off">
+			               <button id="fetchBtnLog" class="logButton" type="button">Sing up</button>
+                        </form>
                         
-                        if(isset($_POST['password']))
-                        {
-                        	$text=$_POST['password'];
-                        	
-                        }
+
                         
                         
-                        if(!isset($_POST['user']))
-                        {
-                        echo '<form action="index.php" method="POST" class=signIn>';
-                        echo '<input type="hidden" name="actiune" value="SignIn">';
-                        echo '<p class="topText">Create a new account !</p>';
-                        echo '<input class="logInput" id="topfield" type="text" name="name" placeholder="Name" autocomplete="off">';
-                        echo '<input class="logInput" type="text" name="user" placeholder="Username" autocomplete="off">';
-                        echo '<input class="logInput" type="text" name="password" placeholder="Password" autocomplete="off">';
-                        echo '<button class="logButton" type="submit">Sign up</button>';
-                        echo '</form>';
-                        }
-                        ?>
                   </div>
                </div>
             </div>
@@ -136,58 +89,7 @@ Our Web app gives you the possibility to create and save your own statistics and
                <h2 class="titles" id="nav3">Statistics</h2>
 			   <h3 id="nav3">Generate your own chart! Choose the type of chart and the specific statistic you want to use.<br>
 			    Besides that, you can customize it by inserting different specific data regarding the attacks.  </h3>
-               <?php
-                  $text= '';
-                  if(isset($_POST['year']))
-                  {
-                  	$text=$_POST['year'];
-                  	if($text!=NULL)
-                  	echo "year: $text,";
-                  }
-                  
-                  if(isset($_POST['month']))
-                  {
-                  	$text=$_POST['month'];
-                  	if($text!=NULL)
-                  	echo " month: $text ";
-                  }
-                  
-                  if(isset($_POST['day']))
-                  {
-                  	$text=$_POST['day'];
-                  	if($text!=NULL)
-                  	echo " day: $text ";
-                  }
-                  
-                  if(isset($_POST['country']))
-                  {
-                  	$text=$_POST['country'];
-                  	if($text!=NULL)
-                  	echo " country: $text ";
-                  }
-                  
-                  if(isset($_POST['city']))
-                  {
-                  	$text=$_POST['city'];
-                  	if($text!=NULL)
-                  	echo " city: $text ";
-                  }
-                  
-                  if(isset($_POST['regionCode']))
-                  {
-                  	$text=$_POST['regionCode'];
-                  	if($text!=NULL)
-                  	echo " regionCode: $text ";
-                  }
-                  
-                  if(isset($_POST['countryCode']))
-                  {
-                  	$text=$_POST['countryCode'];
-                  	if($text!=NULL)
-                  	echo " countryCode: $text ";
-                  }
-                  
-                  ?>
+              
                <div id="statistics-form">
                <div id="statisitcs-settings">
 			   		<div class="stt-div">
@@ -203,8 +105,9 @@ Our Web app gives you the possibility to create and save your own statistics and
 				  <div class="stt-div">
                   <label id="chart-type-label">Chart type &nbsp; &nbsp;</label>
                   <select id = "chartType" class="inp-field" name="chartType">
-                     <option value = "pie" >Pie chart</option>
+                     <option disabled selected value> -- chart type -- </option>
                      <option value = "bar" >Bar chart</option>
+                     <option value = "pie" >Pie chart</option>
                      <option value = "line">Line chart</option>
                   </select>
 				  </div>
@@ -313,6 +216,9 @@ Our Web app gives you the possibility to create and save your own statistics and
 			</form>
                <p>mapa</p>
                <div id="mapdiv"></div>
+
+         
+
             </div>
             <div id="section4" class="sections">
                <div class="content" id="teamsParent">
@@ -320,7 +226,7 @@ Our Web app gives you the possibility to create and save your own statistics and
                   <div class="row">
                      <div class="column">
                         <div class="card">
-                           <img src="util/resources/images/caarol.jpg" alt="Carol"  id="profileImg">
+                           <img src="images/caarol.jpg" alt="Carol"  id="profileImg">
                            <div class="container">
                               <span typeof="schema:Person" >
                                  <meta property="schema:givenName" content="Carol">
@@ -328,14 +234,14 @@ Our Web app gives you the possibility to create and save your own statistics and
                                  <h2 property="schema:name">Carol Rameder</h2>
                               </span>
                               <p>Some text that describes me lorem ipsum ipsum lorem.</p>
-                              <a  href="https://www.facebook.com/ramederc">   <img id="socButton" src="util/resources/images/facebook.png" alt="" /></a>
-                              <a href="mailto:ramederc30@gmail.com">   <img id="socButton" src="util/resources/images/google-plus.png" alt="" /></a>
+                              <a  href="https://www.facebook.com/ramederc">   <img id="socButton" src="images/facebook.png" alt="" /></a>
+                              <a href="mailto:ramederc30@gmail.com">   <img id="socButton" src="images/google-plus.png" alt="" /></a>
                            </div>
                         </div>
                      </div>
                      <div class="column">
                         <div class="card">
-                           <img src="util/resources/images/costina.jpg" alt="Costina"  id="profileImg">
+                           <img src="images/costina.jpg" alt="Costina"  id="profileImg">
                            <div class="container">
                               <span typeof="schema:Person" >
                                  <meta property="schema:givenName" content="Costina">
@@ -343,14 +249,14 @@ Our Web app gives you the possibility to create and save your own statistics and
                                  <h2 property="schema:name">Costina Andrici</h2>
                               </span>
                               <p>Some text that describes me lorem ipsum ipsum lorem.</p>
-                              <a  href="https://www.facebook.com/costinaa.ioana">   <img id="socButton" src="util/resources/images/facebook.png" alt="" /></a>
-                              <a href="mailto:Costinaa.ioana18@gmail.com">   <img id="socButton"  src="util/resources/images/google-plus.png" alt="" /></a>
+                              <a  href="https://www.facebook.com/costinaa.ioana">   <img id="socButton" src="images/facebook.png" alt="" /></a>
+                              <a href="mailto:Costinaa.ioana18@gmail.com">   <img id="socButton"  src="images/google-plus.png" alt="" /></a>
                            </div>
                         </div>
                      </div>
                      <div class="column">
                         <div class="card">
-                           <img src="util/resources/images/stefan.jpg" alt="John" id="profileImg">
+                           <img src="images/stefan.jpg" alt="John" id="profileImg">
                            <div class="container">
                               <span typeof="schema:Person" >
                                  <meta property="schema:givenName" content="Stefan">
@@ -359,8 +265,8 @@ Our Web app gives you the possibility to create and save your own statistics and
                                  <h2 property="schema:name">Stefan Moisanu</h2>
                               </span>
                               <p>Some text that describes me lorem ipsum ipsum lorem.</p>
-                              <a  href="https://www.facebook.com/stef.moisanu">   <img id="socButton" src="util/resources/images/facebook.png" alt="" /></a>
-                              <a href="mailto:smoisanu@gmail.com">   <img id="socButton"  src="util/resources/images/google-plus.png" alt="" /></a>
+                              <a  href="https://www.facebook.com/stef.moisanu">   <img id="socButton" src="images/facebook.png" alt="" /></a>
+                              <a href="mailto:smoisanu@gmail.com">   <img id="socButton"  src="images/google-plus.png" alt="" /></a>
                            </div>
                         </div>
                      </div>
@@ -373,28 +279,29 @@ Our Web app gives you the possibility to create and save your own statistics and
       <footer class="footer">
          <span typeof="schema:WebSite" >
             <meta property="schema:logo" >
-            <a  href="https://www.kaggle.com/START-UMD/gtd">   <img  class="mylogo" src="util/resources/images/kaggle-logo.png" alt="" /></a>
+            <a  href="https://www.kaggle.com/START-UMD/gtd">   <img  class="mylogo" src="images/kaggle-logo.png" alt="" /></a>
          </span>
          <span typeof="schema:CollegeOrUniversity">
             <meta property="schema:logo" >
-            <a  href="https://www.info.uaic.ro/">   <img  class="mylogo" src="util/resources/images/logo-fii.png" alt="" /></a>
+            <a  href="https://www.info.uaic.ro/">   <img  class="mylogo" src="images/logo-fii.png" alt="" /></a>
          </span>
          <span typeof="schema:license">
             <meta property="schema:logo" >
-            <a  href="https://creativecommons.org/licenses/by-nc-sa/4.0/">   <img  class="mylogo" src="util/resources/images/creative commons.png" alt="" /></a>
+            <a  href="https://creativecommons.org/licenses/by-nc-sa/4.0/">   <img  class="mylogo" src="images/creative commons.png" alt="" /></a>
          </span>
          <p id="copyr" >2020 TeVi . Realizat de Rameder Carol, Moisanu Stefan & Andrici Costina . 	</p>
       </footer >
       <!-- Resources -->
       <script src="https://www.amcharts.com/lib/4/core.js"></script>
       <script src="https://www.amcharts.com/lib/4/charts.js"></script>
-      <script src="https://www.amcharts.com/lib/4/themes/dark.js"></script>
-      <script src="https://www.amcharts.com/lib/4/maps.js"></script>
-	   <script src="https://www.amcharts.com/lib/4/geodata/worldLow.js"></script>
-	   <script src="https://www.amcharts.com/lib/4/themes/frozen.js"></script>
+      <script src="https://www.amcharts.com/lib/4/themes/dataviz.js"></script>
+      <script src="https://www.amcharts.com/lib/4/themes/animated.js"></script>
       <script src="util/js/form-ajax.js"></script>
       <script src="util/js/form-ajax-map.js"></script>
-	
-
+	<script src="https://www.amcharts.com/lib/4/maps.js"></script>
+	<script src="https://www.amcharts.com/lib/4/geodata/worldLow.js"></script>
+	<script src="https://www.amcharts.com/lib/4/themes/frozen.js"></script>
+   <script src="util/js/form-ajax-log.js"></script>
+   <script src="util/js/form-ajax-signIn.js"></script>
    </body>
 </html>

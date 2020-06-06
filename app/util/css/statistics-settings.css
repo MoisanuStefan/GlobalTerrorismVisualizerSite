@@ -1,5 +1,4 @@
 #statisitcs-settings{
-    box-shadow: 0 4px 8px 5px rgba(0, 0, 0, 0.3);
     width: 89%;
     padding: 1%;
     margin: 1%;
@@ -16,7 +15,6 @@
     text-align: left;
  }
 #statistics-filters {
-    
     margin: 5px;
     display: flex;
     flex-direction: row;
@@ -28,7 +26,6 @@
 }
 
 .statistics-column {
-    box-shadow: 0 4px 8px 5px rgba(0, 0, 0, 0.3);
     padding: 1%;
     margin: 5px;
     display: flex;

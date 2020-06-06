@@ -17,14 +17,15 @@
 			{ echo "wrong password or user";
 				unset($_POST['user']);
 				unset($_POST['actiune']);
+				return 0;
 			}
 			foreach($msg as $m)
 				{
 				echo "id".$m["id"];
 				if($m["id"]!=NULL) echo "loginsuccessufull";
 				}
-			return $cerere->fetchAll();
-			 
+			//return $cerere->fetchAll();
+			 return 1;
 		}
 
 		public function insertUser($user, $password)

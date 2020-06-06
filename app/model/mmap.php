@@ -1,33 +1,75 @@
 <?php
 
+
 class MMap{
-	public function get(){
 
-		$long=array(0,0.9,0.4,0.3,0.5,0.3);
-		$lat=array(0,0.4,0.6,0.3,0.9,0.1);
+    private $connection;
 
-		for ($i = 0; $i <= 4; $i++) {
+    public function __construct(){
+        $this->connection = BD::obtine_conexiune();
+        //echo 'buna ziua';
+    }
 
 
+
+    public function searchData($array){
+		 $sql='SELECT DISTINCT country_txt, latitude, longitude FROM attacks';
+        //echo $sql;
+        //echo "BAAA";
+        $sqll= $this->createQuery($array);
+        //echo "<br>MY QUERY IS: ".$sqll;
+			$cerere=BD::obtine_conexiune()->prepare($sqll);
+			$cerere->execute();
+			
+			$msg= $cerere->fetchAll();
+			if($msg==NULL)
+			{ echo "no data";
+            }
+            
+            
+			// foreach($msg as $m)
+			// 	{
+            //     //echo "<br>country :".$m["country"];
+            //     //echo "<br>latitude : ".$m["latid"];
+            //     //echo "<br>longitude :".$m["longit"];
+			// 	}
+			return $msg;
+
+    }
+
+    public function createQuery($array){
+		
+		$sqll='SELECT country_txt, latitude, longitude  FROM attacks '; 
+		$conditions="";
+		$firstCondition=1;
+		foreach ($array as $i => $value) {
+			if ( $value != ''){
+				if($firstCondition==1)
+				{																
+					if($i == 'year_l'){
+						$conditions=$conditions."   WHERE iyear BETWEEN '$value' ";
+					}
+					else{
+						$conditions=$conditions." WHERE $i = '$value' ";
+					}
 				
-				$lg=$long[$i]*10;
-				$lt=$lat[$i]*10;
-				echo "$lg $lt";
-   				echo '<div class="dot dot-'.$i.'" style="top: '.$i.'%; left: '.$i.'%;"></div>'; 
+					$firstCondition=0;
+				}
+				else{
+					
+					if($i == 'year_l'){
+						$conditions=$conditions." AND iyear BETWEEN '$value' ";
+					}
+					else if ($i == 'year_h'){
+						$conditions=$conditions." AND '$value' ";
+					}
+					else{
+						$conditions=$conditions." AND $i = '$value' ";
+					}
+				}
 			}
-		echo '<div class="dot dot-'.$i.'" style="top: 0px; left: 1250px;"></div>'; 
-		echo '<div class="dot dot-'.$i.'" style="top: 45.9%; left: 24.9%;"></div>'; 
-		echo '<div class="dot dot-'.$i.'" style="top: 35.9%; left: 53.9%;"></div>';
-		echo '<div class="dot dot-'.$i.'" style="top: 32%; left: 41.5%;"></div>';
-
+		}
+		return $sqll.$conditions;
 	}
 
-
-
-
 }
-
-
-
-
-?>

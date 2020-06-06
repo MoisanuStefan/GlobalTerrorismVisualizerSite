@@ -11,13 +11,17 @@
 				 $this->viewHome();}
 			if($actiune=="changeChart")
 				{
+				echo "practic s a schimat chartul";
 				$this->viewHome();
 				}
 			if($actiune=="LogIn")
 				{
 				$this->model= new MLogIn();
+				echo "ne am logat";
 				if(isset($_POST["user"])) $user=$_POST["user"];
+				echo $user;
 				if(isset($_POST["password"])) $password=$_POST["password"];
+				echo $password;
 				$this->model->searchUser($user,$password);
 				$this->viewHome();
 				}

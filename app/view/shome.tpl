@@ -1,172 +1,189 @@
-
-
 <!DOCTYPE html>
 <html lang="en">
    <head>
       <meta charset="UTF-8">
-      <meta name="viewport" content="width=device-wight, initial-scale=1.0">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
       <meta http-equiv="X-UA-Compatible" content="ie=edge">
       <title>Global Terrorism</title>
       <link rel="stylesheet" type="text/css" href="util/css/index_style.css">
 	  <link rel="stylesheet" type="text/css" href="util/css/statistics-settings.css">
    </head>
    <body>
-      <div class="navigation_bar">
-         <ul class="navigation_ul">
-            <li><a class="navitem" href="#head">Home</a> </li>
-            <li><a class="navitem"  href="#section1">Register</a> </li>
-            <li><a class="navitem"  href="#section2">Portfolio</a> </li>
-            <li><a class="navitem"  href="#section3">Statistics</a> </li>
-            <li><a class="navitem"  href="#section5">Maps</a> </li>
-            <li><a href="#section4">Team</a> </li>
-            <?php if(isset($_POST['user'])) echo '<li><a>   Welcome, '.$_POST['user']. ' </a> </li>'; ?>
-         </ul>
-      </div>
-      <div class="wrapper">
-         <div id="head" class="sections">
-            <div class="title-content">
-               <h1 class="title">Global terrorism</h1>
-               <h2 class="subtitle">Statistics and more information about terrorist events around the world</h2>
+      <div class="navbar">
+         <div class="containerNav">
+            <div class="logo_div">
+               <span typeof="schema:Project">
+                  <meta property="schema:name">
+                  <p class="llogo"> TeVi </p>
+               </span>
             </div>
-         </div>
-         <div id="section1" class="sections">
-            <div class="content">
-               <h2 class="titles" id="nav1">Register</h2>
-               <div class="flexbox">
-                  <?php
-                     $text= '';
-                     
-                     if(isset($_POST['user']))
-                     {
-                     	$text=$_POST['user'];
-                     	
-                     }
-                     
-                     if(isset($_POST['password']))
-                     {
-                     	$text=$_POST['password'];
-                     	
-                     }
-                     
-                     if(!isset($_POST['user']))
-                     {echo '<form action="index.php" method="POST" class="logIn">';
-                     echo '<input type="hidden" name="actiune" value="LogIn">';
-                     echo '<input type="hidden" name="loginTried" value="tried">';
-                     echo '<p class="topText">Login to acces our database !</p>';
-                     echo '<input class="logInput" id="topfield" type="text" name="user" placeholder="Username" autocomplete="off">'; 
-                     echo '<input class="logInput" type="text" name="password" placeholder="Password" autocomplete="off">';
-                     echo '<button class="logButton" type="submit">Log in</button>';
-                     	if(!isset($_POST['user'])  && isset($_POST['loginTried']))
-                     {
-                     	echo '<p id="failedLogin"> Wrong username or password!</p>';
-                     	
-                     }
-                     echo '</form>';
-                     }
-                     
-                     $text= '';
-                     if(isset($_POST['name']))
-                     {
-                     	$text=$_POST['name'];
-                     	
-                     }
-                     
-                     
-                     if(isset($_POST['user']))
-                     {
-                     	$text=$_POST['user'];
-                     	if($text!=NULL)
-                     	echo "WELCOME, $text,";
-                     }
-                     
-                     if(isset($_POST['password']))
-                     {
-                     	$text=$_POST['password'];
-                     	
-                     }
-                     
-                     
-                     if(!isset($_POST['user']))
-                     {
-                     echo '<form action="index.php" method="POST" class=signIn>';
-                     echo '<input type="hidden" name="actiune" value="SignIn">';
-                     echo '<p class="topText">Create a new account !</p>';
-                     echo '<input class="logInput" id="topfield" type="text" name="name" placeholder="Name" autocomplete="off">';
-                     echo '<input class="logInput" type="text" name="user" placeholder="Username" autocomplete="off">';
-                     echo '<input class="logInput" type="text" name="password" placeholder="Password" autocomplete="off">';
-                     echo '<button class="logButton" type="submit">Sign up</button>';
-                     echo '</form>';
-                     }
-                     ?>
+			<div class="navbar_links">
+				<ul class="meniu">
+				<li><a href="#head">Home</a> </li>
+				<li><a href="#section1">Register</a> </li>
+				<li><a href="#section2">Portfolio</a> </li>
+				<li><a href="#section3">Statistics</a> </li>
+				<li><a href="#section5">Maps</a> </li>
+				<li><a href="#section4">Team</a> </li>
+				<?php if(isset($_POST['user'])) echo '<li><a>   Welcome, '.$_POST['user']. ' </a> </li>'; ?>
+				</ul>
+			</div>
+		</div>
+     </div>
+         <div class="wrapper">
+            <div id="head" class="sections">
+               <div class="title-content">
+			   
+                  <h1 class="title">Global terrorism</h1>
+                  <h2 class="subtitle">Statistics and more information about terrorist events around the world</h2>
+               </div>
+            </div>
+            <div id="section1" class="sections">
+               <div class="content">
+			   <span typeof="schema:Register" >
+                  <h2 class="titles" id="nav1">Register</h2>
+               </span>
+                  <div class="flexbox">
+                     <?php
+                        $text= '';
+                        
+                        if(isset($_POST['user']))
+                        {
+                        	$text=$_POST['user'];
+                        	
+                        }
+                        
+                        if(isset($_POST['password']))
+                        {
+                        	$text=$_POST['password'];
+                        	
+                        }
+                        
+                        if(!isset($_POST['user']))
+                        {echo '<form action="index.php" method="POST" class="logIn">';
+                        echo '<input type="hidden" name="actiune" value="LogIn">';
+                        echo '<input type="hidden" name="loginTried" value="tried">';
+                        echo '<p class="topText">Login to acces our database !</p>';
+                        echo '<input class="logInput" id="topfield" type="text" name="user" placeholder="Username" autocomplete="off">'; 
+                        echo '<input class="logInput" type="text" name="password" placeholder="Password" autocomplete="off">';
+                        echo '<button class="logButton" type="submit">Log in</button>';
+                        	if(!isset($_POST['user'])  && isset($_POST['loginTried']))
+                        {
+                        	echo '<p id="failedLogin"> Wrong username or password!</p>';
+                        	
+                        }
+                        echo '</form>';
+                        }
+                        
+                        $text= '';
+                        if(isset($_POST['name']))
+                        {
+                        	$text=$_POST['name'];
+                        	
+                        }
+                        
+                        
+                        if(isset($_POST['user']))
+                        {
+                        	$text=$_POST['user'];
+                        	if($text!=NULL)
+                        	echo "WELCOME, $text,";
+                        }
+                        
+                        if(isset($_POST['password']))
+                        {
+                        	$text=$_POST['password'];
+                        	
+                        }
+                        
+                        
+                        if(!isset($_POST['user']))
+                        {
+                        echo '<form action="index.php" method="POST" class=signIn>';
+                        echo '<input type="hidden" name="actiune" value="SignIn">';
+                        echo '<p class="topText">Create a new account !</p>';
+                        echo '<input class="logInput" id="topfield" type="text" name="name" placeholder="Name" autocomplete="off">';
+                        echo '<input class="logInput" type="text" name="user" placeholder="Username" autocomplete="off">';
+                        echo '<input class="logInput" type="text" name="password" placeholder="Password" autocomplete="off">';
+                        echo '<button class="logButton" type="submit">Sign up</button>';
+                        echo '</form>';
+                        }
+                        ?>
+                  </div>
                </div>
             </div>
          </div>
-      </div>
-      <div id="section2" class="sections">
-         <div class="content">
-            <h2 class="titles">Portfolio</h2>
-            <p> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi eu pulvinar arcu. Morbi
-               bibendum urna vitae ultrices lobortis. Vivamus condimentum ultrices leo, eget luctus ante sagittis et. Maecenas
-               posuere placerat vestibulum. Phasellus interdum fermentum tellus vitae iaculis. Suspendisse ornare, dolor ac ultrices pretium, arcu sapien pharetra velit, at laoreet ipsum odio a lacus. Curabitur id
-            </p>
+         <div id="section2" class="sections">
+            <div class="content">
+               <h2 class="titles">Portfolio</h2>
+               <p> Terrorism attacks are real<br>
+we can't completely save our nation<br>
+But at least our website gives<br>
+the most powerful weapon- information<br>
+Our Web app gives you the possibility to create and save your own statistics and maps, by customizing your options.<br>
+ We use data from thousands of terrorist attacks from all around the world in order to generate the most accurate statistics and map visualizers.
+
+               </p>
+            </div>
          </div>
-      </div>
-      <div id="section3" class="sections">
-         <div class="content">
-            <h2 class="titles">Statistics</h2>
-            <?php
-               $text= '';
-               if(isset($_POST['year']))
-               {
-               	$text=$_POST['year'];
-               	if($text!=NULL)
-               	echo "year: $text,";
-               }
-               
-               if(isset($_POST['month']))
-               {
-               	$text=$_POST['month'];
-               	if($text!=NULL)
-               	echo " month: $text ";
-               }
-               
-               if(isset($_POST['day']))
-               {
-               	$text=$_POST['day'];
-               	if($text!=NULL)
-               	echo " day: $text ";
-               }
-               
-               if(isset($_POST['country']))
-               {
-               	$text=$_POST['country'];
-               	if($text!=NULL)
-               	echo " country: $text ";
-               }
-               
-               if(isset($_POST['city']))
-               {
-               	$text=$_POST['city'];
-               	if($text!=NULL)
-               	echo " city: $text ";
-               }
-               
-               if(isset($_POST['regionCode']))
-               {
-               	$text=$_POST['regionCode'];
-               	if($text!=NULL)
-               	echo " regionCode: $text ";
-               }
-               
-               if(isset($_POST['countryCode']))
-               {
-               	$text=$_POST['countryCode'];
-               	if($text!=NULL)
-               	echo " countryCode: $text ";
-               }
-               
-               ?>
-            <div id="statistics-form">
+         <div id="section3" class="sections">
+            <div class="content">
+               <h2 class="titles" id="nav3">Statistics</h2>
+			   <h3 id="nav3">Generate your own chart! Choose the type of chart and the specific statistic you want to use.<br>
+			    Besides that, you can customize it by inserting different specific data regarding the attacks.  </h3>
+               <?php
+                  $text= '';
+                  if(isset($_POST['year']))
+                  {
+                  	$text=$_POST['year'];
+                  	if($text!=NULL)
+                  	echo "year: $text,";
+                  }
+                  
+                  if(isset($_POST['month']))
+                  {
+                  	$text=$_POST['month'];
+                  	if($text!=NULL)
+                  	echo " month: $text ";
+                  }
+                  
+                  if(isset($_POST['day']))
+                  {
+                  	$text=$_POST['day'];
+                  	if($text!=NULL)
+                  	echo " day: $text ";
+                  }
+                  
+                  if(isset($_POST['country']))
+                  {
+                  	$text=$_POST['country'];
+                  	if($text!=NULL)
+                  	echo " country: $text ";
+                  }
+                  
+                  if(isset($_POST['city']))
+                  {
+                  	$text=$_POST['city'];
+                  	if($text!=NULL)
+                  	echo " city: $text ";
+                  }
+                  
+                  if(isset($_POST['regionCode']))
+                  {
+                  	$text=$_POST['regionCode'];
+                  	if($text!=NULL)
+                  	echo " regionCode: $text ";
+                  }
+                  
+                  if(isset($_POST['countryCode']))
+                  {
+                  	$text=$_POST['countryCode'];
+                  	if($text!=NULL)
+                  	echo " countryCode: $text ";
+                  }
+                  
+                  ?>
+               <div id="statistics-form">
                <div id="statisitcs-settings">
 			   		<div class="stt-div">
                   <label>Graph me this: </label>
@@ -179,11 +196,10 @@
                   </select>
 				  </div>
 				  <div class="stt-div">
-                  <label id="chart-type-label">Chart type: &nbsp; &nbsp;</label>
+                  <label id="chart-type-label">Chart type &nbsp; &nbsp;</label>
                   <select id = "chartType" class="inp-field" name="chartType">
-                     <option disabled selected value> -- chart type -- </option>
-                     <option value = "bar" >Bar chart</option>
                      <option value = "pie" >Pie chart</option>
+                     <option value = "bar" >Bar chart</option>
                      <option value = "line">Line chart</option>
                   </select>
 				  </div>
@@ -263,70 +279,84 @@
                </div>
                <button id="fetchBtn" class="setButton" type="button">SET</button>
             </div>
-            <!-- HTML -->
-            <div id="chartdiv"></div>
+               <!-- HTML -->
+               <div id="chartdiv"></div>
+            </div>
          </div>
-      </div>
-      <div id="section5" class="sections">
-         <div class="content">
-            <h2 class="titles">Maps</h2>
-            <form action="index.php" method="GET">
-               <input type="hidden" name="actiune" value="changeMap">
-               Years between: 
-               <input type="text" name="year_l">
-               and 
-               <input type="text" name="year_h">
-               Month:
-               <input type="text" name="month">
-               Day:
-               <input type="text" name="day">
-               Country:
-               <input type="text" name="country">
-               City:
-               <input type="text" name="city">
-               Region code:
-               <input type="text" name="regionCode">
-               Country code:
-               <input type="text" name="countryCode">
-               <button id="fetchBtn" type="button">SET</button>
-            </form>
-            <p>mapa</p>
-            <div id="mapdiv"></div>
-         </div>
-         <div id="section4" class="sections">
-            <div class="content" id="teamsParent">
-               <h2 class="titles" id="nav1">Our team</h2>
-               <div class="row">
-                  <div class="column">
-                     <div class="card">
-                        <img src="images/caarol.jpg" alt="Carol"  id="profileImg">
-                        <div class="container">
-                           <h2>Carol Rameder</h2>
-                           <p>Some text that describes me lorem ipsum ipsum lorem.</p>
-                           <a  href="https://www.facebook.com/ramederc">   <img id="socButton" src="images/facebook.png" alt="" /></a>
-                           <a href="mailto:ramederc30@gmail.com">   <img id="socButton" src="images/google-plus.png" alt="" /></a>
+         <div id="section5" class="sections">
+            <div class="content">
+			<span typeof="schema:Map">
+			<meta property="schema:author" content="https://www.amcharts.com/javascript-maps/">
+               <h2 class="titles">Maps</h2>
+            </span>
+			   <h3>Generate your own map! You can customize the map by specifying different data regarding the terrorist attacks.  </h3>
+               
+               <form action="index.php" method="POST">
+			Years between: 
+			<input id="year_l1" type="text" name="year_l1">
+			and 
+			<input id="year_h1" type="text" name="year_h1">
+			Month:
+			<input  id="month1" type="text" name="month1">
+			Day:
+			<input id="day1" type="text" name="day1">
+			Country:
+			<input id="country1" type="text" name="country1">
+			City:
+			<input id="city1" type="text" name="city1">
+			<button id="fetchBtnMap" type="button">SET</button>
+			</form>
+               <p>mapa</p>
+               <div id="mapdiv"></div>
+            </div>
+            <div id="section4" class="sections">
+               <div class="content" id="teamsParent">
+                  <h2 class="titles" id="nav2">Our team</h2>
+                  <div class="row">
+                     <div class="column">
+                        <div class="card">
+                           <img src="images/caarol.jpg" alt="Carol"  id="profileImg">
+                           <div class="container">
+                              <span typeof="schema:Person" >
+                                 <meta property="schema:givenName" content="Carol">
+                                 <meta property="schema:familyName" content="Rameder">
+                                 <h2 property="schema:name">Carol Rameder</h2>
+                              </span>
+                              <p>Some text that describes me lorem ipsum ipsum lorem.</p>
+                              <a  href="https://www.facebook.com/ramederc">   <img id="socButton" src="images/facebook.png" alt="" /></a>
+                              <a href="mailto:ramederc30@gmail.com">   <img id="socButton" src="images/google-plus.png" alt="" /></a>
+                           </div>
                         </div>
                      </div>
-                  </div>
-                  <div class="column">
-                     <div class="card">
-                        <img src="images/costina.jpg" alt="Costina"  id="profileImg">
-                        <div class="container">
-                           <h2>Andrici Costina</h2>
-                           <p>Some text that describes me lorem ipsum ipsum lorem.</p>
-                           <a  href="https://www.facebook.com/costinaa.ioana">   <img id="socButton" src="images/facebook.png" alt="" /></a>
-                           <a href="mailto:Costinaa.ioana18@gmail.com">   <img id="socButton"  src="images/google-plus.png" alt="" /></a>
+                     <div class="column">
+                        <div class="card">
+                           <img src="images/costina.jpg" alt="Costina"  id="profileImg">
+                           <div class="container">
+                              <span typeof="schema:Person" >
+                                 <meta property="schema:givenName" content="Costina">
+                                 <meta property="schema:familyName" content="Andrici">
+                                 <h2 property="schema:name">Costina Andrici</h2>
+                              </span>
+                              <p>Some text that describes me lorem ipsum ipsum lorem.</p>
+                              <a  href="https://www.facebook.com/costinaa.ioana">   <img id="socButton" src="images/facebook.png" alt="" /></a>
+                              <a href="mailto:Costinaa.ioana18@gmail.com">   <img id="socButton"  src="images/google-plus.png" alt="" /></a>
+                           </div>
                         </div>
                      </div>
-                  </div>
-                  <div class="column">
-                     <div class="card">
-                        <img src="images/stefan.jpg" alt="John" id="profileImg">
-                        <div class="container">
-                           <h2>Moisanu Stefan</h2>
-                           <p>Some text that describes me lorem ipsum ipsum lorem.</p>
-                           <a  href="https://www.facebook.com/stef.moisanu">   <img id="socButton" src="images/facebook.png" alt="" /></a>
-                           <a href="mailto:smoisanu@gmail.com">   <img id="socButton"  src="images/google-plus.png" alt="" /></a>
+                     <div class="column">
+                        <div class="card">
+                           <img src="images/stefan.jpg" alt="John" id="profileImg">
+                           <div class="container">
+                              <span typeof="schema:Person" >
+                                 <meta property="schema:givenName" content="Stefan">
+                                 <meta property="schema:familyName" content="Moisanu">
+                                 <meta property="schema:additionalName" content="Costinescu">
+                                 <h2 property="schema:name">Stefan Moisanu</h2>
+                              </span>
+                              <p>Some text that describes me lorem ipsum ipsum lorem.</p>
+                              <a  href="https://www.facebook.com/stef.moisanu">   <img id="socButton" src="images/facebook.png" alt="" /></a>
+                              <a href="mailto:smoisanu@gmail.com">   <img id="socButton"  src="images/google-plus.png" alt="" /></a>
+                           </div>
                         </div>
                      </div>
                   </div>
@@ -335,17 +365,31 @@
          </div>
       </div>
       </div>
-      </div>
       <footer class="footer">
-         <a  href="https://www.kaggle.com/START-UMD/gtd">   <img  class="mylogo" src="images/kaggle-logo.png" alt="" /></a>
-         <a  href="https://www.info.uaic.ro/">   <img  class="mylogo" src="images/logo-fii.png" alt="" /></a>
+         <span typeof="schema:WebSite" >
+            <meta property="schema:logo" >
+            <a  href="https://www.kaggle.com/START-UMD/gtd">   <img  class="mylogo" src="images/kaggle-logo.png" alt="" /></a>
+         </span>
+         <span typeof="schema:CollegeOrUniversity">
+            <meta property="schema:logo" >
+            <a  href="https://www.info.uaic.ro/">   <img  class="mylogo" src="images/logo-fii.png" alt="" /></a>
+         </span>
+         <span typeof="schema:license">
+            <meta property="schema:logo" >
+            <a  href="https://creativecommons.org/licenses/by-nc-sa/4.0/">   <img  class="mylogo" src="images/creative commons.png" alt="" /></a>
+         </span>
          <p id="copyr" >2020 TeVi . Realizat de Rameder Carol, Moisanu Stefan & Andrici Costina . 	</p>
       </footer >
       <!-- Resources -->
       <script src="https://www.amcharts.com/lib/4/core.js"></script>
       <script src="https://www.amcharts.com/lib/4/charts.js"></script>
-      <script src="https://www.amcharts.com/lib/4/themes/dataviz.js"></script>
-      <script src="https://www.amcharts.com/lib/4/themes/animated.js"></script>
+      <script src="https://www.amcharts.com/lib/4/themes/dark.js"></script>
+      <script src="https://www.amcharts.com/lib/4/maps.js"></script>
+	   <script src="https://www.amcharts.com/lib/4/geodata/worldLow.js"></script>
+	   <script src="https://www.amcharts.com/lib/4/themes/frozen.js"></script>
       <script src="util/js/form-ajax.js"></script>
+      <script src="util/js/form-ajax-map.js"></script>
+	
+
    </body>
 </html>

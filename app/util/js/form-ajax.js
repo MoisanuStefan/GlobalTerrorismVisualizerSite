@@ -15,6 +15,7 @@ let chartdata;
 let fetched=false;
 let chartType = document.getElementById("chartType");
 let chart;
+let chartDiv = document.getElementById("chartdiv");
 
 submitBtn.addEventListener("click", onClick);
 
@@ -60,6 +61,7 @@ function onClick(){
         })
         .then(function() {
             loadChart();
+            chartDiv.scrollIntoView();
         })
         .catch(function (err) {
             console.log(err);
@@ -98,7 +100,7 @@ function loadChart(){
 function loadPieChart(chartData){
     am4core.ready(function() {
 
-        am4core.useTheme(am4themes_animated);
+        am4core.useTheme(am4themes_dark);
         chart = am4core.create("chartdiv", am4charts.PieChart3D);
         chart.hiddenState.properties.opacity = 0; // this creates initial fade-in
 
@@ -120,19 +122,14 @@ function loadPieChart(chartData){
         chart.exporting.formatOptions.getKey("html").disabled = true;
         chart.exporting.formatOptions.getKey("xlsx").disabled = true;
         chart.exporting.formatOptions.getKey("print").disabled = true;
-       
-
-        setChartSize(80);
-        
         }); // end am4core.ready()
 }
 
 function loadBarChart(chartData){
     am4core.ready(function() {
 
-        // Themes begin
-                    am4core.useTheme(am4themes_dataviz);
-                    am4core.useTheme(am4themes_animated);
+        am4core.useTheme(am4themes_dark);
+
         // Themes end
     
         // Create chart instance
@@ -193,17 +190,14 @@ function loadBarChart(chartData){
                     chart.exporting.formatOptions.getKey("xlsx").disabled = true;
                     chart.exporting.formatOptions.getKey("print").disabled = true;
                     am4core.color("#f00", 0)
-    
-                    setChartSize(80);
                 }); // end am4core.ready()
 }
 
 function loadLineChart(chartData){
     am4core.ready(function() {
 
-        // Themes begin
-                    am4core.useTheme(am4themes_dataviz);
-                    am4core.useTheme(am4themes_animated);
+        am4core.useTheme(am4themes_dark);
+ 
         // Themes end
     
         // Create chart instance
@@ -239,26 +233,8 @@ function loadLineChart(chartData){
                     var hoverState = bullet.states.create("hover");
                     hoverState.properties.scale = 1.7;
     
-                    setChartSize(80);
+    
                 }); // end am4core.ready()
-}
 
-function setChartSize(cellSize){
-     // Set cell size in pixels
-     chart.events.on("datavalidated", function(ev) {
-
-         // Get objects of interest
-         var chart = ev.target;
-         var categoryAxis = chart.yAxes.getIndex(0);
-
-         // Calculate how we need to adjust chart height
-         var adjustHeight = chart.data.length * cellSize - categoryAxis.pixelHeight;
-
-         // get current chart height
-         var targetHeight = chart.pixelHeight + adjustHeight;
-
-         // Set it on chart's container
-         chart.svgContainer.htmlElement.style.height = targetHeight + "px";
-     });
-
+                
 }

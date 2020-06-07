@@ -2,20 +2,12 @@
  
 include_once "../model/mchart.php";
 include_once "../model/mBD.php";
-class Response {
-    static function status($code) {
-        http_response_code($code);
-    }
- 
-    static function json($data) {
-        header('Content-Type: application/json');
-        echo json_encode($data);
-    }
-}
+
  
 $chartRoutes = [
     [
         "method" => "POST",
+        "middlewares" => ["isLoggedIn"],
         "route" => "statistics",
         "handler" => "getChartData"
     ],
@@ -34,22 +26,6 @@ $chartRoutes = [
 ];
  
  
-function IsLoggedIn()
-{
-    $allHeaders = getallheaders();
- 
-    if (isset($allHeaders['Authorization'])) {
-        return true;
-    }
- 
-    Response::status(401);
-    Response::json([
-        "status" => 401,
-        "reason" => "You can only access this route if you're authenticated!"
-    ]);
- 
-    return false;
-}
  
 function getChartData($req) {
     $modifiedPayload = $req['payload'];

@@ -6,7 +6,7 @@
 
 		public function searchUser($user, $password)
 		{
-		 $sql='SELECT id FROM tusers where user like :user AND password like :password ';
+		 $sql='SELECT id, hash FROM tusers where user like :user AND password like :password ';
 			$cerere=BD::obtine_conexiune()->prepare($sql);
 			$cerere->execute(["user"=> $user, "password"=> $password ]);
 			$msg= $cerere->fetchAll();
@@ -14,16 +14,20 @@
 			{ 
 				return 0;
 			}
-			 return 1;
+			setcookie("authHash", $msg[0]['hash'], 0, "/");
+			return 1;
 		}
 
 		public function insertUser($user, $password)
 		{
-		 $sql="INSERT INTO tusers(user,password) VALUES(:user,:password)";
+			$userHash = hash('md5', $user);
+			
+		 	$sql="INSERT INTO tusers(user,password,hash) VALUES(:user,:password,:hash)";
 			$cerere=BD::obtine_conexiune()->prepare($sql);
 			$cerere-> execute([
 				'user'=> $user,
-				'password'=>$password
+				'password'=>$password,
+				'hash'=>$userHash
 			]);
 		}
 		

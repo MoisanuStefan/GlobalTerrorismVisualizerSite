@@ -321,6 +321,7 @@ Our Web app gives you the possibility to create and save your own statistics and
       <script src="https://www.amcharts.com/lib/4/maps.js"></script>
 	   <script src="https://www.amcharts.com/lib/4/geodata/worldLow.js"></script>
 	   <script src="https://www.amcharts.com/lib/4/themes/frozen.js"></script>
+      <script src="app/util/js/common-resources.js"></script>
       <script src="app/util/js/form-ajax.js"></script>
       <script src="app/util/js/form-ajax-map.js"></script>
 	   <script src="app/util/js/form-ajax-log.js"></script>

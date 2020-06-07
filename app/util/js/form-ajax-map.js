@@ -9,6 +9,7 @@ let mapDiv=document.getElementById("mapdiv");
 let mapdata;
 let fetched1=false;
 let map;
+let mmessage = document.getElementById("authent");
 
 submitBtn1.addEventListener("click", onClick);
 
@@ -33,24 +34,43 @@ function onClick(){
     var data = new FormData();
     data.append( "json", JSON.stringify( payload ) );
 
-    
-    fetch("api/map",{ method:"POST", body: JSON.stringify(payload)})
+    var authHeader = getCookie('authHash');
+    if(authHeader === ""){
+        authHeader = 'none';
+    }
+
+    fetch("api/map",{ 
+        method:"POST",
+        headers: new Headers({
+            'Authorization': authHeader
+          }),  
+        body: JSON.stringify(payload)})
         .then(function (resp) {
-            
+            if(resp.status == 401){
+                return null;
+            }
             return resp.json();
         })
         .then(function (jsonResp) {
-           console.log(jsonResp);
-            mapData = jsonResp;
-            fetched1 = true;
-            // REMOVE LOADING STATE
             submitBtn1.removeAttribute("disabled");
             submitBtn1.textContent = 'Set';
+            console.log(jsonResp);
+            if(jsonResp != null){
+                mapData = jsonResp;
+                fetched1 = true;
+                return true;
+           
+            }
+            return false;
         })
-        .then(function() {
-            if(aut==true)
-            {loadMap();
-            mapDiv.scrollIntoView();
+        .then(function(mapDataIsSet) {
+            if(mapDataIsSet)
+            {
+                loadMap();
+                mapDiv.scrollIntoView();
+            }
+            else{
+                mmessage.innerHTML = "You must be logged in to view maps";
             }
         })
         .catch(function (err) {

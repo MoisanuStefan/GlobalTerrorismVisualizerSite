@@ -16,9 +16,9 @@ let fetched=false;
 let chartType = document.getElementById("chartType");
 let chart;
 let chartDiv = document.getElementById("chartdiv");
+let message = document.getElementById("chart-text");
 
 submitBtn.addEventListener("click", onClick);
-
 function onClick(){
     // LOADING STATE
     submitBtn.setAttribute("disabled", true);
@@ -46,22 +46,46 @@ function onClick(){
     var data = new FormData();
     data.append( "json", JSON.stringify( payload ) );
 
-    
-    fetch("api/statistics",{ method:"POST", body: JSON.stringify(payload)})
+    var authHeader = getCookie('authHash');
+    if(authHeader === ""){
+        authHeader = 'none';
+    }
+    fetch("api/statistics",{ 
+        method:"POST",
+        headers: new Headers({
+            'Authorization': authHeader
+          }),  
+        body: JSON.stringify(payload)})
         .then(function (resp) {
+            //user is not logged in
+            if(resp.status == 401){
+                return null;
+            }
             return resp.json();
         })
         .then(function (jsonResp) {
-            chartData = jsonResp;
-            fetched = true;
+           // console.log(jsonResp);
             // REMOVE LOADING STATE
             submitBtn.removeAttribute("disabled");
             submitBtn.textContent = 'Set';
+            if(jsonResp != null){
+                chartData = jsonResp;
+                //console.log(jsonResp);
+                fetched = true;
+                return true;
+            }
+              
+              return false;
+           
         })
-        .then(function() {
-            if(aut==true)
-            {loadChart();
-            chartDiv.scrollIntoView();}
+        .then(function(chartDataIsSet) {
+            if(chartDataIsSet){
+                loadChart();
+                chartDiv.scrollIntoView();
+            }
+            else{
+                message.innerHTML = "You must be logged in to access statistics";
+            }
         })
         .catch(function (err) {
             console.log(err);
@@ -238,3 +262,4 @@ function loadLineChart(chartData){
 
                 
 }
+

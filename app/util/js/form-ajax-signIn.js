@@ -28,9 +28,10 @@ function onClick(){
     fetch("api/logIn",{ method:"POST", body: JSON.stringify(payload)})
         .then(function (resp) {
              
-            return resp.json();
+            return resp.text();
         })
         .then(function (jsonResp) {
+            console.log(jsonResp);
             if(parseInt(jsonResp)==1)
             {signDiv2.style.visibility='hidden'; 
             MapText.style.visibility="visible";

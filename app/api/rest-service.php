@@ -21,6 +21,7 @@ $allHeaders = getallheaders();
 $allRoutes =  [
     [
         "method" => "POST",
+        "middlewares" => ["isLoggedIn"],
         "route" => "statistics",
         "handler" => "getChartData"
     ],
@@ -38,6 +39,7 @@ $allRoutes =  [
     ],
     [
         "method" => "POST",
+        "middlewares" => ["isLoggedIn"],
         "route" => "map",
         "handler" => "getMapData"
     ],
@@ -110,18 +112,18 @@ function parseRequest($routeConfig)
         } else {
             $payload = NULL;
         }
-
+        
 
         // if middlewares =>  run them first
 
         if (isset($routeConfig['middlewares'])) {
+
             foreach ($routeConfig['middlewares'] as $middlewareName) {
                 $didPass = call_user_func($middlewareName, [
                     "params" => $params,
                     "query" => $query,
                     "payload" => $payload
                 ]);
-
                 if (!$didPass) {
                     exit();
                 }
@@ -167,35 +169,31 @@ function routeExpToRegExp($route)
 }
 
 
-// if (
-//     $_SERVER['REQUEST_METHOD'] !== 'OPTIONS' &&
-//     $_SERVER['REQUEST_METHOD'] !== 'GET' &&
-//     (!isset($allHeaders['Content-Type']) || $allHeaders['Content-Type'] !== 'application/json')
-// ) {
-//     header("Content-type: application/json");
-//     http_response_code(400);
-//     echo '{"status": 400, "reason": "Expecting payload as JSON" }';
-//     exit;
-// }
+class Response {
+    static function status($code) {
+        http_response_code($code);
+    }
+ 
+    static function json($data) {
+        header('Content-Type: application/json');
+        echo json_encode($data);
+    }
+}
 
 
+function isLoggedIn($req)
+{
+    $allHeaders = getallheaders();
 
-// switch ($_SERVER['REQUEST_METHOD']) {
-//     case "GET":
-
-//         echo "GET to rest service";
-//         break;
-//     case "POST":
-//         header("Content-type: application/json");
-
-//         $body = json_decode(file_get_contents("php://input"));
-//         // insert
-//         http_response_code(201);
-
-//         $body->id = uniqid();
-//         echo json_encode($body);
-
-//         break;
-//     default:
-//         break;
-// }
+    if ($allHeaders['authorization'] != 'none') {
+        return true;
+    }
+    
+    Response::status(401);
+    Response::json([
+        "status" => 401,
+        "reason" => "You can only access this route if you're logged in!"
+    ]);
+ 
+    return false;
+}

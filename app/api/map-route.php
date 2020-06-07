@@ -6,6 +6,7 @@ include_once "../model/mBD.php";
 $chartRoutes = [
     [
         "method" => "POST",
+        "middlewares" => ["isLoggedIn"],
         "route" => "map",
         "handler" => "getMapData"
     ]

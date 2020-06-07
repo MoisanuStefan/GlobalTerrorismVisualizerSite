@@ -10,23 +10,25 @@ class MMap{
     }
 
 
-
+	/**
+	 * the function searches and returns the data, in order to generate the map considering the user's options
+	 */
     public function searchData($array){
-		 $sql='SELECT DISTINCT country_txt, latitude, longitude FROM attacks';
-        $sqll= $this->createQuery($array);
+		 //$sql='SELECT DISTINCT country_txt, latitude, longitude FROM attacks';
+        	$sqll= $this->createQuery($array);
 			$cerere=BD::obtine_conexiune()->prepare($sqll);
 			$cerere->execute();
-			//echo "MY QUERY IS".$sqll;
 			$msg= $cerere->fetchAll();
 			if($msg==NULL)
-			{ //echo "no data";
 				return 0;
-            }
             
 			return $msg;
 
     }
 
+	/**
+	 * the function creates the query, given the specific conditions
+	 */
     public function createQuery($array){
 		
 		$sqll='SELECT country_txt, latitude, longitude  FROM attacks '; 

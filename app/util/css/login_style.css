@@ -77,3 +77,22 @@ border-radius: 10px;
     font-size: 80%;
     color: red;
 }
+
+@media screen and (max-width: 750px) {
+    .flexbox {
+		width: 100%;
+		display: block;
+		margin-right: 0px;
+	}
+	.logIn {
+		float: none;
+		width: 80%;
+		margin: auto;
+	}
+	.signIn {
+		float: none;
+		width: 80%;
+		margin-left: 0px;
+		margin: auto;
+    }
+}

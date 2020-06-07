@@ -15,8 +15,7 @@
     justify-content: space-around;
     text-align: left;
  }
-#statistics-filters {
-    
+.statistics-filters{
     margin: 5px;
     display: flex;
     flex-direction: row;
@@ -33,17 +32,22 @@
     margin: 5px;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    justify-content: center;
     width: 40%;
     background-color:#d9d9d9;
     border-radius: 5px;
 }
 
-
-#year_l {
+#year_l1{
     width: 30%;
 }
-#year_h {
+#year_h1{
+    width: 30%;
+}
+#year_l{
+    width: 30%;
+}
+#year_h{
     width: 30%;
 }
 label {
@@ -70,9 +74,6 @@ label {
     -moz-appearance: none;
 }
 
-
-
-
 #time-interval{
     padding: 0;
     margin: 0;
@@ -98,4 +99,20 @@ border-radius: 10px;
     background:black;
     width:30%;
     transition: 0.4s;
+}
+@media screen and (max-width: 750px) {
+    .statistics-filters{
+        width: 95%;
+      display: block;
+    }
+    .statistics-column{
+        float: none;
+        width: 95%;
+        margin-left: 20px;
+        margin-bottom: 20px;
+    }
+    #statisitcs-settings{
+        width: 90%;
+       
+    }
 }

@@ -11,6 +11,7 @@
       <link rel="stylesheet" type="text/css" href="app/util/css/chart_style.css">
       <link rel="stylesheet" type="text/css" href="app/util/css/footer_style.css">
       <link rel="stylesheet" type="text/css" href="app/util/css/map_style.css">
+      <link rel="stylesheet" type="text/css" href="app/util/css/team_style.css">
 
    </head>
    <body>
@@ -118,7 +119,7 @@ Our Web app gives you the possibility to create and save your own statistics and
                   </select>
 				  </div>
                </div>
-               <div id="statistics-filters">
+               <div class="statistics-filters">
                   <div class="statistics-column">
                      <label>Years between: </label>
 					 <div id="time-interval">
@@ -204,22 +205,35 @@ Our Web app gives you the possibility to create and save your own statistics and
                <h2 class="titles">Maps</h2>
             </span>
 			   <h3>Generate your own map! You can customize the map by specifying different data regarding the terrorist attacks.  </h3>
+             <form action="index.php" method="GET">
+               <div class="statistics-filters">
+                  <div class="statistics-column">
+                     <input type="hidden" name="actiune" value="changeMap">
+
+                     <label>Years between: </label>
+                     <div id="time-interval">
+                        <input id="year_l1" class="inp-field" type="text" name="year_l1" >-
+                        <input id="year_h1" class="inp-field" type="text" name="year_h1" >
+                     </div>
+
+                     <label for="month">Month: </label>
+                     <input  id="month1"  class="smaller" type="text" name="month1">
+
+                     <label for="day">Day:</label>
+                     <input id="day1" class="smaller" type="text" name="day1">
+                  </div>
+
+                  <div class="statistics-column">
+                     <label for="country">Country:</label>
+                     <input id="country1" class="inp-field" type="text" name="country1">
+
+                     <label for="city">City:</label>
+                     <input id="city1" class="inp-field" type="text" name="city1">
+                  </div>
+               </div>
+               <button id="fetchBtn" class="setButton" type="button">SET</button>
+            </form>  
                
-               <form action="index.php" method="POST">
-			Years between: 
-			<input id="year_l1" type="text" name="year_l1">
-			and 
-			<input id="year_h1" type="text" name="year_h1">
-			Month:
-			<input  id="month1" type="text" name="month1">
-			Day:
-			<input id="day1" type="text" name="day1">
-			Country:
-			<input id="country1" type="text" name="country1">
-			City:
-			<input id="city1" type="text" name="city1">
-			<button id="fetchBtnMap" type="button">Map Me!</button>
-			</form>
                <p>mapa</p>
                <div id="mapdiv"><h2>configure map options and hit map me! button to load your map here.<h2></div>
 

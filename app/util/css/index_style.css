@@ -169,6 +169,10 @@ margin-right: -10px;
     height: auto;
 
 }
+#chartdiv {
+	width: 100%;
+	height: auto;
+}
 
 #teamsParent {text-align: center;}
 
@@ -193,11 +197,6 @@ img {
   max-width: 100%;
 }
 
-#map {
-  position: relative;
-  max-width: 1280px;
-  margin: 0 auto;
-}
 
 
 .footer{
@@ -211,29 +210,6 @@ img {
     justify-content: center;
     align-items: center;
 }
-
-
-
-  /*nu merge pt sign in*/
-  /* Display the columns below each other instead of side by side on small screens */
-  @media screen and (max-width: 650px) {
-    .column {
-      width: 100%;
-      display: block;
-    }
-    .signIn {
-        float: none;
-        width: 100%;
-        display: block;
-      }
-      .logIn{
-        float: none;
-        width: 100%;
-        display: block;
-      }
-  }
-  
-
 #nav1{
     color: #d9d9d9; ;
 }
@@ -244,5 +220,98 @@ img {
 #nav3{
     color: #d9d9d9; ;
 }
-
-
+.titles{
+    text-decoration: wavy;
+    text-shadow: 2px 2px 3px black;
+    font-family: 'Coldiac';
+    font-size: 60px;
+    margin-top: -50px;
+    margin-bottom: 100px;
+    font-style: oblique;
+ }
+@media only screen and (max-width: 600px) {
+    .titles {
+        font-size: 50px;
+    }
+    
+}
+@media only screen and (max-width: 1000px) {
+	.meniu {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+	}
+	.containerNav {
+		width: 100%;
+    }
+    .row{
+        display: block;
+    }
+	.column {
+		width: 90%;
+		display: block;
+		margin-left: 0px;
+        margin: auto;
+        margin-bottom: 20px;
+    }
+    #profileImg {
+        border-radius: 50%;
+        width: 30%;
+        margin-top: 20px;
+    }
+    #socButton {
+        width: 7%;
+    }
+}
+@media only screen and (max-width: 1000px) {
+	.llogo {
+		visibility: collapse;
+		width: 0%;
+    }
+    .meniu {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+    }
+    .containerNav {
+		width: 100%;
+    }
+}
+@media screen and (max-width: 750px) {
+    .meniu{
+        display: block;
+    }
+    ul.meniu li {
+		display: block;
+		padding: 0px;
+		display: block;
+		font-size: 1em;
+		line-height: 15px;
+		width: 100%;
+		margin-top: 3px;
+		margin-bottom: 4px;
+	}
+	.containerNav{
+		margin-top: 10px;
+	}
+	.navbar {
+        height: 130px;
+        position: relative;
+    }
+    .title-content h1 {
+        font-size: 230%;
+       margin-top: 100px;
+    }
+    .title-content h2 {
+        width: 40%;
+    }
+}
+@media only screen and (max-width: 1150px) {
+    .title-content h1 {
+        font-size: 300%;
+       margin-top: 100px;
+    }
+    .title-content h2 {
+        width: 60%;
+    }
+}

@@ -5,6 +5,7 @@ let month1 = document.getElementById("month1");
 let day1 = document.getElementById("day1");
 let country1 = document.getElementById("country1");
 let city1 = document.getElementById("city1");
+let mapDiv=document.getElementById("mapdiv");
 let mapdata;
 let fetched1=false;
 let map;
@@ -48,6 +49,7 @@ function onClick(){
         })
         .then(function() {
             loadMap();
+            mapDiv.scrollIntoView();
         })
         .catch(function (err) {
             console.log(err);

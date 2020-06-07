@@ -5,15 +5,11 @@ let logdata1;
 let fetched3=false;
 let map2;
 let signDiv2=document.getElementById("idSign");
-
+let wrongPassword=document.getElementById("wrong");
 submitBtn3.addEventListener("click", onClick);
 
 function onClick(){
-    // LOADING STATE
     submitBtn3.setAttribute("disabled", true);
-    submitBtn3.textContent = "...";
-    // CALL
-
    
     var payload = {
         user : user1.value,
@@ -28,13 +24,15 @@ function onClick(){
     
     fetch("api/logIn",{ method:"POST", body: JSON.stringify(payload)})
         .then(function (resp) {
-            return resp.text();
+             
+            return resp.json();
         })
         .then(function (jsonResp) {
             if(parseInt(jsonResp)==1)
-            signDiv2.style.visibility='hidden'; 
+            {signDiv2.style.visibility='hidden'; }
+            else
+            wrongPassword.style.visibility='visible';
            console.log(jsonResp);
-
             logdata1 = jsonResp;
             fetched3 = true;
             submitBtn1.removeAttribute("disabled");

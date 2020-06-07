@@ -48,6 +48,7 @@
 			   <span typeof="schema:Register" >
                   <h2 class="titles" id="nav1">Register</h2>
                </span>
+              
                   <div class="flexbox" id="idSign">
                      
                        <form action="index.php" method="POST" class="logIn">
@@ -57,6 +58,7 @@
                         <input class="logInput" id="topfield"  type="text" name="user" placeholder="Username" autocomplete="off">
                         <input class="logInput" type="text" id="password1" name="password" placeholder="Password" autocomplete="off">
                         <button class="logButton" id="fetchBtnLogIn" type="button">Log in</button>
+                         <h1 id="wrong">Wrong username or password!</h1>
                         </form>
                         
                         

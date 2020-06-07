@@ -48,8 +48,10 @@ function onClick(){
             submitBtn1.textContent = 'Set';
         })
         .then(function() {
-            loadMap();
+            if(aut==true)
+            {loadMap();
             mapDiv.scrollIntoView();
+            }
         })
         .catch(function (err) {
             console.log(err);

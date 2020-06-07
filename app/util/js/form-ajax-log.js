@@ -28,6 +28,7 @@ function onClick(){
         .then(function (resp) {
             signDiv.style.visibility='hidden'; 
             wrongg.style.visibility='hidden';
+            aut=true;
             return resp.text();
         })
         .then(function (jsonResp) {

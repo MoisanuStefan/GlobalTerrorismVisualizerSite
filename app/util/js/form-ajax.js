@@ -59,8 +59,9 @@ function onClick(){
             submitBtn.textContent = 'Set';
         })
         .then(function() {
-            loadChart();
-            chartDiv.scrollIntoView();
+            if(aut==true)
+            {loadChart();
+            chartDiv.scrollIntoView();}
         })
         .catch(function (err) {
             console.log(err);

@@ -6,6 +6,9 @@ let fetched3=false;
 let map2;
 let signDiv2=document.getElementById("idSign");
 let wrongPassword=document.getElementById("wrong");
+let aut=false;
+let MapText=document.getElementById("authent");
+let MapText2=document.getElementById("beforeAut");
 submitBtn3.addEventListener("click", onClick);
 
 function onClick(){
@@ -29,7 +32,10 @@ function onClick(){
         })
         .then(function (jsonResp) {
             if(parseInt(jsonResp)==1)
-            {signDiv2.style.visibility='hidden'; }
+            {signDiv2.style.visibility='hidden'; 
+            MapText.style.visibility="visible";
+            MapText2.style.visibility="hidden";
+            aut=true;}
             else
             wrongPassword.style.visibility='visible';
            console.log(jsonResp);

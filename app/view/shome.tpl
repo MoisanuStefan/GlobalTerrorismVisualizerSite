@@ -231,11 +231,13 @@ Our Web app gives you the possibility to create and save your own statistics and
                      <input id="city1" class="inp-field" type="text" name="city1">
                   </div>
                </div>
-               <button id="fetchBtn" class="setButton" type="button">SET</button>
+               <button id="fetchBtnMap" class="setButton" type="button">SET</button>
             </form>  
                
                <p>mapa</p>
-               <div id="mapdiv"><h2>configure map options and hit map me! button to load your map here.<h2></div>
+               <div id="mapdiv">
+               <h2 id="authent">configure map options and hit map me! button to load your map here.<h2>
+               </div>
 
          
 

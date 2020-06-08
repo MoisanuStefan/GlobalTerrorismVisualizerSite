@@ -31,7 +31,7 @@
 				<li><a href="#section3">Statistics</a> </li>
 				<li><a href="#section5">Maps</a> </li>
 				<li><a href="#section4">Team</a> </li>
-            <li><a href="#section1">Register</a> </li>
+            <li><a id="loginLI" href="#section1">Log in</a> </li>
 				
 				</ul>
 			</div>
@@ -67,10 +67,10 @@
                         <form action="index.php" method="POST" class=signIn>
                         <input type="hidden" name="actiune" value="SignIn">
                         <p class="topText">Create a new account !</p>
-                        <input class="logInput" id="topfield" type="text" name="name" placeholder="Name" autocomplete="off">
+                        <input class="logInput" id="name" type="text" name="name" placeholder="Name" autocomplete="off">
                         <input class="logInput" type="text" id="user" name="user" placeholder="Username" autocomplete="off">
                         <input class="logInput" type="text" id="password" name="password" placeholder="Password" autocomplete="off">
-			               <button id="fetchBtnLog" class="logButton" type="button">Sing up</button>
+			               <button id="fetchBtnLog" class="logButton" type="button">Sign up</button>
                         </form>
                         
 
@@ -337,7 +337,7 @@ Our Web app gives you the possibility to create and save your own statistics and
       <script src="app/util/js/common-resources.js"></script>
       <script src="app/util/js/form-ajax.js"></script>
       <script src="app/util/js/form-ajax-map.js"></script>
-	   <script src="app/util/js/form-ajax-log.js"></script>
-      <script src="app/util/js/form-ajax-signIn.js"></script>
+	   <script src="app/util/js/form-ajax-sign-up.js"></script>
+      <script src="app/util/js/form-ajax-sign-in.js"></script>
    </body>
 </html>

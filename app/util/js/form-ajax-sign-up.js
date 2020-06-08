@@ -1,19 +1,18 @@
 let submitBtn2 = document.getElementById("fetchBtnLog");
+let name = document.getElementById("name");
 let user = document.getElementById("user");
 let password = document.getElementById("password");
 let logdata;
 let fetched2=false;
-let map1;
 let signDiv=document.getElementById("idSign");
 let wrongg=document.getElementById("wrong");
 submitBtn2.addEventListener("click", onClick);
+let section1=document.getElementById("section1");
 
 function onClick(){
-    submitBtn2.setAttribute("disabled", true);
-    
-
    
     var payload = {
+        name: name.value,
         user : user.value,
         password : password.value
         
@@ -24,26 +23,22 @@ function onClick(){
     data.append( "json", JSON.stringify( payload ) );
 
     
-    fetch("api/singUp",{ method:"POST", body: JSON.stringify(payload)})
-        .then(function (resp) {
-            signDiv.style.visibility='hidden'; 
-            wrongg.style.visibility='hidden';
-            aut=true;
-            return resp.text();
-        })
-        .then(function (jsonResp) {
-           console.log(jsonResp);
-            logdata = jsonResp;
-            fetched2 = true;
-            submitBtn1.removeAttribute("disabled");
-            submitBtn1.textContent = 'Set';
+    fetch("api/signUp",{ method:"POST", body: JSON.stringify(payload)})
+        .then( function() {
+            console.log('here');
+            clearSignUpFields();
         })
         .catch(function (err) {
             console.log(err);
         })
     
+    
    
     
 }
-var previous = "";
 
+function clearSignUpFields (){
+    name.value = "";
+    user.value = "";
+    password.value = "";
+}

@@ -17,7 +17,7 @@ function searchUser($req) {
     $modifiedPayload = $req['payload'];
 	$model= new MLogIn();
     $data = json_decode(file_get_contents("php://input"));
-	$answer=$model->searchUser($data->user,$data->password);
+    $responseBody = $model->searchUser($data->user,$data->password);
     Response::status(200);
-    Response::json($answer);
+    Response::json($responseBody);
 }

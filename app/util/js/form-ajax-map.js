@@ -177,6 +177,7 @@ function loadLineMap(mapData){
 
         //exporting the map
         map.exporting.menu = new am4core.ExportMenu();
+        map.exporting.menu.items[0].icon = "app/util/resources/images/export-button.png";
         map.exporting.menu.align = "left";
         map.exporting.menu.verticalAlign = "top";
 

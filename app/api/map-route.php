@@ -27,7 +27,7 @@ function getMapData($req) {
                 $data[$index]['title'] = $line['country_txt']; 
                 $data[$index]['latitude'] = floatval($line['latitude']);
                 $data[$index]['longitude'] = floatval($line['longitude']);
-                $data[$index]['color'] = 'red';
+                $data[$index]['color'] = '#997300';
                 $index++;
                 if($index>10) break;
             }

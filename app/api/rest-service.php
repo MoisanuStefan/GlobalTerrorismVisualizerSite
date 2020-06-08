@@ -4,9 +4,9 @@
 <?php
 
 require_once "./chart-route.php";
-require_once "./log-route.php";
+require_once "./sign-up-route.php";
 require_once "./map-route.php";
-require_once "./signIn-route.php";
+require_once "./sign-in-route.php";
 
 header("Access-Control-Allow-Origin: *");
 header("Access-Control-Allow-Headers: *");
@@ -45,7 +45,7 @@ $allRoutes =  [
     ],
     [
         "method" => "POST",
-        "route" => "singUp",
+        "route" => "signUp",
         "handler" => "insertUser"
     ],
     [

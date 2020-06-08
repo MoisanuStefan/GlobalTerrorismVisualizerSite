@@ -5,7 +5,7 @@ include_once "../model/mBD.php";
 $chartRoutes = [
     [
         "method" => "POST",
-        "route" => "singUp",
+        "route" => "signUp",
         "handler" => "insertUser"
     ]
 
@@ -24,7 +24,7 @@ function insertUser($req) {
 	//if (empty($data->user)) echo "no username";
 	//if (empty($data->password)) echo "no password";
 	//echo "bag in baza de date userul $data->user parola $data->password:<br>";
-	$model->insertUser($data->user,$data->password);
+	$model->insertUser($data->name, $data->user,$data->password);
     Response::status(200);
     Response::json($modifiedPayload);
 }

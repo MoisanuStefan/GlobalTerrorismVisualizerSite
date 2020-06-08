@@ -2,7 +2,6 @@
 <html lang="en">
    <head>
       <meta charset="UTF-8">
-      <meta name="viewport" content="width=device-width, initial-scale=1.0">
       <meta http-equiv="X-UA-Compatible" content="ie=edge">
       <title>Global Terrorism</title>
       <link rel="stylesheet" type="text/css" href="app/util/css/index_style.css">
@@ -27,6 +26,7 @@
 			<div class="navbar_links">
 				<ul class="meniu">
 				<li><a href="#head">Home</a> </li>
+            <li id="adminLI"><a href="app/view/admin.html">myTeViAdmin</a></li>
 				<li><a href="#section2">About</a> </li>
 				<li><a href="#section3">Statistics</a> </li>
 				<li><a href="#section5">Maps</a> </li>

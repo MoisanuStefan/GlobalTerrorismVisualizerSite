@@ -64,6 +64,10 @@ body{
     
 }
 
+#adminLI{
+    display: none;
+}
+
 .meniu li{
 float: left;
 line-height: 70px;

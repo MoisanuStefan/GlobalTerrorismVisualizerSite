@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+   <head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>MyAdmin</title>
+   </head>
+   <body>
+       <h1>myTeViAdmin</h1>
+       <h2>Control panel for managing TeVi website database</h2>
+       <div id="attacks-panel">
+            <h2>Attacks Panel</h2>
+            <div id="ainsert-column">
+                <h3>Insert</h3>
+                <label>Year</label>
+                <input id="iyear" type="text">
+                <label>Month</label>
+                <input id="imonth" type="text">
+                <label>Day</label>
+                <input id="iday" type="text">
+                <label>Country</label>
+                <input id="country_txt" type="text">
+                <label>City</label>
+                <input id="city" type="text">
+                <label>Latitude</label>
+                <input id="latitude" type="text">
+                <label>Longitude</label>
+                <input id="longitude" type="text">
+                <label>Success</label>
+                <input id="success" type="text">
+                <label>Suicide</label>
+                <input id="suicide" type="text">
+                <label>Attack type</label>
+                <input id="attacktype1_txt" type="text">
+                <label>Target type</label>
+                <input id="targtype1_txt" type="text">
+                <label>Weapon type</label>
+                <input id="weaptype1_txt" type="text">
+                <button id="insert-attack">Insert</button>
+            </div>
+            <div id="adelete-column">
+                <h3>Delete</h3>
+                <label>Id</label>
+                <input id="id" type="text">
+                <button id="delete-attack">Delete</button>
+            </div>
+        </div>
+        <div id="users-panel">
+            <h2>Users Panel</h2>
+            <div id="udelete-column">
+                <label>Username</label>
+                <input id="user" type="text">
+                <button id="delete-user">Delete</button>
+                <button id="make-admin">Make admin</button>
+                <button id="unmake-admin">Make standard user</button>
+
+            </div>
+            
+        </div>
+   </body>
+</html>

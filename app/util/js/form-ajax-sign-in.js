@@ -8,6 +8,7 @@ let wrongPassword=document.getElementById("wrong");
 let section11=document.getElementById("section1");
 let loginLI = document.getElementById("loginLI");
 let section12=document.getElementById("section1");
+let adminLI=document.getElementById("adminLI");
 let savedName;
 let savedDisplay;
 
@@ -16,12 +17,12 @@ submitBtn3.addEventListener("click", onClick);
 handleLogoutHover();
 
 function onClick(){
+    adminLI.style.display='inline';
     submitBtn3.setAttribute("disabled", true);
    
     var payload = {
         user : user1.value,
         password : password1.value
-        
     
     };
     
@@ -72,6 +73,8 @@ function handleLogoutHover(){
         loginLI.innerHTML = getCookie('name');
         savedDisplay = section12.style.display;
         section12.style.display='none';
+        adminLI.style.display='inline';
+        
     }
     loginLI.addEventListener('click', function(){
         if(getCookie('authHash') !== ""){
@@ -79,7 +82,9 @@ function handleLogoutHover(){
             document.cookie = "name=; expires = Thu, 01 Jan 1970 00:00:00 GMT; path=/;";    
             section11.style.display = savedDisplay;
             loginLI.setAttribute('href', '#section1');
-            loginLI.innerHTML = 'Log in';                       
+            loginLI.innerHTML = 'Log in';           
+            
+            adminLI.style.display='none';
         }
     })
 

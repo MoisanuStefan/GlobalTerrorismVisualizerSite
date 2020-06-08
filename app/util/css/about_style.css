@@ -1,0 +1,36 @@
+#aboutPoem{
+    font-style: italic;
+    font-size: large;
+    margin-bottom: 50px;
+    text-align:right;
+}
+
+#about{
+    font-family: Coldiac, serif;
+}
+
+#aboutDetails{
+    margin-top:50px;
+    overflow-y: scroll;
+    height:100px;
+    text-align: left;
+    margin-bottom: 50px;
+    
+}
+#aboutDetails:hover{
+    box-shadow: 0px 2px 20px 5px rgba(0, 0, 0, 0.5);
+}
+
+#aboutLine{
+margin-left: 40%;
+
+}
+
+#aboutLine2{
+    margin-right: 40%;
+}
+
+.aboutLine1{
+    margin-right:10%;
+}
+

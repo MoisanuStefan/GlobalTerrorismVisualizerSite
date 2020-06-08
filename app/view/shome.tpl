@@ -12,6 +12,7 @@
       <link rel="stylesheet" type="text/css" href="app/util/css/footer_style.css">
       <link rel="stylesheet" type="text/css" href="app/util/css/map_style.css">
       <link rel="stylesheet" type="text/css" href="app/util/css/team_style.css">
+      <link rel="stylesheet" type="text/css" href="app/util/css/about_style.css">
 
    </head>
    <body>
@@ -81,15 +82,27 @@
          </div>
          <div id="section2" class="sections">
             <div class="content">
-               <h2 class="titles">About</h2>
-               <p> Terrorism attacks are real<br>
-we can't completely save our nation<br>
-But at least our website gives<br>
-the most powerful weapon- information<br>
+               <h2 class="titles">Portfolio</h2>
+               
+               <div id="about"> 
+               <div id="aboutPoem">
+               "Terrorism attacks are real...<br>
+               We can't completely save our nation,<br>
+               But at least, our website gives<br>
+               the most powerful weapon- information!"<br>
+               
+               </div>
+               <div class="aboutLine1"><hr id="aboutLine"></div>
+               
+               <div id="aboutDetails">
 Our Web app gives you the possibility to create and save your own statistics and maps, by customizing your options.<br>
  We use data from thousands of terrorist attacks from all around the world in order to generate the most accurate statistics and map visualizers.
-
-               </p>
+ <br>
+ "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.""Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.""
+               </div>
+               <hr id="aboutLine2">
+               </div>
+               
             </div>
          </div>
          <div id="section3" class="sections">

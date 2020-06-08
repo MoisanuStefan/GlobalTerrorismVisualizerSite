@@ -3,7 +3,9 @@
 
 	class MLogIn
 	{
-
+		/**
+		 * the function searches for a specific user in the data base in order to complete the login process.
+		 */
 		public function searchUser($user, $password)
 		{
 		 $sql='SELECT id, hash FROM tusers where user like :user AND password like :password ';
@@ -18,6 +20,9 @@
 			return 1;
 		}
 
+		/**
+		 * the function inserts a new user in the database, generating him an user hash
+		 */
 		public function insertUser($user, $password)
 		{
 			$userHash = hash('md5', $user);

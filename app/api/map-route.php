@@ -10,11 +10,12 @@ $chartRoutes = [
         "route" => "map",
         "handler" => "getMapData"
     ]
-
    
 ];
 
- 
+ /**
+  * The function gets the raw data from the model, considering the users options, and creates and returns it in JSON format
+  */
 function getMapData($req) {
     $modifiedPayload = $req['payload'];
     $model = new MMap();
@@ -26,6 +27,7 @@ function getMapData($req) {
                 $data[$index]['title'] = $line['country_txt']; 
                 $data[$index]['latitude'] = floatval($line['latitude']);
                 $data[$index]['longitude'] = floatval($line['longitude']);
+                $data[$index]['color'] = 'red';
                 $index++;
                 if($index>10) break;
             }

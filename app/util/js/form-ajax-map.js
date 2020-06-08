@@ -16,7 +16,7 @@ submitBtn1.addEventListener("click", onClick);
 function onClick(){
     // LOADING STATE
     submitBtn1.setAttribute("disabled", true);
-    submitBtn1.textContent = "...";
+    submitBtn1.textContent = "Loading";
     // CALL
 
    
@@ -53,7 +53,7 @@ function onClick(){
         })
         .then(function (jsonResp) {
             submitBtn1.removeAttribute("disabled");
-            submitBtn1.textContent = 'Set';
+            submitBtn1.textContent = 'Map Me!';
             console.log(jsonResp);
             if(jsonResp != null){
                 mapData = jsonResp;
@@ -67,11 +67,12 @@ function onClick(){
             if(mapDataIsSet)
             {
                 loadMap();
-                mapDiv.scrollIntoView();
+                
             }
             else{
                 mmessage.innerHTML = "You must be logged in to view maps";
             }
+            mapDiv.scrollIntoView();
         })
         .catch(function (err) {
             console.log(err);

@@ -26,11 +26,11 @@
 			<div class="navbar_links">
 				<ul class="meniu">
 				<li><a href="#head">Home</a> </li>
-				<li><a href="#section1">Register</a> </li>
-				<li><a href="#section2">Portfolio</a> </li>
+				<li><a href="#section2">About</a> </li>
 				<li><a href="#section3">Statistics</a> </li>
 				<li><a href="#section5">Maps</a> </li>
 				<li><a href="#section4">Team</a> </li>
+            <li><a href="#section1">Register</a> </li>
 				
 				</ul>
 			</div>
@@ -81,7 +81,7 @@
          </div>
          <div id="section2" class="sections">
             <div class="content">
-               <h2 class="titles">Portfolio</h2>
+               <h2 class="titles">About</h2>
                <p> Terrorism attacks are real<br>
 we can't completely save our nation<br>
 But at least our website gives<br>

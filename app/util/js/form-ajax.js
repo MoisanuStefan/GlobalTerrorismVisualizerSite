@@ -22,7 +22,7 @@ submitBtn.addEventListener("click", onClick);
 function onClick(){
     // LOADING STATE
     submitBtn.setAttribute("disabled", true);
-    submitBtn.textContent = "...";
+    submitBtn.textContent = "Loading";
     // CALL
 
    
@@ -59,15 +59,20 @@ function onClick(){
         .then(function (resp) {
             //user is not logged in
             if(resp.status == 401){
+                message.innerHTML = "You must be logged in to access statistics";
+                return null;
+            }
+            if(resp.status == 204){
+                message.innerHTML = "There is no data matching your criteria. Try a different combination of filters";
                 return null;
             }
             return resp.json();
         })
         .then(function (jsonResp) {
-           // console.log(jsonResp);
+           //console.log(jsonResp);
             // REMOVE LOADING STATE
             submitBtn.removeAttribute("disabled");
-            submitBtn.textContent = 'Set';
+            submitBtn.textContent = 'Chart Me!';
             if(jsonResp != null){
                 chartData = jsonResp;
                 //console.log(jsonResp);
@@ -81,11 +86,10 @@ function onClick(){
         .then(function(chartDataIsSet) {
             if(chartDataIsSet){
                 loadChart();
-                chartDiv.scrollIntoView();
+                
             }
-            else{
-                message.innerHTML = "You must be logged in to access statistics";
-            }
+            
+            chartDiv.scrollIntoView();
         })
         .catch(function (err) {
             console.log(err);
@@ -136,8 +140,8 @@ function loadPieChart(chartData){
         var series = chart.series.push(new am4charts.PieSeries3D());
         series.dataFields.value = "value";
         series.dataFields.category = "to_graph";
-
         chart.exporting.menu = new am4core.ExportMenu();
+        chart.exporting.menu.items[0].icon = "app/util/resources/images/export-button.png";
         chart.exporting.menu.align = "left";
         chart.exporting.menu.verticalAlign = "top";
         chart.exporting.formatOptions.getKey("jpg").disabled = true;

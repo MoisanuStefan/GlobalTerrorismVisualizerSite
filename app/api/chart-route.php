@@ -33,6 +33,8 @@ function getChartData($req) {
     $raw_data = $model->getDistinctAndCount($modifiedPayload);
 
     if($raw_data==NULL){
+
+        echo 'here';
         Response::status(204); // no content
     }
 
@@ -61,6 +63,7 @@ function getChartDataByCountry($req){
 
     if($raw_data==NULL){
         Response::status(204); // no content
+        exit();
     }
     $index = 0;
     $data = array();

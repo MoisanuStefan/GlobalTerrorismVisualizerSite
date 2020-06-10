@@ -14,9 +14,9 @@ $chartRoutes = [
 ];
 
 function searchUser($req) {
-    $modifiedPayload = $req['payload'];
+    $data = $req['payload'];
+   
 	$model= new MLogIn();
-    $data = json_decode(file_get_contents("php://input"));
     $responseBody = $model->searchUser($data->user,$data->password);
     Response::status(200);
     Response::json($responseBody);

@@ -14,6 +14,7 @@
 			$cerere->execute(["user"=> $user, "password"=> $password ]);
 			$msg= $cerere->fetchAll();
 			if($msg == null){
+				
 				$response['userFound'] = false;
 			}
 			else{

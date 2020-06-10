@@ -13,10 +13,6 @@ header("Access-Control-Allow-Headers: *");
 
 $allHeaders = getallheaders();
 
-//foreach ($loginRoutes as $i => $value) {
-//    $allRoutes[$i]=$value;
-//}
-
 
 $allRoutes =  [
     [

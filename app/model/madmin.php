@@ -25,7 +25,6 @@ class MAdmin{
                 
                 $i=$i+1;
         }
-        //print_r($array);
         $stmt = $this->connection->prepare($sql);
         $resp = $stmt->execute($array);
         echo $resp;
@@ -33,9 +32,7 @@ class MAdmin{
             return true;
         }
         return false;
-        //if($resp==false) echo 'true';
-        // else echo 'proba';
-        //echo "resp".$resp;
+       
     }
 
     //update attack
@@ -83,6 +80,10 @@ class MAdmin{
         $request->execute([
             'user' => $user
         ]);
+        if($request->rowCount() == 1){
+            return true;
+        }
+        return false;
     }
 
     //operate user
@@ -97,6 +98,10 @@ class MAdmin{
         $request->execute([
             'user' => $json->user
         ]);
+        if($request->rowCount() == 1){
+            return true;
+        }
+        return false;
     }
 
     public function getAttackById($id){

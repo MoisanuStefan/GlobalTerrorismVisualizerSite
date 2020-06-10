@@ -155,11 +155,15 @@ function deleteUser($req)
 {
    $model = new MAdmin();
    $id=$req['params']['user'];
-   $model->deleteUser($id);
-   $response = array();
-   $response['response'] = 'User deleted';
-   Response::status(200);
-   Response::json($response);
+   $response = $model->deleteUser($id);
+   if($response){
+    Response::status(200);
+    Response::json(['response' => 'user deleted']);
+    exit();
+   }
+   Response::status(204);
+   Response::json(['response' => 'unvalid user id']);
+   
    
 }
 
@@ -167,11 +171,14 @@ function operateAdmin($req)
 {
     $model = new MAdmin();
     $payload = $req['payload'];  
-    $model->operateUser($payload);
-    $response = array();
-    $response['response'] = 'User updated';
-    Response::status(200);
-    Response::json($response);  
+    $response = $model->operateUser($payload);
+    if($response){
+        Response::status(200);
+        Response::json(['response' => 'user type updated']);
+        exit();
+       }
+       Response::status(204);
+       Response::json(['response' => 'invalid user id']);
    
 }
 

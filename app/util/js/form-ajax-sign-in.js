@@ -36,7 +36,6 @@ function onClick(){
             return resp.json();
         })
         .then(function (jsonResp) {
-            console.log(jsonResp.name);
             if(jsonResp.userFound)
             {
             savedDisplay = section11.style.display;

@@ -92,10 +92,10 @@ function deleteUser(){
     fetch(getEndPoint,{ method:"DELETE"})
     .then(function (resp) {
         if(resp.status == 200){
-            alert('Attack successfully deleted');
+            alert('User successfully deleted');
         }
         else if(resp.status == 204){
-            alert('Invalid attack ID');
+            alert('Invalid username');
         }
         else{
             alert('Unknown error');
@@ -122,17 +122,26 @@ function operateAdmin(control){
         user : username.value
     };
 
+    
     var data = new FormData();
     data.append( "json", JSON.stringify( payload ) );
     
     fetch("../../api/users",{ method:"PUT", body: JSON.stringify(payload)})
          .then(function (resp) {
              username.value = '';
-            return resp.text();
+           if(resp.status == 200){
+               alert('User permissions updated');
+           }
+           else if(resp.status == 204){
+               alert("Invalid username");
+           }
+           else{
+               alert("Unkown error");
+           }
+         
          })
-         .then(function(resp){
-            console.log(resp);
-         })
+        
+       
 }
 
 

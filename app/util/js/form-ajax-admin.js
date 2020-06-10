@@ -71,7 +71,7 @@ function operateAdmin(control){
 
     var payload = {
         isAdmin : control,
-        name : username.value
+        user : username.value
     };
 
     var data = new FormData();

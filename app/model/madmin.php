@@ -56,14 +56,14 @@ class MAdmin{
     public function operateUser($json){
         print_r($json);
         if($json->isAdmin == '1'){
-            $sql = 'UPDATE tusers SET isAdmin = 1 WHERE name = :name' ;
+            $sql = 'UPDATE tusers SET isAdmin = 1 WHERE user = :user' ;
         }
         else {
-               $sql = 'UPDATE tusers SET isAdmin = 0 WHERE name = :name' ;
+               $sql = 'UPDATE tusers SET isAdmin = 0 WHERE user = :user' ;
         }
         $request = $this->connection->prepare($sql);
         $request->execute([
-            'name' => $json->name
+            'user' => $json->user
         ]);
     }
 

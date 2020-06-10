@@ -15,6 +15,7 @@ $allHeaders = getallheaders();
 
 
 $allRoutes =  [
+    // statistics for chart
     [
         "method" => "POST",
         "middlewares" => ["isLoggedIn"],
@@ -22,64 +23,76 @@ $allRoutes =  [
         "handler" => "getChartData"
     ],
 
+    // all data about events that happened in a country
     [
         "method" => "GET",
         "route" => "attacks/:country",
         "handler" => "getChartDataByCountry"
     ],
+      
+    //delete an attack by id
+    [
+        "method" => "DELETE",
+        "middlewares" => ["isAdmin"],
+        "route" => "attacks/:id",
+        "handler" => "deleteAttack"
+    ],
+
+    //add an attack
     [
         "method" => "POST",
-        "middlewares" => ["isLoggedIn"],
-        "route" => "map",
-        "handler" => "getMapData"
+        "middlewares" => ["isAdmin"],
+        "route" => "attacks",
+        "handler" => "addAttack"
     ],
+
+    // update one attack
     [
-        "method" => "POST",
-        "route" => "signUp",
-        "handler" => "insertUser"
+        "method" => "PUT",
+        "middlewares" => ["isAdmin"],
+        "route" => "attack",
+        "handler" => "updateAttack"
     ],
+     // get attack by id for update
+     [
+        "method" => "GET",
+        "route" => "attack/:id",
+        "handler" => "getAttackById"
+    ],
+
+    //delete user by username
+    [
+        "method" => "DELETE",
+        "middlewares" => ["isAdmin"],
+        "route" => "users/:user",
+        "handler" => "deleteUser"
+    ],
+
+    //update user privileges
+    [
+        "method" => "PUT",
+        "middlewares" => ["isAdmin"],
+        "route" => "users",
+        "handler" => "operateAdmin"
+    ],
+    // verify login credentials
     [
         "method" => "POST",
         "route" => "logIn",
         "handler" => "searchUser"
     ],
-     //stergere atac
-     [
-        "method" => "DELETE",
-        "route" => "attacks/:id",
-        "handler" => "deleteAttack"
-    ],
-
-    //adaugare atac
+    // create new user
     [
         "method" => "POST",
-        "route" => "attacks",
-        "handler" => "addAttack"
+        "route" => "signUp",
+        "handler" => "insertUser"
     ],
-
+    // data for map
     [
-        "method" => "DELETE",
-        "route" => "users/:user",
-        "handler" => "deleteUser"
-    ],
-
-    //update admin 
-    [
-        "method" => "PUT",
-        "route" => "users",
-        "handler" => "operateAdmin"
-    ],
-     // get attack for update
-     [
-        "method" => "GET",
-        "route" => "attack/:id",
-        "handler" => "getAttackById"
-     ],
-      // update one attack
-    [
-        "method" => "PUT",
-        "route" => "attack",
-        "handler" => "updateAttack"
+        "method" => "POST",
+        "middlewares" => ["isLoggedIn"],
+        "route" => "map",
+        "handler" => "getMapData"
     ]
 ];
 
@@ -222,6 +235,22 @@ function isLoggedIn($req)
         "status" => 401,
         "reason" => "You can only access this route if you're logged in!"
     ]);
- 
     return false;
 }
+
+function isAdmin($req){
+    $allHeaders = getallheaders();
+    $authHash = $allHeaders['authorization'];
+    $model = new MAdmin();
+    if($model->isUserAdmin($authHash)){
+        return true;
+    }
+
+    Response::status(401);
+    Response::json([
+        "status" => 401,
+        "reason" => "You can only modify database if you have admin privileges!"
+    ]);
+    return false;
+}
+

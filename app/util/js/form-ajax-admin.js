@@ -48,6 +48,10 @@ rAdmin.addEventListener("click", removeAdmin);
 getRecordButton.addEventListener("click", getUpdateRecord);
 updateAttackBtn.addEventListener("click", updateAttack);
 
+var authHeader = getCookie('authHash');
+if(authHeader === ""){
+    authHeader = 'none';
+}
 function updateAttack(){
     var payload = {
         id : uid.value,
@@ -64,20 +68,26 @@ function updateAttack(){
         targtype1_txt : utargtype1_txt.value,
         weaptype1_txt : uweaptype1_txt.value
     };
-
     var data = new FormData();
     data.append( "json", JSON.stringify( payload ) );
     
-    fetch("../../api/attack",{ method:"PUT", body: JSON.stringify(payload)})
+    fetch("../../api/attack",{ method:"PUT",
+                                headers: new Headers({ 'Authorization': authHeader}), 
+       body: JSON.stringify(payload)})
          .then(function (resp) {
             if(resp.status == 200){
                 alert('Attack sucessfully updated');
             }
+            else if(resp.status == 401){
+                alert('You must have admin privileges to modify database');
+            }
             else{
-                alert('Unknown error');
+                alert('Unkown error');
             }
             clearUpdateFields();
+           
          })
+       
         
 }
 
@@ -88,8 +98,9 @@ function deleteUser(){
     //endp?
     let getEndPoint="../../api/users/";
     getEndPoint = getEndPoint.concat(username.value);
-    console.log(getEndPoint);
-    fetch(getEndPoint,{ method:"DELETE"})
+    fetch(getEndPoint,{ method:"DELETE" ,headers: new Headers({
+        'Authorization': authHeader
+      }) })
     .then(function (resp) {
         if(resp.status == 200){
             alert('User successfully deleted');
@@ -97,14 +108,15 @@ function deleteUser(){
         else if(resp.status == 204){
             alert('Invalid username');
         }
-        else{
-            alert('Unknown error');
+        else if(resp.status == 401){
+            alert('You must have admin privileges to modify database');
         }
-     return resp.text();
+        else{
+            alert('Unkown error');
+        }
+    
     })
-    .then(function(resp){
-        console.log(resp);
-    })
+   
 }
 
 function makeAdmin(){
@@ -126,7 +138,10 @@ function operateAdmin(control){
     var data = new FormData();
     data.append( "json", JSON.stringify( payload ) );
     
-    fetch("../../api/users",{ method:"PUT", body: JSON.stringify(payload)})
+    fetch("../../api/users",{ method:"PUT", headers: new Headers({
+        'Authorization': authHeader
+      }), 
+      body: JSON.stringify(payload)})
          .then(function (resp) {
              username.value = '';
            if(resp.status == 200){
@@ -135,9 +150,12 @@ function operateAdmin(control){
            else if(resp.status == 204){
                alert("Invalid username");
            }
-           else{
-               alert("Unkown error");
-           }
+           else if(resp.status == 401){
+            alert('You must have admin privileges to modify database');
+            }
+            else{
+                alert('Unkown error');
+            }
          
          })
         
@@ -169,15 +187,22 @@ function insertAtt(){
     var data = new FormData();
     data.append( "json", JSON.stringify( payload ) );
 
-    fetch("../../api/attacks",{ method:"POST", body: JSON.stringify(payload)})
+    fetch("../../api/attacks",{ method:"POST",
+     headers: new Headers({
+        'Authorization': authHeader
+      }),  
+      body: JSON.stringify(payload)})
          .then(function (resp) {
-           
+           clearInsertFields();
              if(resp.status == 200){
                  alert('Attack successfully inserted');
              }
-             else{
-                 alert('Unkown error');
-             } 
+             else if(resp.status == 401){
+                alert('You must have admin privileges to modify database');
+            }
+            else{
+                alert('Unkown error');
+            }
          })
         
          
@@ -190,13 +215,19 @@ function deleteAtt()
 
     let getEndPoint="../../api/attacks/";
     getEndPoint = getEndPoint.concat(id.value);
-    fetch(getEndPoint,{ method:"DELETE"})
+    fetch(getEndPoint,{ method:"DELETE" ,
+    headers: new Headers({
+        'Authorization': authHeader
+      })})
     .then(function (resp) {
         if(resp.status == 200){
             alert('Attack successfully deleted');
         }
         else if(resp.status == 204){
             alert('Invalid attack ID');
+        }
+        else if(resp.status == 401){
+            alert('You must have admin privileges to modify database');
         }
         else{
             alert('Unkown error');
@@ -212,7 +243,7 @@ function deleteAtt()
 function getUpdateRecord(){
     let getEndPoint="../../api/attack/";
     getEndPoint = getEndPoint.concat(uid.value);
-    fetch(getEndPoint,{ method:"GET"})
+    fetch(getEndPoint,{ method:"GET"}) 
     .then(function (resp) {
         if(resp.status == 204){
             alert('Invalid attack ID');
@@ -223,7 +254,7 @@ function getUpdateRecord(){
             return resp.json();
         }
         else{
-            alert('Unknown error');
+            alert('Unkown error');
             return null;
         }
         
@@ -284,6 +315,22 @@ function clearInsertFields(){
 
 }
 
+
+function getCookie(cname) {
+    var name = cname + "=";
+    var decodedCookie = decodeURIComponent(document.cookie);
+    var ca = decodedCookie.split(';');
+    for(var i = 0; i <ca.length; i++) {
+      var c = ca[i];
+      while (c.charAt(0) == ' ') {
+        c = c.substring(1);
+      }
+      if (c.indexOf(name) == 0) {
+        return c.substring(name.length, c.length);
+      }
+    }
+    return "";
+  }
 
 
 

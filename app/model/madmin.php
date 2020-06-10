@@ -58,7 +58,6 @@ class MAdmin{
     }
     //delete Attack
     public function deleteAtt($id){
-        echo $id;
         $sql = 'Delete from attacks where id = :id' ;
         $request = $this->connection->prepare($sql);
         $request->execute([
@@ -111,6 +110,22 @@ class MAdmin{
             'id' => $id
         ]);
         return $request->fetchAll();
+    }
+
+    public function isUserAdmin($authHash){
+        $sql = 'Select isAdmin from tusers where hash = :hash' ;
+        $request = $this->connection->prepare($sql);
+        $request->execute([
+            'hash' => $authHash
+        ]);
+        $raw_data = $request->fetchAll();
+        if($raw_data[0]['isAdmin'] == '1'){
+           return true;
+        }
+        return false;
+
+      
+
     }
 
 

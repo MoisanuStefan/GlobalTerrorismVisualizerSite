@@ -6,6 +6,7 @@ include_once "../model/madmin.php";
 
  
 $chartRoutes = [
+    // statistics for chart
     [
         "method" => "POST",
         "middlewares" => ["isLoggedIn"],
@@ -13,60 +14,67 @@ $chartRoutes = [
         "handler" => "getChartData"
     ],
 
+    // all data about events that happened in a country
     [
         "method" => "GET",
         "route" => "attacks/:country",
         "handler" => "getChartDataByCountry"
     ],
       
-    //stergere atac
+    //delete an attack by id
     [
         "method" => "DELETE",
+        "middlewares" => ["isAdmin"],
         "route" => "attacks/:id",
         "handler" => "deleteAttack"
     ],
 
-    //adaugare atac
+    //add an attack
     [
         "method" => "POST",
+        "middlewares" => ["isAdmin"],
         "route" => "attacks",
         "handler" => "addAttack"
     ],
-
-    //de pus route pt useri --------------------------
-    //stergere user
-    [
-        "method" => "DELETE",
-        "route" => "users/:user",
-        "handler" => "deleteUser"
-    ],
-
-    //update admin 
+   
+    // update one attack
     [
         "method" => "PUT",
-        "route" => "users",
-        "handler" => "operateAdmin"
+        "middlewares" => ["isAdmin"],
+        "route" => "attack",
+        "handler" => "updateAttack"
     ],
-    // get attack for update
-    [
+      // get attack by id for update
+      [
         "method" => "GET",
         "route" => "attack/:id",
         "handler" => "getAttackById"
     ],
-    // update one attack
+
+    //delete user by username
+    [
+        "method" => "DELETE",
+        "middlewares" => ["isAdmin"],
+        "route" => "users/:user",
+        "handler" => "deleteUser"
+    ],
+
+    //update user privileges
     [
         "method" => "PUT",
-        "route" => "attack",
-        "handler" => "updateAttack"
+        "middlewares" => ["isAdmin"],
+        "route" => "users",
+        "handler" => "operateAdmin"
     ]
+   
 
 ];
  
 function updateAttack($req){
     $payload = $req['payload'];
     $model = new MAdmin();
-    $respone = $model->updateAttack($payload);
-    if ($response){
+    $response = $model->updateAttack($payload);
+    if (!$response){
         Response::status(400);
         Response::json(['response' => 'invalid id']);
         exit();

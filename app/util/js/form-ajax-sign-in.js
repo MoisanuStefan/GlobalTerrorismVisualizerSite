@@ -11,6 +11,7 @@ let section12=document.getElementById("section1");
 let adminLI=document.getElementById("adminLI");
 let savedName;
 let savedDisplay;
+let header = document.getElementById("head");
 
 submitBtn3.addEventListener("click", onClick);
 
@@ -81,9 +82,10 @@ function handleLogoutHover(){
             document.cookie = "name=; expires = Thu, 01 Jan 1970 00:00:00 GMT; path=/;";    
             section11.style.display = savedDisplay;
             loginLI.setAttribute('href', '#section1');
-            loginLI.innerHTML = 'Log in';           
-            
+            loginLI.innerHTML = 'Log in';    
             adminLI.style.display='none';
+            location.reload();
+            header.scrollIntoView();
         }
     })
 

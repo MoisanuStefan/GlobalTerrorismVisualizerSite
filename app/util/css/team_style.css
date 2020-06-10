@@ -1,17 +1,17 @@
-#profileImg{
+.profileImg{
     border-radius: 50%;
     width:50%;
     margin-top: 20px;
   }
 
-#socButton{
+.socButton{
     width: 10%;
     margin-right: 10px;
     margin-bottom: -30px;
     margin-left: 10px;
  }
  
- #socButton:hover{
+ .socButton:hover{
     transform: scale(1.3);
     transition: 0.4s;
  }
@@ -60,12 +60,12 @@
         margin: auto;
         margin-bottom: 20px;
     }
-    #profileImg {
+    .profileImg {
         border-radius: 50%;
         width: 30%;
         margin-top: 20px;
     }
-    #socButton {
+    .socButton {
         width: 7%;
     }
 }
@@ -73,7 +73,7 @@
     .card {
 		margin-bottom: 20px;
     }
-    #socButton {
+    .socButton {
         width: 12%;
     }
 }

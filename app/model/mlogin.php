@@ -29,21 +29,38 @@
 			
 		}
 
+		private function isUsernameUnique($username){
+			$sql = "Select user from tusers where user = :username";
+			$request = BD::obtine_conexiune()->prepare($sql);
+			$request->execute([
+				'username'=>$username
+			]);
+			
+			if ($request->fetchAll() == null){
+				return true;
+			}
+			return false;
+		}
+
 		/**
 		 * the function inserts a new user in the database, generating him an user hash
 		 */
 		public function insertUser($name, $user, $password)
 		{
-			$userHash = hash('md5', $user);
-			
-		 	$sql="INSERT INTO tusers(name,user,password,hash) VALUES(:name, :user,:password,:hash)";
-			$cerere=BD::obtine_conexiune()->prepare($sql);
-			$cerere-> execute([
-				'name'=> $name,
-				'user'=> $user,
-				'password'=>$password,
-				'hash'=>$userHash
-			]);
+			if($this->isUsernameUnique($user)){
+				$userHash = hash('md5', $user);
+				
+				$sql="INSERT INTO tusers(name,user,password,hash) VALUES(:name, :user,:password,:hash)";
+				$cerere=BD::obtine_conexiune()->prepare($sql);
+				$cerere-> execute([
+					'name'=> $name,
+					'user'=> $user,
+					'password'=>$password,
+					'hash'=>$userHash
+				]);
+				return true;
+			}
+			return false;
 		}
 		
 

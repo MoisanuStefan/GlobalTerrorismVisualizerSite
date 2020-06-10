@@ -24,10 +24,14 @@ function onClick(){
 
     
     fetch("api/signUp",{ method:"POST", body: JSON.stringify(payload)})
-        .then( function() {
-            console.log('here');
+        .then( function(resp) {
             clearSignUpFields();
+            if(resp.status == 400){
+                alert("Username is not available");
+            }
+            
         })
+    
         .catch(function (err) {
             console.log(err);
         })

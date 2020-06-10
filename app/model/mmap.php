@@ -15,16 +15,31 @@ class MMap{
 	 */
     public function searchData($array){
 		 //$sql='SELECT DISTINCT country_txt, latitude, longitude FROM attacks';
-        	$sqll= $this->createQuery($array);
-			$cerere=BD::obtine_conexiune()->prepare($sqll);
-			$cerere->execute();
+			$sql= $this->createQuery($array);
+			$prepStmtArray = $this->createPrepareStatementArray($array);
+			$cerere=BD::obtine_conexiune()->prepare($sql);
+			$cerere->execute($prepStmtArray);
 			$msg= $cerere->fetchAll();
 			if($msg==NULL)
 				return 0;
             
 			return $msg;
 
-    }
+	}
+	
+	private function createPrepareStatementArray($data){
+		$array = array();
+		$i = 0;
+		foreach($data as $key => $value){
+				if($value != ''){
+					$array[$i] = $value;
+					$i += 1;
+				}
+			}
+
+		
+		return $array;
+	}
 
 	/**
 	 * the function creates the query, given the specific conditions
@@ -39,10 +54,10 @@ class MMap{
 				if($firstCondition==1)
 				{																
 					if($i == 'iyear_l'){
-						$conditions=$conditions."   WHERE iyear BETWEEN '$value' ";
+						$conditions=$conditions."   WHERE iyear BETWEEN ? ";
 					}
 					else{
-						$conditions=$conditions." WHERE $i = '$value' ";
+						$conditions=$conditions." WHERE $i = ? ";
 					}
 				
 					$firstCondition=0;
@@ -50,13 +65,13 @@ class MMap{
 				else{
 					
 					if($i == 'iyear_l'){
-						$conditions=$conditions." AND iyear BETWEEN '$value' ";
+						$conditions=$conditions." AND iyear BETWEEN ? ";
 					}
 					else if ($i == 'iyear_h'){
-						$conditions=$conditions." AND '$value' ";
+						$conditions=$conditions." AND ? ";
 					}
 					else{
-						$conditions=$conditions." AND $i = '$value' ";
+						$conditions=$conditions." AND $i = ? ";
 					}
 				}
 			}

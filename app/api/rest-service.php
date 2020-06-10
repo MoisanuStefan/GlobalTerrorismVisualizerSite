@@ -31,12 +31,6 @@ $allRoutes =  [
         "route" => "attacks/:country",
         "handler" => "getChartDataByCountry"
     ],
-
-    [
-        "method" => "GET",
-        "route" => "attacks/:country/:count",
-        "handler" => "getChartDataByCountry"
-    ],
     [
         "method" => "POST",
         "middlewares" => ["isLoggedIn"],
@@ -52,16 +46,44 @@ $allRoutes =  [
         "method" => "POST",
         "route" => "logIn",
         "handler" => "searchUser"
+    ],
+     //stergere atac
+     [
+        "method" => "DELETE",
+        "route" => "attacks/:id",
+        "handler" => "deleteAttack"
+    ],
+
+    //adaugare atac
+    [
+        "method" => "POST",
+        "route" => "attacks",
+        "handler" => "addAttack"
+    ],
+
+    [
+        "method" => "DELETE",
+        "route" => "users/:user",
+        "handler" => "deleteUser"
+    ],
+
+    //update admin 
+    [
+        "method" => "PUT",
+        "route" => "users",
+        "handler" => "operateAdmin"
     ]
 ];
 
 foreach ($allRoutes as $routeConfig) {
+    
     if (parseRequest($routeConfig)) {
         exit;
     }
 }
 
-handle404();
+Response::status(404);
+Response::json(['response' => 'invalid url']);
 
 
 
@@ -70,12 +92,12 @@ function parseRequest($routeConfig)
     // regexp match 
     $url = $_SERVER['REQUEST_URI'];
     $method = $_SERVER['REQUEST_METHOD'];
-
+    
     if ($method !== $routeConfig['method']) {
         return false;
     }
-
     $regExpString = routeExpToRegExp($routeConfig['route']);
+    
 
 
     if (preg_match("/$regExpString/", $url, $matches)) {
@@ -91,7 +113,6 @@ function parseRequest($routeConfig)
                 $index++;
             }
         }
-
         // Query
         if (strpos($url, '?')) {
             $queryString = explode('?', $url)[1];
@@ -129,7 +150,7 @@ function parseRequest($routeConfig)
                 }
             }
         }
-
+        
         call_user_func($routeConfig['handler'], [
             "params" => $params,
             "query" => $query,

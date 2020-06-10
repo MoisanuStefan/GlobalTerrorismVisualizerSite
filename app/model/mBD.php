@@ -8,7 +8,7 @@ class BD{
 	{
 		if(is_null(self::$conexiune_bd))
 		{
-		self::$conexiune_bd =new PDO('mysql:host=localhost;dbname=tevi','stef','stef');
+		self::$conexiune_bd =new PDO('mysql:host=localhost;dbname=tevi','carol','carol');
 		}
 		return self::$conexiune_bd;
 	}

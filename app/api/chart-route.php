@@ -2,6 +2,7 @@
  
 include_once "../model/mchart.php";
 include_once "../model/mBD.php";
+include_once "../model/madmin.php";
 
  
 $chartRoutes = [
@@ -17,15 +18,90 @@ $chartRoutes = [
         "route" => "attacks/:country",
         "handler" => "getChartDataByCountry"
     ],
-
+      
+    //stergere atac
     [
-        "method" => "GET",
-        "route" => "attacks/:country/:count",
-        "handler" => "getChartDataByCountry"
+        "method" => "DELETE",
+        "route" => "attacks/:id",
+        "handler" => "deleteAttack"
+    ],
+
+    //adaugare atac
+    [
+        "method" => "POST",
+        "route" => "attacks",
+        "handler" => "addAttack"
+    ],
+
+    //de pus route pt useri --------------------------
+    //stergere user
+    [
+        "method" => "DELETE",
+        "route" => "users/:user",
+        "handler" => "deleteUser"
+    ],
+
+    //update admin 
+    [
+        "method" => "PUT",
+        "route" => "users",
+        "handler" => "operateAdmin"
     ]
+
 ];
  
  
+function addAttack($req)
+{
+   $model = new MAdmin();
+   $payload = $req['payload'];  
+   $model->insertAtt($payload);
+   $response = array();
+   $response['response'] = 'Attack inserted';
+   Response::status(200);
+   Response::json($response);  
+
+}
+
+function deleteAttack($req)
+{
+   $model = new MAdmin();
+   $idA=$req['params'];
+
+   $id=$idA['id'];
+   $model->deleteAtt($id);
+   $response = array();
+   $response['response'] = 'Attack deleted';
+   Response::status(200);
+   Response::json($response);
+   
+}
+
+ //----------------------------------------------------
+function deleteUser($req)
+{
+   $model = new MAdmin();
+   $id=$req['params']['user'];
+   $model->deleteUser($id);
+   $response = array();
+   $response['response'] = 'User deleted';
+   Response::status(200);
+   Response::json($response);
+   
+}
+
+function operateAdmin($req)
+{
+    $model = new MAdmin();
+    $payload = $req['payload'];  
+    $model->operateUser($payload);
+    $response = array();
+    $response['response'] = 'User updated';
+    Response::status(200);
+    Response::json($response);  
+   
+}
+
  
 function getChartData($req) {
     $modifiedPayload = $req['payload'];
@@ -33,8 +109,6 @@ function getChartData($req) {
     $raw_data = $model->getDistinctAndCount($modifiedPayload);
 
     if($raw_data==NULL){
-
-        echo 'here';
         Response::status(204); // no content
     }
 
@@ -53,13 +127,9 @@ function getChartData($req) {
 
 function getChartDataByCountry($req){
     $country = $req['params']['country']; 
-    $limit = 0;
-    if(isset( $req['params']['count'])){
-        $limit = $req['params']['count'];
-    }
     
     $model = new MChart();
-    $raw_data = $model->getByCountry($country, $limit);
+    $raw_data = $model->getByCountry($country);
 
     if($raw_data==NULL){
         Response::status(204); // no content

@@ -74,7 +74,7 @@ label {
     -moz-appearance: none;
 }
 
-#time-interval{
+.time-interval{
     padding: 0;
     margin: 0;
     display: flex;

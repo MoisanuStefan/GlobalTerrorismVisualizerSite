@@ -9,13 +9,14 @@ class MChart{
         $this->connection = BD::obtine_conexiune();
     }
 
-	public function getByCountry($country, $limit){
-		$sql = 'Select * from attacks where country_txt = \'' . $country . '\'';
-		if ($limit > 0){
-			$sql = $sql . 'limit ' . $limit;
-		}
+	public function getByCountry($country){
+		$sql = 'Select * from attacks where country_txt = :country ';
 		$request = $this->connection->prepare($sql);
-        $request->execute();
+		$request->execute([
+			'country' => $country
+		]);
+	
+		
         return $request->fetchAll();
 	}
 	/**
@@ -23,36 +24,49 @@ class MChart{
 	 */
     public function getDistinctAndCount($queryData){
         
-		$sql2=$this->createQuery($queryData);
-        $request = $this->connection->prepare($sql2);
-        $request->execute();
+		$sql=$this->createQuery($queryData);
+		$prepstmtArray = $this->createPrepareStatementArray($queryData);
+        $request = $this->connection->prepare($sql);
+        $request->execute($prepstmtArray);
         return $request->fetchAll();
     }
 
+	private function createPrepareStatementArray($data){
+		$array = array();
+		$i = 0;
+		foreach($data as $key => $value){
+				if($value != ''){
+					$array[$i] = $value;
+					$i += 1;
+				}
+			}
+
+		
+		return $array;
+	}
 	/**
 	 * the function creates the query, given the specific conditions
 	 */
 	private function createQuery($array){
 		$this->setFilterArray();
-		$sqll='SELECT ' . $array->column . ' as to_graph, COUNT(' . $array->column . ') AS value FROM attacks ' . $this->filterArray[$array->column]; 
+		$sql='SELECT ' . $array->column . ' as to_graph, COUNT( ? ) AS value FROM attacks ' . $this->filterArray[$array->column]; 
 		$conditions="";
-		$firstCondition=1;
 		foreach ($array as $i => $value) {
 			if ($i != 'column' && $value != ''){
 				
 				if($i == 'iyear_l'){
-					$conditions=$conditions." and iyear between '$value' ";
+					$conditions=$conditions." and iyear between ? ";
 				}
 				else if ($i == 'iyear_h'){
-					$conditions=$conditions." and '$value' ";
+					$conditions=$conditions." and ? ";
 				}
 				else{
-					$conditions=$conditions." AND $i = '$value' ";
+					$conditions=$conditions." AND $i = ? ";
 				}
 			}
 		}
 		
-		return $sqll.$conditions.'GROUP BY ' . $array->column;
+		return $sql.$conditions.'GROUP BY ' . $array->column;
 	}
 
 	/**

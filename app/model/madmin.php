@@ -28,17 +28,50 @@ class MAdmin{
         //print_r($array);
         $stmt = $this->connection->prepare($sql);
         $resp = $stmt->execute($array);
-
+        echo $resp;
+        if ($resp == 1){
+            return true;
+        }
+        return false;
         //if($resp==false) echo 'true';
         // else echo 'proba';
         //echo "resp".$resp;
     }
 
+    //update attack
+    public function updateAttack($json){
+        $sql = 'update attacks set iyear = ?, imonth = ?, iday = ?, country_txt = ?, city = ?, latitude = ?, longitude = ?, success = ?, suicide = ?, attacktype1_txt = ?, targtype1_txt = ?, weaptype1_txt = ? where id = ?' ;
+        $request = $this->connection->prepare($sql);
+
+        $index = 0;
+        $prepStmtArray = Array();
+        foreach($json as $key => $value){
+            if($key != 'id'){
+                $prepStmtArray[$index] = $value;
+                $index += 1;
+            }
+        }
+        $prepStmtArray[$index] = $json->id;
+        $request->execute($prepStmtArray);
+        if($request->rowCount() == 1){
+            return true;
+        }
+        return false;
+
+    }
     //delete Attack
     public function deleteAtt($id){
-        $sql = 'Delete from attacks where id = ' . $id ;
+        echo $id;
+        $sql = 'Delete from attacks where id = :id' ;
         $request = $this->connection->prepare($sql);
-        $request->execute();
+        $request->execute([
+            'id' => $id
+        ]);
+        if($request->rowCount() == 1){
+            return true;
+        }
+        return false;
+        
     }
     //verificat-----------------------------------------------
 
@@ -54,7 +87,6 @@ class MAdmin{
 
     //operate user
     public function operateUser($json){
-        print_r($json);
         if($json->isAdmin == '1'){
             $sql = 'UPDATE tusers SET isAdmin = 1 WHERE user = :user' ;
         }
@@ -66,5 +98,15 @@ class MAdmin{
             'user' => $json->user
         ]);
     }
+
+    public function getAttackById($id){
+        $sql = 'Select * from attacks where id = :id' ;
+        $request = $this->connection->prepare($sql);
+        $request->execute([
+            'id' => $id
+        ]);
+        return $request->fetchAll();
+    }
+
 
 }

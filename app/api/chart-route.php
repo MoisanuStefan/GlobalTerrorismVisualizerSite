@@ -46,34 +46,107 @@ $chartRoutes = [
         "method" => "PUT",
         "route" => "users",
         "handler" => "operateAdmin"
+    ],
+    // get attack for update
+    [
+        "method" => "GET",
+        "route" => "attack/:id",
+        "handler" => "getAttackById"
+    ],
+    // update one attack
+    [
+        "method" => "PUT",
+        "route" => "attack",
+        "handler" => "updateAttack"
     ]
 
 ];
  
+function updateAttack($req){
+    $payload = $req['payload'];
+    $model = new MAdmin();
+    $respone = $model->updateAttack($payload);
+    if ($response){
+        Response::status(400);
+        Response::json(['response' => 'invalid id']);
+        exit();
+    }
+    Response::status(200);
+    Response::json(['response' => 'attack updated']);
+
+
+}
+
+function processRawData($raw_data){
+    $index = 0;
+    $data = array();
+    foreach($raw_data as $line){
+        $data[$index] = array();
+        foreach($line as $key => $value){
+
+            if (!is_numeric($key)){
+                $data[$index][$key] = $value;
+            }
+        }
+        $index = $index + 1;
+    }
+    return $data;
+}
+
+function getAttackById($req){
+    $id = $req['params']['id'];
+    $model = new MAdmin();
+    $raw_data = $model->getAttackById($id);
+
+    if($raw_data==NULL){
+        
+        Response::status(204); // no content
+        exit();
+    }
+     $data = array();
+        foreach($raw_data[0] as $key => $value){
+
+            if (!is_numeric($key)){
+                $data[$key] = $value;
+            }
+        }    
+        
+    Response::status(200);
+    Response::json($data); 
+
+
+    
+}
  
 function addAttack($req)
 {
    $model = new MAdmin();
    $payload = $req['payload'];  
-   $model->insertAtt($payload);
-   $response = array();
-   $response['response'] = 'Attack inserted';
-   Response::status(200);
-   Response::json($response);  
+   $response = $model->insertAtt($payload);
+   if($response){
+    Response::status(200);
+    Response::json(['response' => 'attack inserted']);
+    exit();
+    }
+  
+   Response::status(400);
+   Response::json(['response' => 'unknown error']);
 
 }
 
 function deleteAttack($req)
 {
    $model = new MAdmin();
-   $idA=$req['params'];
-
-   $id=$idA['id'];
-   $model->deleteAtt($id);
-   $response = array();
-   $response['response'] = 'Attack deleted';
-   Response::status(200);
-   Response::json($response);
+   $id=$req['params']['id'];
+   $response = $model->deleteAtt($id);
+   if($response){
+    Response::status(200);
+    Response::json(['response' => 'attack deleted']);
+    exit();
+    }
+  
+   Response::status(204);
+   Response::json(['response' => 'invalid attack id']);
    
 }
 
@@ -135,18 +208,7 @@ function getChartDataByCountry($req){
         Response::status(204); // no content
         exit();
     }
-    $index = 0;
-    $data = array();
-    foreach($raw_data as $line){
-        $data[$index] = array();
-        foreach($line as $key => $value){
-
-            if (!is_numeric($key)){
-                $data[$index][$key] = $value;
-            }
-        }
-        $index = $index + 1;
-    }
+    $data = $this->processRawData($raw_data);
     
     Response::status(200);
     Response::json($data);

@@ -72,6 +72,18 @@ $allRoutes =  [
         "method" => "PUT",
         "route" => "users",
         "handler" => "operateAdmin"
+    ],
+     // get attack for update
+     [
+        "method" => "GET",
+        "route" => "attack/:id",
+        "handler" => "getAttackById"
+     ],
+      // update one attack
+    [
+        "method" => "PUT",
+        "route" => "attack",
+        "handler" => "updateAttack"
     ]
 ];
 
@@ -150,7 +162,6 @@ function parseRequest($routeConfig)
                 }
             }
         }
-        
         call_user_func($routeConfig['handler'], [
             "params" => $params,
             "query" => $query,
@@ -179,7 +190,7 @@ function routeExpToRegExp($route)
         $regExpString .= '\/';
 
         if ($p[0] === ':') {
-            $regExpString .= '([a-zA-Z0-9_]+)';
+            $regExpString .= '([a-zA-Z0-9_-]+)';
         } else {
             $regExpString .= $p;
         }

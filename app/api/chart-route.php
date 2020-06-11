@@ -10,7 +10,11 @@ $chartRoutes = [
     [
         "method" => "POST",
         "middlewares" => ["isLoggedIn"],
+<<<<<<< HEAD
+        "route" => "charts",
+=======
         "route" => "statistics",
+>>>>>>> a970f1e3a534c40bde482ad4a16985e8dec28cc5
         "handler" => "getChartData"
     ],
 
@@ -25,7 +29,11 @@ $chartRoutes = [
     [
         "method" => "DELETE",
         "middlewares" => ["isAdmin"],
+<<<<<<< HEAD
+        "route" => "attack/:id",
+=======
         "route" => "attacks/:id",
+>>>>>>> a970f1e3a534c40bde482ad4a16985e8dec28cc5
         "handler" => "deleteAttack"
     ],
 
@@ -67,7 +75,10 @@ $chartRoutes = [
         "handler" => "operateAdmin"
     ]
    
+<<<<<<< HEAD
+=======
 
+>>>>>>> a970f1e3a534c40bde482ad4a16985e8dec28cc5
 ];
  
 function updateAttack($req){
@@ -140,6 +151,7 @@ function addAttack($req)
    Response::status(400);
    Response::json(['response' => 'unknown error']);
 
+<<<<<<< HEAD
 }
 
 function deleteAttack($req)
@@ -175,6 +187,43 @@ function deleteUser($req)
    
 }
 
+=======
+}
+
+function deleteAttack($req)
+{
+   $model = new MAdmin();
+   $id=$req['params']['id'];
+   $response = $model->deleteAtt($id);
+   if($response){
+    Response::status(200);
+    Response::json(['response' => 'attack deleted']);
+    exit();
+    }
+  
+   Response::status(204);
+   Response::json(['response' => 'invalid attack id']);
+   
+}
+
+ //----------------------------------------------------
+function deleteUser($req)
+{
+   $model = new MAdmin();
+   $id=$req['params']['user'];
+   $response = $model->deleteUser($id);
+   if($response){
+    Response::status(200);
+    Response::json(['response' => 'user deleted']);
+    exit();
+   }
+   Response::status(204);
+   Response::json(['response' => 'unvalid user id']);
+   
+   
+}
+
+>>>>>>> a970f1e3a534c40bde482ad4a16985e8dec28cc5
 function operateAdmin($req)
 {
     $model = new MAdmin();
@@ -223,7 +272,11 @@ function getChartDataByCountry($req){
         Response::status(204); // no content
         exit();
     }
+<<<<<<< HEAD
+    $data = processRawData($raw_data);
+=======
     $data = $this->processRawData($raw_data);
+>>>>>>> a970f1e3a534c40bde482ad4a16985e8dec28cc5
     
     Response::status(200);
     Response::json($data);

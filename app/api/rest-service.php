@@ -19,7 +19,11 @@ $allRoutes =  [
     [
         "method" => "POST",
         "middlewares" => ["isLoggedIn"],
+<<<<<<< HEAD
+        "route" => "charts",
+=======
         "route" => "statistics",
+>>>>>>> a970f1e3a534c40bde482ad4a16985e8dec28cc5
         "handler" => "getChartData"
     ],
 
@@ -34,7 +38,11 @@ $allRoutes =  [
     [
         "method" => "DELETE",
         "middlewares" => ["isAdmin"],
+<<<<<<< HEAD
+        "route" => "attack/:id",
+=======
         "route" => "attacks/:id",
+>>>>>>> a970f1e3a534c40bde482ad4a16985e8dec28cc5
         "handler" => "deleteAttack"
     ],
 
@@ -91,7 +99,11 @@ $allRoutes =  [
     [
         "method" => "POST",
         "middlewares" => ["isLoggedIn"],
+<<<<<<< HEAD
+        "route" => "maps",
+=======
         "route" => "map",
+>>>>>>> a970f1e3a534c40bde482ad4a16985e8dec28cc5
         "handler" => "getMapData"
     ]
 ];

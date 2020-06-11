@@ -181,8 +181,8 @@ margin-right: -10px;
 #teamsParent {text-align: center;}
 
 .topText{
-    color: navy;
-    font-family: "Comic Sans MS", cursive, sans-serif;
+    color: #997300;;
+    font-family: "Coldiac", cursive, sans-serif;
     font-size: 20px;
     margin-top:20px;
     margin-bottom: 50px;
@@ -284,6 +284,10 @@ img {
 		width: 100%;
     }
 }
+<<<<<<< HEAD
+
+=======
+>>>>>>> a970f1e3a534c40bde482ad4a16985e8dec28cc5
 @media screen and (max-width: 750px) {
     .meniu{
         display: block;
